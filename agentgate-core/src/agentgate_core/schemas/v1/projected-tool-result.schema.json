@@ -1,0 +1,132 @@
+{
+  "$defs": {
+    "JsonValue": {},
+    "RawTraceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "content_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Content Type",
+          "type": "string"
+        },
+        "estimated_tokens": {
+          "minimum": 0,
+          "title": "Estimated Tokens",
+          "type": "integer"
+        },
+        "event_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Event Ids",
+          "type": "array"
+        },
+        "reference_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reference Id",
+          "type": "string"
+        },
+        "run_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reference_id",
+        "task_id",
+        "run_id",
+        "event_ids",
+        "content_type",
+        "estimated_tokens"
+      ],
+      "title": "RawTraceReference",
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/projected-tool-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "original_tokens": {
+      "minimum": 0,
+      "title": "Original Tokens",
+      "type": "integer"
+    },
+    "projected": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Projected",
+      "type": "object"
+    },
+    "projected_tokens": {
+      "minimum": 0,
+      "title": "Projected Tokens",
+      "type": "integer"
+    },
+    "projection_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Projection Id",
+      "type": "string"
+    },
+    "raw_reference": {
+      "$ref": "#/$defs/RawTraceReference"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_event_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Event Id",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "tool_name": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Tool Name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "projection_id",
+    "task_id",
+    "tool_name",
+    "source_event_id",
+    "projected",
+    "raw_reference",
+    "original_tokens",
+    "projected_tokens"
+  ],
+  "title": "ProjectedToolResult",
+  "type": "object"
+}

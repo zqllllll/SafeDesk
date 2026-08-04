@@ -1,0 +1,54 @@
+[project]
+name = "safedesk-workspace"
+version = "0.1.0"
+description = "Workspace for the SafeDesk policy-governed agent harness"
+requires-python = ">=3.12"
+dependencies = [
+    "agentgate-appworld",
+    "agentgate-core",
+    "agentgate-deerflow",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3,<10",
+    "ruff>=0.14.11,<0.15",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+    "benchmark-adapters/appworld",
+    "agentgate-core",
+    "agentgate-deerflow",
+]
+
+[tool.uv.sources]
+agentgate-appworld = { workspace = true }
+agentgate-core = { workspace = true }
+agentgate-deerflow = { workspace = true }
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = [
+    "benchmark-adapters/appworld/tests",
+    "agentgate-core/tests",
+    "agentgate-deerflow/tests",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["agentgate_appworld", "agentgate_core", "agentgate_deerflow"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

@@ -1,0 +1,977 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "phone.login\nphone.search_contacts\nphone.send_text_message\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile\nvenmo.login\nvenmo.search_users\nvenmo.show_transactions\nvenmo.create_transaction",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "phone.login",
+      "phone.search_contacts",
+      "phone.send_text_message",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile",
+      "venmo.login",
+      "venmo.search_users",
+      "venmo.show_transactions",
+      "venmo.create_transaction"
+    ],
+    "usage": {
+      "input_tokens": 7677,
+      "output_tokens": 51,
+      "total_tokens": 7728
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my personal information and the current date.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Td3SQYUYow7Ekk7iyfu70623",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_MQbqQ5ejxAwt0tcRkPDB6908",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_jRFNaUvO5vYJMpf2BeXy5965",
+        "type": "function",
+        "function": {
+          "name": "phone__get_current_date_and_time",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Td3SQYUYow7Ekk7iyfu70623",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_MQbqQ5ejxAwt0tcRkPDB6908",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_jRFNaUvO5vYJMpf2BeXy5965",
+        "type": "function",
+        "function": {
+          "name": "phone__get_current_date_and_time",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5433,
+      "output_tokens": 81,
+      "total_tokens": 5514
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 3,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5433,
+      "output_tokens": 81,
+      "total_tokens": 5514,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 14619,
+      "estimated_history_tokens_before_call": 3655
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_Td3SQYUYow7Ekk7iyfu70623",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Vickie",
+      "last_name": "Powell",
+      "email": "vicpowe@gmail.com",
+      "phone_number": "8924356613",
+      "birthday": "1959-01-26",
+      "sex": "female"
+    },
+    "message_result": {
+      "first_name": "Vickie",
+      "last_name": "Powell",
+      "email": "vicpowe@gmail.com",
+      "phone_number": "8924356613",
+      "birthday": "1959-01-26",
+      "sex": "female"
+    },
+    "result_chars": 150,
+    "message_result_chars": 150
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_MQbqQ5ejxAwt0tcRkPDB6908",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "5%NF!wN"
+      },
+      {
+        "account_name": "file_system",
+        "password": "*AbZz@R"
+      },
+      {
+        "account_name": "gmail",
+        "password": "De8X_n3"
+      },
+      {
+        "account_name": "phone",
+        "password": "edM$BZ4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "1YXp{5h"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "5n{C#t1"
+      },
+      {
+        "account_name": "spotify",
+        "password": "MG}]ZZ9"
+      },
+      {
+        "account_name": "todoist",
+        "password": "3g5B!BE"
+      },
+      {
+        "account_name": "venmo",
+        "password": "O=SUPrZ"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "5%NF!wN"
+      },
+      {
+        "account_name": "file_system",
+        "password": "*AbZz@R"
+      },
+      {
+        "account_name": "gmail",
+        "password": "De8X_n3"
+      },
+      {
+        "account_name": "phone",
+        "password": "edM$BZ4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "1YXp{5h"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "5n{C#t1"
+      },
+      {
+        "account_name": "spotify",
+        "password": "MG}]ZZ9"
+      },
+      {
+        "account_name": "todoist",
+        "password": "3g5B!BE"
+      },
+      {
+        "account_name": "venmo",
+        "password": "O=SUPrZ"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_02_jRFNaUvO5vYJMpf2BeXy5965",
+    "name": "phone__get_current_date_and_time",
+    "args": {},
+    "executed": true,
+    "result": {
+      "date": "Thursday, May 18, 2023",
+      "time": "12:00 PM"
+    },
+    "message_result": {
+      "date": "Thursday, May 18, 2023",
+      "time": "12:00 PM"
+    },
+    "result_chars": 54,
+    "message_result_chars": 54
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "Today is May 18, 2023. It's my daughter's birthday. Let me find my daughter's contact info from my phone.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_PVUf3EqOd4NsLkw4Ovab2654",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"8924356613\", \"password\": \"edM$BZ4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_PVUf3EqOd4NsLkw4Ovab2654",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"8924356613\", \"password\": \"edM$BZ4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5787,
+      "output_tokens": 96,
+      "total_tokens": 5883
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5787,
+      "output_tokens": 96,
+      "total_tokens": 5883,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 16229,
+      "estimated_history_tokens_before_call": 4058
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_PVUf3EqOd4NsLkw4Ovab2654",
+    "name": "phone__login",
+    "args": {
+      "username": "8924356613",
+      "password": "edM$BZ4"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M",
+      "token_type": "Bearer"
+    },
+    "result_chars": 183,
+    "message_result_chars": 183
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_BTGk7XbnvKQY09ZOTZmf5260",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"relationship\": \"daughter\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_BTGk7XbnvKQY09ZOTZmf5260",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"relationship\": \"daughter\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6001,
+      "output_tokens": 155,
+      "total_tokens": 6156
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6001,
+      "output_tokens": 155,
+      "total_tokens": 6156,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 16852,
+      "estimated_history_tokens_before_call": 4213
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_BTGk7XbnvKQY09ZOTZmf5260",
+    "name": "phone__search_contacts",
+    "args": {
+      "relationship": "daughter",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M"
+    },
+    "executed": true,
+    "result": [
+      {
+        "contact_id": 519,
+        "first_name": "Erica",
+        "last_name": "Wilson",
+        "email": "eri_powe@gmail.com",
+        "phone_number": "4675246489",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1991-12-31",
+        "home_address": "31434 Mark Trail Suite 731\nSeattle\nWashington\nUnited States\n75765",
+        "work_address": "5840 Craig Turnpike Suite 634\nSeattle\nWashington\nUnited States\n78487",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 518,
+        "first_name": "Jennifer",
+        "last_name": "Powell",
+        "email": "jepowell@gmail.com",
+        "phone_number": "4288705164",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1989-05-18",
+        "home_address": "34495 Michael Burg Suite 805\nSeattle\nWashington\nUnited States\n38887",
+        "work_address": "3850 Timothy Squares Suite 942\nSeattle\nWashington\nUnited States\n54179",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 517,
+        "first_name": "Kristin",
+        "last_name": "White",
+        "email": "kri-powe@gmail.com",
+        "phone_number": "6017026518",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1987-05-31",
+        "home_address": "0031 Jeremy Cliff Suite 552\nSeattle\nWashington\nUnited States\n72731",
+        "work_address": "7844 Joshua Shore Suite 460\nSeattle\nWashington\nUnited States\n46946",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 520,
+        "first_name": "Miranda",
+        "last_name": "Weber",
+        "email": "mir-powe@gmail.com",
+        "phone_number": "4885870260",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1995-09-18",
+        "home_address": "28073 William Corners Suite 495\nSeattle\nWashington\nUnited States\n36752",
+        "work_address": "97051 Keith Spur Suite 381\nSeattle\nWashington\nUnited States\n29218",
+        "created_at": "2021-08-16T12:26:19"
+      }
+    ],
+    "message_result": [
+      {
+        "contact_id": 519,
+        "first_name": "Erica",
+        "last_name": "Wilson",
+        "email": "eri_powe@gmail.com",
+        "phone_number": "4675246489",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1991-12-31",
+        "home_address": "31434 Mark Trail Suite 731\nSeattle\nWashington\nUnited States\n75765",
+        "work_address": "5840 Craig Turnpike Suite 634\nSeattle\nWashington\nUnited States\n78487",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 518,
+        "first_name": "Jennifer",
+        "last_name": "Powell",
+        "email": "jepowell@gmail.com",
+        "phone_number": "4288705164",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1989-05-18",
+        "home_address": "34495 Michael Burg Suite 805\nSeattle\nWashington\nUnited States\n38887",
+        "work_address": "3850 Timothy Squares Suite 942\nSeattle\nWashington\nUnited States\n54179",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 517,
+        "first_name": "Kristin",
+        "last_name": "White",
+        "email": "kri-powe@gmail.com",
+        "phone_number": "6017026518",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1987-05-31",
+        "home_address": "0031 Jeremy Cliff Suite 552\nSeattle\nWashington\nUnited States\n72731",
+        "work_address": "7844 Joshua Shore Suite 460\nSeattle\nWashington\nUnited States\n46946",
+        "created_at": "2021-08-16T12:26:19"
+      },
+      {
+        "contact_id": 520,
+        "first_name": "Miranda",
+        "last_name": "Weber",
+        "email": "mir-powe@gmail.com",
+        "phone_number": "4885870260",
+        "relationships": [
+          "child",
+          "daughter"
+        ],
+        "birthday": "1995-09-18",
+        "home_address": "28073 William Corners Suite 495\nSeattle\nWashington\nUnited States\n36752",
+        "work_address": "97051 Keith Spur Suite 381\nSeattle\nWashington\nUnited States\n29218",
+        "created_at": "2021-08-16T12:26:19"
+      }
+    ],
+    "result_chars": 1657,
+    "message_result_chars": 1657
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "Today is May 18, 2023. Jennifer Powell has birthday on May 18 - that's today! So Jennifer is the daughter whose birthday it is today.\n\nNow I need to find out how much I sent her on her last birthday. Her last birthday would be May 18, 2022. Let me log into Venmo and check.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_mPQFaprE6L2G7lBvKRMJ2010",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"vicpowe@gmail.com\", \"password\": \"O=SUPrZ\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_mPQFaprE6L2G7lBvKRMJ2010",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"vicpowe@gmail.com\", \"password\": \"O=SUPrZ\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6690,
+      "output_tokens": 140,
+      "total_tokens": 6830
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6690,
+      "output_tokens": 140,
+      "total_tokens": 6830,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 19176,
+      "estimated_history_tokens_before_call": 4794
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_mPQFaprE6L2G7lBvKRMJ2010",
+    "name": "venmo__login",
+    "args": {
+      "username": "vicpowe@gmail.com",
+      "password": "O=SUPrZ"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938",
+      "token_type": "Bearer"
+    },
+    "result_chars": 192,
+    "message_result_chars": 192
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "Let me search for Jennifer on Venmo to find her email/account.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_TFnI0fqKyugJp2gvsQze4186",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"Jennifer Powell\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_TFnI0fqKyugJp2gvsQze4186",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"Jennifer Powell\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6952,
+      "output_tokens": 174,
+      "total_tokens": 7126
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6952,
+      "output_tokens": 174,
+      "total_tokens": 7126,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 19985,
+      "estimated_history_tokens_before_call": 4997
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_TFnI0fqKyugJp2gvsQze4186",
+    "name": "venmo__search_users",
+    "args": {
+      "query": "Jennifer Powell",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938"
+    },
+    "executed": true,
+    "result": [
+      {
+        "first_name": "Jennifer",
+        "last_name": "Powell",
+        "email": "jepowell@gmail.com",
+        "registered_at": "2023-01-10T09:03:33",
+        "friends_since": null
+      },
+      {
+        "first_name": "Spencer",
+        "last_name": "Powell",
+        "email": "spencer.powell@gmail.com",
+        "registered_at": "2022-12-17T10:32:07",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": "2023-02-12T14:30:46"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": null
+      }
+    ],
+    "message_result": [
+      {
+        "first_name": "Jennifer",
+        "last_name": "Powell",
+        "email": "jepowell@gmail.com",
+        "registered_at": "2023-01-10T09:03:33",
+        "friends_since": null
+      },
+      {
+        "first_name": "Spencer",
+        "last_name": "Powell",
+        "email": "spencer.powell@gmail.com",
+        "registered_at": "2022-12-17T10:32:07",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": "2023-02-12T14:30:46"
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": null
+      }
+    ],
+    "result_chars": 736,
+    "message_result_chars": 736
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "Jennifer's email is jepowell@gmail.com. Now let me look for transactions I sent to her around her last birthday (May 18, 2022). Let me check transactions around that time.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_gKKbmJ2rkrkshOeXTwAm6223",
+        "type": "function",
+        "function": {
+          "name": "venmo__show_transactions",
+          "arguments": "{\"user_email\": \"jepowell@gmail.com\", \"direction\": \"sent\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_gKKbmJ2rkrkshOeXTwAm6223",
+        "type": "function",
+        "function": {
+          "name": "venmo__show_transactions",
+          "arguments": "{\"user_email\": \"jepowell@gmail.com\", \"direction\": \"sent\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 7407,
+      "output_tokens": 221,
+      "total_tokens": 7628
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 7407,
+      "output_tokens": 221,
+      "total_tokens": 7628,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 21356,
+      "estimated_history_tokens_before_call": 5339
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_gKKbmJ2rkrkshOeXTwAm6223",
+    "name": "venmo__show_transactions",
+    "args": {
+      "user_email": "jepowell@gmail.com",
+      "direction": "sent",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938"
+    },
+    "executed": true,
+    "result": [
+      {
+        "transaction_id": 8216,
+        "amount": 150.0,
+        "description": "Many happy returns of the day!",
+        "created_at": "2022-05-18T10:41:19",
+        "updated_at": "2022-05-18T10:41:19",
+        "private": true,
+        "like_count": 0,
+        "payment_card_digits": null,
+        "comment_count": 0,
+        "sender": {
+          "name": "Vickie Powell",
+          "email": "vicpowe@gmail.com"
+        },
+        "receiver": {
+          "name": "Jennifer Powell",
+          "email": "jepowell@gmail.com"
+        }
+      }
+    ],
+    "message_result": [
+      {
+        "transaction_id": 8216,
+        "amount": 150.0,
+        "description": "Many happy returns of the day!",
+        "created_at": "2022-05-18T10:41:19",
+        "updated_at": "2022-05-18T10:41:19",
+        "private": true,
+        "like_count": 0,
+        "payment_card_digits": null,
+        "comment_count": 0,
+        "sender": {
+          "name": "Vickie Powell",
+          "email": "vicpowe@gmail.com"
+        },
+        "receiver": {
+          "name": "Jennifer Powell",
+          "email": "jepowell@gmail.com"
+        }
+      }
+    ],
+    "result_chars": 388,
+    "message_result_chars": 388
+  },
+  {
+    "turn": 7,
+    "role": "assistant",
+    "content": "I sent Jennifer $150 on her last birthday (May 18, 2022). So thrice that is $450. Let me send the Venmo transaction privately with the note, and also send the text message.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_nKxGaf1F2eHlUVHwXzUu1943",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_transaction",
+          "arguments": "{\"receiver_email\": \"jepowell@gmail.com\", \"amount\": 450, \"description\": \"Many happy returns of the day!\", \"private\": true, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_yE0DjSt397CqNIw1EQoi8707",
+        "type": "function",
+        "function": {
+          "name": "phone__send_text_message",
+          "arguments": "{\"phone_number\": \"4288705164\", \"message\": \"Happy Birthday daughter! Looking forward to meet you soon!\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_nKxGaf1F2eHlUVHwXzUu1943",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_transaction",
+          "arguments": "{\"receiver_email\": \"jepowell@gmail.com\", \"amount\": 450, \"description\": \"Many happy returns of the day!\", \"private\": true, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_yE0DjSt397CqNIw1EQoi8707",
+        "type": "function",
+        "function": {
+          "name": "phone__send_text_message",
+          "arguments": "{\"phone_number\": \"4288705164\", \"message\": \"Happy Birthday daughter! Looking forward to meet you soon!\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 7775,
+      "output_tokens": 434,
+      "total_tokens": 8209
+    },
+    "request_stats": {
+      "turn": 7,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 7775,
+      "output_tokens": 434,
+      "total_tokens": 8209,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 22478,
+      "estimated_history_tokens_before_call": 5620
+    }
+  },
+  {
+    "turn": 7,
+    "role": "tool",
+    "tool_call_id": "call_00_nKxGaf1F2eHlUVHwXzUu1943",
+    "name": "venmo__create_transaction",
+    "args": {
+      "receiver_email": "jepowell@gmail.com",
+      "amount": 450,
+      "description": "Many happy returns of the day!",
+      "private": true,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbyt2aWNwb3dlQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjc0MX0.AFmgUeb-uwh6nLcsIg945teahWy6FG_16be7Gu6t938"
+    },
+    "executed": true,
+    "result": {
+      "message": "Sent money.",
+      "transaction_id": 8219
+    },
+    "message_result": {
+      "message": "Sent money.",
+      "transaction_id": 8219
+    },
+    "result_chars": 50,
+    "message_result_chars": 50
+  },
+  {
+    "turn": 7,
+    "role": "tool",
+    "tool_call_id": "call_01_yE0DjSt397CqNIw1EQoi8707",
+    "name": "phone__send_text_message",
+    "args": {
+      "phone_number": "4288705164",
+      "message": "Happy Birthday daughter! Looking forward to meet you soon!",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs4OTI0MzU2NjEzIiwiZXhwIjoxNjg0NDEyMDk4fQ.G_bn2CuULnJXPujdPVYwaGsfkSd0jpS34H33wu_r34M"
+    },
+    "executed": true,
+    "result": {
+      "message": "Text message sent.",
+      "text_message_id": 16793
+    },
+    "message_result": {
+      "message": "Text message sent.",
+      "text_message_id": 16793
+    },
+    "result_chars": 59,
+    "message_result_chars": 59
+  },
+  {
+    "turn": 8,
+    "role": "assistant",
+    "content": "Both actions completed successfully. Let me mark the task as complete.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_HFSsPn64LtkZQPBhjf653254",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_HFSsPn64LtkZQPBhjf653254",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 8259,
+      "output_tokens": 42,
+      "total_tokens": 8301
+    },
+    "request_stats": {
+      "turn": 8,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 8259,
+      "output_tokens": 42,
+      "total_tokens": 8301,
+      "tool_schema_count": 10,
+      "tool_schema_chars": 6788,
+      "estimated_tool_schema_tokens": 1697,
+      "history_chars_before_call": 23861,
+      "estimated_history_tokens_before_call": 5966
+    }
+  },
+  {
+    "turn": 8,
+    "role": "tool",
+    "tool_call_id": "call_00_HFSsPn64LtkZQPBhjf653254",
+    "name": "supervisor__complete_task",
+    "args": {},
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

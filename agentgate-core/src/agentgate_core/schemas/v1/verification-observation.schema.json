@@ -1,0 +1,201 @@
+{
+  "$defs": {
+    "EffectKind": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "send",
+        "submit",
+        "session",
+        "other"
+      ],
+      "title": "EffectKind",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "ObservedEffect": {
+      "additionalProperties": false,
+      "properties": {
+        "change": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Change",
+          "type": "object"
+        },
+        "kind": {
+          "$ref": "#/$defs/EffectKind"
+        },
+        "operation": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation",
+          "type": "string"
+        },
+        "resolution_status": {
+          "$ref": "#/$defs/UnexpectedEffectStatus",
+          "default": "observed"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRef"
+        }
+      },
+      "required": [
+        "kind",
+        "operation",
+        "resource"
+      ],
+      "title": "ObservedEffect",
+      "type": "object"
+    },
+    "ResourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Id"
+        },
+        "resource_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        }
+      },
+      "required": [
+        "resource_type"
+      ],
+      "title": "ResourceRef",
+      "type": "object"
+    },
+    "UnexpectedEffectStatus": {
+      "description": "Resolution lifecycle for an unexpected observed side effect.",
+      "enum": [
+        "observed",
+        "rollback_pending",
+        "rolled_back",
+        "policy_accepted",
+        "unresolved"
+      ],
+      "title": "UnexpectedEffectStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/verification-observation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "effect_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Effect Id",
+      "type": "string"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Code"
+    },
+    "error_message": {
+      "anyOf": [
+        {
+          "maxLength": 20000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Message"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "observed_state": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Observed State"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_event_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Event Id",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "unintended_effects": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ObservedEffect"
+      },
+      "title": "Unintended Effects",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task_id",
+    "effect_id",
+    "source_event_id"
+  ],
+  "title": "VerificationObservation",
+  "type": "object"
+}

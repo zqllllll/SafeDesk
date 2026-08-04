@@ -1,0 +1,176 @@
+{
+  "$defs": {
+    "FailureStatus": {
+      "enum": [
+        "open",
+        "recovering",
+        "resolved",
+        "budget_exhausted",
+        "escalated"
+      ],
+      "title": "FailureStatus",
+      "type": "string"
+    },
+    "FailureType": {
+      "enum": [
+        "missing_evidence",
+        "invalid_argument",
+        "out_of_schema",
+        "wrong_tool",
+        "wrong_resource",
+        "dependency_not_satisfied",
+        "policy_denied",
+        "approval_required",
+        "tool_execution_error",
+        "tool_timeout",
+        "authentication_failed",
+        "permission_denied",
+        "rate_limited",
+        "partial_completion",
+        "verification_failed",
+        "duplicate_action",
+        "unintended_side_effect",
+        "no_progress",
+        "context_degraded",
+        "infrastructure_error"
+      ],
+      "title": "FailureType",
+      "type": "string"
+    },
+    "ResponsibleLayer": {
+      "enum": [
+        "model",
+        "context",
+        "tool_schema",
+        "policy",
+        "scheduler",
+        "tool",
+        "verifier",
+        "recovery",
+        "infrastructure"
+      ],
+      "title": "ResponsibleLayer",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/failure-record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Action Id"
+    },
+    "attempt_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Attempt Count",
+      "type": "integer"
+    },
+    "confidence": {
+      "default": 1.0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "failure_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Failure Id",
+      "type": "string"
+    },
+    "failure_type": {
+      "$ref": "#/$defs/FailureType"
+    },
+    "message": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Message",
+      "type": "string"
+    },
+    "recovery_budget_remaining": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Recovery Budget Remaining",
+      "type": "integer"
+    },
+    "resolved_event_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Resolved Event Id"
+    },
+    "responsible_layer": {
+      "$ref": "#/$defs/ResponsibleLayer"
+    },
+    "retryable": {
+      "title": "Retryable",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/FailureStatus",
+      "default": "open"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "failure_id",
+    "task_id",
+    "failure_type",
+    "message",
+    "retryable",
+    "responsible_layer"
+  ],
+  "title": "FailureRecord",
+  "type": "object"
+}

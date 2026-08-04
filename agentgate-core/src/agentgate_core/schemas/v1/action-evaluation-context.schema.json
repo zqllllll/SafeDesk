@@ -1,0 +1,323 @@
+{
+  "$defs": {
+    "ActionIR": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "actor": {
+          "$ref": "#/$defs/ActorKind"
+        },
+        "arguments": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Arguments",
+          "type": "object"
+        },
+        "dependency_action_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Dependency Action Ids",
+          "type": "array"
+        },
+        "expected_effects": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ExpectedEffect"
+          },
+          "title": "Expected Effects",
+          "type": "array"
+        },
+        "idempotency_key": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Idempotency Key"
+        },
+        "kind": {
+          "$ref": "#/$defs/ActionKind"
+        },
+        "operation": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "maxLength": 20000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "required_evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Required Evidence Ids",
+          "type": "array"
+        },
+        "resource": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResourceRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "risk_level": {
+          "$ref": "#/$defs/RiskLevel",
+          "default": "low"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_turn": {
+          "minimum": 0,
+          "title": "Source Turn",
+          "type": "integer"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "tool_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "tool_schema_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_id",
+        "task_id",
+        "actor",
+        "kind",
+        "tool_name",
+        "operation",
+        "tool_schema_version",
+        "source_turn"
+      ],
+      "title": "ActionIR",
+      "type": "object"
+    },
+    "ActionKind": {
+      "enum": [
+        "read",
+        "write"
+      ],
+      "title": "ActionKind",
+      "type": "string"
+    },
+    "ActorKind": {
+      "enum": [
+        "user",
+        "lead_agent",
+        "subagent",
+        "runtime",
+        "recovery_controller"
+      ],
+      "title": "ActorKind",
+      "type": "string"
+    },
+    "EffectKind": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "send",
+        "submit",
+        "session",
+        "other"
+      ],
+      "title": "EffectKind",
+      "type": "string"
+    },
+    "ExpectedEffect": {
+      "additionalProperties": false,
+      "properties": {
+        "effect_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Effect Key",
+          "type": "string"
+        },
+        "expected_change": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Expected Change",
+          "type": "object"
+        },
+        "kind": {
+          "$ref": "#/$defs/EffectKind"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRef"
+        }
+      },
+      "required": [
+        "effect_key",
+        "kind",
+        "resource"
+      ],
+      "title": "ExpectedEffect",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ResourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Id"
+        },
+        "resource_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        }
+      },
+      "required": [
+        "resource_type"
+      ],
+      "title": "ResourceRef",
+      "type": "object"
+    },
+    "RiskLevel": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "RiskLevel",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/action-evaluation-context.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/ActionIR"
+    },
+    "metadata": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "run_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "State Version"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "turn": {
+      "minimum": 0,
+      "title": "Turn",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "task_id",
+    "run_id",
+    "turn",
+    "action"
+  ],
+  "title": "ActionEvaluationContext",
+  "type": "object"
+}

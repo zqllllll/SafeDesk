@@ -1,0 +1,184 @@
+{
+  "$defs": {
+    "EffectKind": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "send",
+        "submit",
+        "session",
+        "other"
+      ],
+      "title": "EffectKind",
+      "type": "string"
+    },
+    "EffectStatus": {
+      "enum": [
+        "planned",
+        "reserved",
+        "in_flight",
+        "applied_unverified",
+        "verified",
+        "failed",
+        "unknown",
+        "rolled_back"
+      ],
+      "title": "EffectStatus",
+      "type": "string"
+    },
+    "JsonValue": {},
+    "ResourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Id"
+        },
+        "resource_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        }
+      },
+      "required": [
+        "resource_type"
+      ],
+      "title": "ResourceRef",
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/effect-record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Action Id",
+      "type": "string"
+    },
+    "actual_change": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Actual Change"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "effect_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Effect Id",
+      "type": "string"
+    },
+    "expected_change": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Expected Change",
+      "type": "object"
+    },
+    "idempotency_key": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "kind": {
+      "$ref": "#/$defs/EffectKind"
+    },
+    "operation": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Operation",
+      "type": "string"
+    },
+    "resource": {
+      "$ref": "#/$defs/ResourceRef"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/EffectStatus",
+      "default": "planned"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "verification_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Verification Id"
+    }
+  },
+  "required": [
+    "effect_id",
+    "task_id",
+    "action_id",
+    "idempotency_key",
+    "kind",
+    "operation",
+    "resource"
+  ],
+  "title": "EffectRecord",
+  "type": "object"
+}

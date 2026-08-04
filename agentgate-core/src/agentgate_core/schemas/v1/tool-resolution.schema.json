@@ -1,0 +1,188 @@
+{
+  "$defs": {
+    "ActiveToolSet": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Version",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "schema_versions": {
+          "additionalProperties": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "propertyNames": {
+            "maxLength": 256,
+            "minLength": 1
+          },
+          "title": "Schema Versions",
+          "type": "object"
+        },
+        "set_version": {
+          "minimum": 1,
+          "title": "Set Version",
+          "type": "integer"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "tool_names": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Tool Names",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id",
+        "set_version",
+        "catalog_version",
+        "tool_names",
+        "schema_versions",
+        "reason"
+      ],
+      "title": "ActiveToolSet",
+      "type": "object"
+    },
+    "FeatureMode": {
+      "enum": [
+        "off",
+        "shadow",
+        "enforce"
+      ],
+      "title": "FeatureMode",
+      "type": "string"
+    },
+    "ToolResolutionCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "matched_terms": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Matched Terms",
+          "type": "array"
+        },
+        "reason": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "score": {
+          "minimum": 0,
+          "title": "Score",
+          "type": "integer"
+        },
+        "tool_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool_name",
+        "score",
+        "reason"
+      ],
+      "title": "ToolResolutionCandidate",
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/tool-resolution.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidates": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ToolResolutionCandidate"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "mode": {
+      "$ref": "#/$defs/FeatureMode"
+    },
+    "previous_set_version": {
+      "minimum": 1,
+      "title": "Previous Set Version",
+      "type": "integer"
+    },
+    "replan_required": {
+      "default": true,
+      "title": "Replan Required",
+      "type": "boolean"
+    },
+    "requirement_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Requirement Id",
+      "type": "string"
+    },
+    "resulting_tool_set": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ActiveToolSet"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "requirement_id",
+    "task_id",
+    "mode",
+    "previous_set_version"
+  ],
+  "title": "ToolResolution",
+  "type": "object"
+}

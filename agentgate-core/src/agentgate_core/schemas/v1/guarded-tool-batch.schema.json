@@ -1,0 +1,686 @@
+{
+  "$defs": {
+    "ActionIR": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "actor": {
+          "$ref": "#/$defs/ActorKind"
+        },
+        "arguments": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Arguments",
+          "type": "object"
+        },
+        "dependency_action_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Dependency Action Ids",
+          "type": "array"
+        },
+        "expected_effects": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ExpectedEffect"
+          },
+          "title": "Expected Effects",
+          "type": "array"
+        },
+        "idempotency_key": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Idempotency Key"
+        },
+        "kind": {
+          "$ref": "#/$defs/ActionKind"
+        },
+        "operation": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "maxLength": 20000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "required_evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Required Evidence Ids",
+          "type": "array"
+        },
+        "resource": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResourceRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "risk_level": {
+          "$ref": "#/$defs/RiskLevel",
+          "default": "low"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_turn": {
+          "minimum": 0,
+          "title": "Source Turn",
+          "type": "integer"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "tool_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "tool_schema_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_id",
+        "task_id",
+        "actor",
+        "kind",
+        "tool_name",
+        "operation",
+        "tool_schema_version",
+        "source_turn"
+      ],
+      "title": "ActionIR",
+      "type": "object"
+    },
+    "ActionKind": {
+      "enum": [
+        "read",
+        "write"
+      ],
+      "title": "ActionKind",
+      "type": "string"
+    },
+    "ActorKind": {
+      "enum": [
+        "user",
+        "lead_agent",
+        "subagent",
+        "runtime",
+        "recovery_controller"
+      ],
+      "title": "ActorKind",
+      "type": "string"
+    },
+    "CoordinatorResult": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "decisions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/GateDecision"
+          },
+          "title": "Decisions",
+          "type": "array"
+        },
+        "outcome": {
+          "$ref": "#/$defs/DecisionOutcome"
+        },
+        "run_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stopped_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PipelineStage"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "trace_event_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Trace Event Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id",
+        "run_id",
+        "action_id",
+        "outcome"
+      ],
+      "title": "CoordinatorResult",
+      "type": "object"
+    },
+    "DecisionOutcome": {
+      "enum": [
+        "allow",
+        "deny",
+        "replan",
+        "require_evidence",
+        "require_confirmation",
+        "require_approval",
+        "already_applied",
+        "defer"
+      ],
+      "title": "DecisionOutcome",
+      "type": "string"
+    },
+    "EffectKind": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "send",
+        "submit",
+        "session",
+        "other"
+      ],
+      "title": "EffectKind",
+      "type": "string"
+    },
+    "ExpectedEffect": {
+      "additionalProperties": false,
+      "properties": {
+        "effect_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Effect Key",
+          "type": "string"
+        },
+        "expected_change": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Expected Change",
+          "type": "object"
+        },
+        "kind": {
+          "$ref": "#/$defs/EffectKind"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRef"
+        }
+      },
+      "required": [
+        "effect_key",
+        "kind",
+        "resource"
+      ],
+      "title": "ExpectedEffect",
+      "type": "object"
+    },
+    "FeatureMode": {
+      "enum": [
+        "off",
+        "shadow",
+        "enforce"
+      ],
+      "title": "FeatureMode",
+      "type": "string"
+    },
+    "FeatureName": {
+      "enum": [
+        "state_verification",
+        "tool_execution_guard",
+        "recovery_controller",
+        "context_manager"
+      ],
+      "title": "FeatureName",
+      "type": "string"
+    },
+    "GateDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "decision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Decision Id",
+          "type": "string"
+        },
+        "effective_outcome": {
+          "$ref": "#/$defs/DecisionOutcome"
+        },
+        "evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "explanation": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/$defs/FeatureName"
+        },
+        "mode": {
+          "$ref": "#/$defs/FeatureMode"
+        },
+        "payload": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Payload",
+          "type": "object"
+        },
+        "proposed_outcome": {
+          "$ref": "#/$defs/DecisionOutcome"
+        },
+        "reason_code": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "$ref": "#/$defs/PipelineStage"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decision_id",
+        "task_id",
+        "action_id",
+        "feature",
+        "stage",
+        "mode",
+        "proposed_outcome",
+        "effective_outcome",
+        "reason_code",
+        "explanation"
+      ],
+      "title": "GateDecision",
+      "type": "object"
+    },
+    "GuardedToolCall": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionIR"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coordinator_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoordinatorResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "effect_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Effect Ids",
+          "type": "array"
+        },
+        "outcome": {
+          "$ref": "#/$defs/DecisionOutcome"
+        },
+        "reason": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "schedule_disposition": {
+          "$ref": "#/$defs/ScheduleDisposition"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "should_execute": {
+          "title": "Should Execute",
+          "type": "boolean"
+        },
+        "tool_call_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Call Id",
+          "type": "string"
+        },
+        "tool_result_status": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tool Result Status"
+        }
+      },
+      "required": [
+        "tool_call_id",
+        "schedule_disposition",
+        "outcome",
+        "should_execute",
+        "reason"
+      ],
+      "title": "GuardedToolCall",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "PipelineStage": {
+      "enum": [
+        "task_state",
+        "schema_guard",
+        "dependency_scheduler",
+        "policy_gate",
+        "effect_preflight",
+        "post_action_verification",
+        "failure_classifier",
+        "completion_gate",
+        "response_grounding",
+        "context_builder"
+      ],
+      "title": "PipelineStage",
+      "type": "string"
+    },
+    "RawToolCall": {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "$ref": "#/$defs/ActorKind",
+          "default": "lead_agent"
+        },
+        "arguments": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Arguments",
+          "type": "object"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "maxLength": 20000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_turn": {
+          "minimum": 0,
+          "title": "Source Turn",
+          "type": "integer"
+        },
+        "task_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "tool_call_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Call Id",
+          "type": "string"
+        },
+        "tool_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Tool Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool_call_id",
+        "task_id",
+        "tool_name",
+        "source_turn"
+      ],
+      "title": "RawToolCall",
+      "type": "object"
+    },
+    "ResourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Id"
+        },
+        "resource_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        }
+      },
+      "required": [
+        "resource_type"
+      ],
+      "title": "ResourceRef",
+      "type": "object"
+    },
+    "RiskLevel": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "RiskLevel",
+      "type": "string"
+    },
+    "ScheduleDisposition": {
+      "enum": [
+        "execute",
+        "defer",
+        "replan",
+        "suppressed_pending_state_refresh"
+      ],
+      "title": "ScheduleDisposition",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/guarded-tool-batch.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "decisions": {
+      "items": {
+        "$ref": "#/$defs/GuardedToolCall"
+      },
+      "minItems": 1,
+      "title": "Decisions",
+      "type": "array"
+    },
+    "proposed_calls": {
+      "items": {
+        "$ref": "#/$defs/RawToolCall"
+      },
+      "minItems": 1,
+      "title": "Proposed Calls",
+      "type": "array"
+    },
+    "requires_state_refresh": {
+      "title": "Requires State Refresh",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_version": {
+      "minimum": 1,
+      "title": "State Version",
+      "type": "integer"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "state_version",
+    "proposed_calls",
+    "decisions",
+    "requires_state_refresh"
+  ],
+  "title": "GuardedToolBatch",
+  "type": "object"
+}

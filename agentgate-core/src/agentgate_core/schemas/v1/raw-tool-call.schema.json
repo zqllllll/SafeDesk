@@ -1,0 +1,83 @@
+{
+  "$defs": {
+    "ActorKind": {
+      "enum": [
+        "user",
+        "lead_agent",
+        "subagent",
+        "runtime",
+        "recovery_controller"
+      ],
+      "title": "ActorKind",
+      "type": "string"
+    },
+    "JsonValue": {}
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/raw-tool-call.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actor": {
+      "$ref": "#/$defs/ActorKind",
+      "default": "lead_agent"
+    },
+    "arguments": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Arguments",
+      "type": "object"
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "maxLength": 20000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rationale"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_turn": {
+      "minimum": 0,
+      "title": "Source Turn",
+      "type": "integer"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "tool_call_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Tool Call Id",
+      "type": "string"
+    },
+    "tool_name": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Tool Name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "tool_call_id",
+    "task_id",
+    "tool_name",
+    "source_turn"
+  ],
+  "title": "RawToolCall",
+  "type": "object"
+}

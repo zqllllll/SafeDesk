@@ -1,0 +1,918 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "venmo.login\nvenmo.search_users\nvenmo.show_profile\nvenmo.create_payment_request\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "venmo.login",
+      "venmo.search_users",
+      "venmo.show_profile",
+      "venmo.create_payment_request",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile"
+    ],
+    "usage": {
+      "input_tokens": 7641,
+      "output_tokens": 38,
+      "total_tokens": 7679
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my profile info and the phone contacts to find Melissa.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_R7Q488tsVaY44eNEysi49004",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_XISCBdpMa1yTYueRL6j97092",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_R7Q488tsVaY44eNEysi49004",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_XISCBdpMa1yTYueRL6j97092",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 4515,
+      "output_tokens": 65,
+      "total_tokens": 4580
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 4515,
+      "output_tokens": 65,
+      "total_tokens": 4580,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 14459,
+      "estimated_history_tokens_before_call": 3615
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_R7Q488tsVaY44eNEysi49004",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Nicholas",
+      "last_name": "Weber",
+      "email": "nicholas.weber@gmail.com",
+      "phone_number": "9503658964",
+      "birthday": "1986-10-19",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "Nicholas",
+      "last_name": "Weber",
+      "email": "nicholas.weber@gmail.com",
+      "phone_number": "9503658964",
+      "birthday": "1986-10-19",
+      "sex": "male"
+    },
+    "result_chars": 156,
+    "message_result_chars": 156
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_XISCBdpMa1yTYueRL6j97092",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "4+VWe8b"
+      },
+      {
+        "account_name": "file_system",
+        "password": "Ia$)7$5"
+      },
+      {
+        "account_name": "gmail",
+        "password": "_!L[Nre"
+      },
+      {
+        "account_name": "phone",
+        "password": "ox6SqF4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "*_C4I1G"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "&)IS{6r"
+      },
+      {
+        "account_name": "spotify",
+        "password": "@S-xYvd"
+      },
+      {
+        "account_name": "todoist",
+        "password": "DiAe#XN"
+      },
+      {
+        "account_name": "venmo",
+        "password": "W]!$p+I"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "4+VWe8b"
+      },
+      {
+        "account_name": "file_system",
+        "password": "Ia$)7$5"
+      },
+      {
+        "account_name": "gmail",
+        "password": "_!L[Nre"
+      },
+      {
+        "account_name": "phone",
+        "password": "ox6SqF4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "*_C4I1G"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "&)IS{6r"
+      },
+      {
+        "account_name": "spotify",
+        "password": "@S-xYvd"
+      },
+      {
+        "account_name": "todoist",
+        "password": "DiAe#XN"
+      },
+      {
+        "account_name": "venmo",
+        "password": "W]!$p+I"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "Now let me log into Venmo and also check my phone contacts to find Melissa.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_4lVTxOyVVyoNpIN9sm6c9074",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"W]!$p+I\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_Dq2uxigBbKJBzP10aSIz0553",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_4lVTxOyVVyoNpIN9sm6c9074",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"W]!$p+I\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_Dq2uxigBbKJBzP10aSIz0553",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 4821,
+      "output_tokens": 146,
+      "total_tokens": 4967
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 4821,
+      "output_tokens": 146,
+      "total_tokens": 4967,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 15785,
+      "estimated_history_tokens_before_call": 3947
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_4lVTxOyVVyoNpIN9sm6c9074",
+    "name": "venmo__login",
+    "args": {
+      "username": "nicholas.weber@gmail.com",
+      "password": "W]!$p+I"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI",
+      "token_type": "Bearer"
+    },
+    "result_chars": 201,
+    "message_result_chars": 201
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_01_Dq2uxigBbKJBzP10aSIz0553",
+    "name": "phone__login",
+    "args": {
+      "username": "nicholas.weber@gmail.com",
+      "password": "ox6SqF4"
+    },
+    "executed": true,
+    "result": {
+      "message": "Invalid credentials"
+    },
+    "message_result": {
+      "message": "Invalid credentials"
+    },
+    "result_chars": 34,
+    "message_result_chars": 34
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "Let me check the phone app - maybe the login uses a different format.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_znmK0QbeBiV8J5fjvjFa7211",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_znmK0QbeBiV8J5fjvjFa7211",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5109,
+      "output_tokens": 85,
+      "total_tokens": 5194
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5109,
+      "output_tokens": 85,
+      "total_tokens": 5194,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 16735,
+      "estimated_history_tokens_before_call": 4184
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_znmK0QbeBiV8J5fjvjFa7211",
+    "name": "phone__login",
+    "args": {
+      "username": "nicholas.weber@gmail.com",
+      "password": "ox6SqF4"
+    },
+    "executed": true,
+    "result": {
+      "message": "Invalid credentials"
+    },
+    "message_result": {
+      "message": "Invalid credentials"
+    },
+    "result_chars": 34,
+    "message_result_chars": 34
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "Let me check the phone number from my profile - maybe the phone app uses that.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qJHZa7zyoSmyjTkjWPjn0493",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"9503658964\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qJHZa7zyoSmyjTkjWPjn0493",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"9503658964\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5213,
+      "output_tokens": 84,
+      "total_tokens": 5297
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5213,
+      "output_tokens": 84,
+      "total_tokens": 5297,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 17183,
+      "estimated_history_tokens_before_call": 4296
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_qJHZa7zyoSmyjTkjWPjn0493",
+    "name": "phone__login",
+    "args": {
+      "username": "9503658964",
+      "password": "ox6SqF4"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E",
+      "token_type": "Bearer"
+    },
+    "result_chars": 183,
+    "message_result_chars": 183
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "Great, now let me find Melissa in my contacts.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qIyUBwtIzkn4vpaqhIIr4591",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"query\": \"Melissa\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qIyUBwtIzkn4vpaqhIIr4591",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"query\": \"Melissa\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5420,
+      "output_tokens": 171,
+      "total_tokens": 5591
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5420,
+      "output_tokens": 171,
+      "total_tokens": 5591,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 17779,
+      "estimated_history_tokens_before_call": 4445
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_qIyUBwtIzkn4vpaqhIIr4591",
+    "name": "phone__search_contacts",
+    "args": {
+      "query": "Melissa",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E"
+    },
+    "executed": true,
+    "result": [
+      {
+        "contact_id": 998,
+        "first_name": "Melissa",
+        "last_name": "Bailey",
+        "email": "mel.bailey@gmail.com",
+        "phone_number": "3383946795",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1986-08-02",
+        "home_address": "247 Salinas Pines Suite 668\nSeattle\nWashington\nUnited States\n11799",
+        "work_address": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 979,
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "phone_number": "5584932120",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1983-01-02",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 980,
+        "first_name": "Susan",
+        "last_name": "Burton",
+        "email": "susanmiller@gmail.com",
+        "phone_number": "3296062648",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1994-04-30",
+        "home_address": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 981,
+        "first_name": "Chelsea",
+        "last_name": "Burch",
+        "email": "chelsea-burch@gmail.com",
+        "phone_number": "7763361246",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1992-03-22",
+        "home_address": "46567 Matthew Burg Suite 702\nSeattle\nWashington\nUnited States\n15473",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 982,
+        "first_name": "Valerie",
+        "last_name": "Blackburn",
+        "email": "va-blac@gmail.com",
+        "phone_number": "5822399497",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1951-03-24",
+        "home_address": "8705 Jonathan Corners Suite 675\nSeattle\nWashington\nUnited States\n94623",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      }
+    ],
+    "message_result": [
+      {
+        "contact_id": 998,
+        "first_name": "Melissa",
+        "last_name": "Bailey",
+        "email": "mel.bailey@gmail.com",
+        "phone_number": "3383946795",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1986-08-02",
+        "home_address": "247 Salinas Pines Suite 668\nSeattle\nWashington\nUnited States\n11799",
+        "work_address": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 979,
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "phone_number": "5584932120",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1983-01-02",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 980,
+        "first_name": "Susan",
+        "last_name": "Burton",
+        "email": "susanmiller@gmail.com",
+        "phone_number": "3296062648",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1994-04-30",
+        "home_address": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 981,
+        "first_name": "Chelsea",
+        "last_name": "Burch",
+        "email": "chelsea-burch@gmail.com",
+        "phone_number": "7763361246",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1992-03-22",
+        "home_address": "46567 Matthew Burg Suite 702\nSeattle\nWashington\nUnited States\n15473",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      },
+      {
+        "contact_id": 982,
+        "first_name": "Valerie",
+        "last_name": "Blackburn",
+        "email": "va-blac@gmail.com",
+        "phone_number": "5822399497",
+        "relationships": [
+          "coworker"
+        ],
+        "birthday": "1951-03-24",
+        "home_address": "8705 Jonathan Corners Suite 675\nSeattle\nWashington\nUnited States\n94623",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2022-09-23T00:04:03"
+      }
+    ],
+    "result_chars": 2023,
+    "message_result_chars": 2023
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "Melissa Bailey is my roommate with email mel.bailey@gmail.com. Now let me search for her on Venmo and send the payment request.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_rJItmtmaMxfhuAWtBKOz0528",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"Melissa Bailey\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_rJItmtmaMxfhuAWtBKOz0528",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"Melissa Bailey\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6252,
+      "output_tokens": 194,
+      "total_tokens": 6446
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6252,
+      "output_tokens": 194,
+      "total_tokens": 6446,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 20545,
+      "estimated_history_tokens_before_call": 5137
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_rJItmtmaMxfhuAWtBKOz0528",
+    "name": "venmo__search_users",
+    "args": {
+      "query": "Melissa Bailey",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI"
+    },
+    "executed": true,
+    "result": [
+      {
+        "first_name": "Melissa",
+        "last_name": "Bailey",
+        "email": "mel.bailey@gmail.com",
+        "registered_at": "2022-03-13T13:34:32",
+        "friends_since": null
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bailey",
+        "email": "eric.bailey@gmail.com",
+        "registered_at": "2022-08-29T12:35:03",
+        "friends_since": "2022-08-29T12:35:03"
+      },
+      {
+        "first_name": "Kiara",
+        "last_name": "Bailey",
+        "email": "kia_bailey@gmail.com",
+        "registered_at": "2022-07-03T16:29:55",
+        "friends_since": null
+      },
+      {
+        "first_name": "Sherry",
+        "last_name": "Smith",
+        "email": "she_bailey@gmail.com",
+        "registered_at": "2022-02-19T10:56:20",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      }
+    ],
+    "message_result": [
+      {
+        "first_name": "Melissa",
+        "last_name": "Bailey",
+        "email": "mel.bailey@gmail.com",
+        "registered_at": "2022-03-13T13:34:32",
+        "friends_since": null
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Bailey",
+        "email": "eric.bailey@gmail.com",
+        "registered_at": "2022-08-29T12:35:03",
+        "friends_since": "2022-08-29T12:35:03"
+      },
+      {
+        "first_name": "Kiara",
+        "last_name": "Bailey",
+        "email": "kia_bailey@gmail.com",
+        "registered_at": "2022-07-03T16:29:55",
+        "friends_since": null
+      },
+      {
+        "first_name": "Sherry",
+        "last_name": "Smith",
+        "email": "she_bailey@gmail.com",
+        "registered_at": "2022-02-19T10:56:20",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      }
+    ],
+    "result_chars": 736,
+    "message_result_chars": 736
+  },
+  {
+    "turn": 7,
+    "role": "assistant",
+    "content": "Found Melissa Bailey with email mel.bailey@gmail.com. Now let me send the payment request for $28 privately.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_EchubVQGv4MO4qmSoDNx3523",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"mel.bailey@gmail.com\", \"amount\": 28, \"description\": \"For the movie tickets\", \"private\": true, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_EchubVQGv4MO4qmSoDNx3523",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"mel.bailey@gmail.com\", \"amount\": 28, \"description\": \"For the movie tickets\", \"private\": true, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6725,
+      "output_tokens": 244,
+      "total_tokens": 6969
+    },
+    "request_stats": {
+      "turn": 7,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6725,
+      "output_tokens": 244,
+      "total_tokens": 6969,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 21989,
+      "estimated_history_tokens_before_call": 5498
+    }
+  },
+  {
+    "turn": 7,
+    "role": "tool",
+    "tool_call_id": "call_00_EchubVQGv4MO4qmSoDNx3523",
+    "name": "venmo__create_payment_request",
+    "args": {
+      "user_email": "mel.bailey@gmail.com",
+      "amount": 28,
+      "description": "For the movie tickets",
+      "private": true,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.HKIVb0EnPutMFL_hjgV1ePcbOgmSYzSMhT4sM-DBCCI"
+    },
+    "executed": true,
+    "result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6097
+    },
+    "message_result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6097
+    },
+    "result_chars": 67,
+    "message_result_chars": 67
+  },
+  {
+    "turn": 8,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_oleEOP0kpqEGZtBYOngd6995",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_oleEOP0kpqEGZtBYOngd6995",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6997,
+      "output_tokens": 30,
+      "total_tokens": 7027
+    },
+    "request_stats": {
+      "turn": 8,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6997,
+      "output_tokens": 30,
+      "total_tokens": 7027,
+      "tool_schema_count": 7,
+      "tool_schema_chars": 3299,
+      "estimated_tool_schema_tokens": 825,
+      "history_chars_before_call": 22759,
+      "estimated_history_tokens_before_call": 5690
+    }
+  },
+  {
+    "turn": 8,
+    "role": "tool",
+    "tool_call_id": "call_00_oleEOP0kpqEGZtBYOngd6995",
+    "name": "supervisor__complete_task",
+    "args": {},
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

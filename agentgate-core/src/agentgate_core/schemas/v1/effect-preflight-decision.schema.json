@@ -1,0 +1,101 @@
+{
+  "$defs": {
+    "EffectPreflightOutcome": {
+      "enum": [
+        "reserve",
+        "already_applied",
+        "verify_first",
+        "recovery_required",
+        "wait"
+      ],
+      "title": "EffectPreflightOutcome",
+      "type": "string"
+    },
+    "EffectStatus": {
+      "enum": [
+        "planned",
+        "reserved",
+        "in_flight",
+        "applied_unverified",
+        "verified",
+        "failed",
+        "unknown",
+        "rolled_back"
+      ],
+      "title": "EffectStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/effect-preflight-decision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Action Id",
+      "type": "string"
+    },
+    "existing_effect_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Existing Effect Id"
+    },
+    "existing_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EffectStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "idempotency_key": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "outcome": {
+      "$ref": "#/$defs/EffectPreflightOutcome"
+    },
+    "reason": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "action_id",
+    "outcome",
+    "idempotency_key",
+    "reason"
+  ],
+  "title": "EffectPreflightDecision",
+  "type": "object"
+}

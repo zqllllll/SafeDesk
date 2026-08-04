@@ -1,0 +1,261 @@
+{
+  "$defs": {
+    "ContextBudgetStatus": {
+      "enum": [
+        "within_budget",
+        "soft_exceeded",
+        "hard_exceeded"
+      ],
+      "title": "ContextBudgetStatus",
+      "type": "string"
+    },
+    "ContextPriority": {
+      "enum": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "title": "ContextPriority",
+      "type": "string"
+    },
+    "ContextSection": {
+      "additionalProperties": false,
+      "properties": {
+        "compressible": {
+          "default": true,
+          "title": "Compressible",
+          "type": "boolean"
+        },
+        "content": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "estimated_tokens": {
+          "minimum": 0,
+          "title": "Estimated Tokens",
+          "type": "integer"
+        },
+        "priority": {
+          "$ref": "#/$defs/ContextPriority"
+        },
+        "raw_reference": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Reference"
+        },
+        "section_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Section Id",
+          "type": "string"
+        },
+        "source_event_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Source Event Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "section_id",
+        "priority",
+        "content",
+        "estimated_tokens"
+      ],
+      "title": "ContextSection",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "TaskPhase": {
+      "enum": [
+        "collect",
+        "act",
+        "verify",
+        "repair",
+        "complete",
+        "blocked",
+        "failed"
+      ],
+      "title": "TaskPhase",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/context-pack.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "active_subgoal_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Active Subgoal Ids",
+      "type": "array"
+    },
+    "active_tool_names": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Active Tool Names",
+      "type": "array"
+    },
+    "budget_status": {
+      "$ref": "#/$defs/ContextBudgetStatus"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "effect_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Effect Ids",
+      "type": "array"
+    },
+    "estimated_tokens": {
+      "minimum": 0,
+      "title": "Estimated Tokens",
+      "type": "integer"
+    },
+    "hard_constraints": {
+      "default": [],
+      "items": {
+        "maxLength": 20000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Hard Constraints",
+      "type": "array"
+    },
+    "hard_token_limit": {
+      "minimum": 1,
+      "title": "Hard Token Limit",
+      "type": "integer"
+    },
+    "observed_evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Observed Evidence Ids",
+      "type": "array"
+    },
+    "open_failure_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Open Failure Ids",
+      "type": "array"
+    },
+    "pack_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Pack Id",
+      "type": "string"
+    },
+    "phase": {
+      "$ref": "#/$defs/TaskPhase"
+    },
+    "recent_event_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Recent Event Ids",
+      "type": "array"
+    },
+    "recovery_event_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Recovery Event Ids",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sections": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ContextSection"
+      },
+      "title": "Sections",
+      "type": "array"
+    },
+    "soft_token_limit": {
+      "minimum": 1,
+      "title": "Soft Token Limit",
+      "type": "integer"
+    },
+    "state_version": {
+      "minimum": 1,
+      "title": "State Version",
+      "type": "integer"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "verified_evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Verified Evidence Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "pack_id",
+    "task_id",
+    "state_version",
+    "phase",
+    "soft_token_limit",
+    "hard_token_limit",
+    "estimated_tokens",
+    "budget_status"
+  ],
+  "title": "ContextPack",
+  "type": "object"
+}

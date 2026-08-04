@@ -1,0 +1,2847 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "gmail.login\ngmail.show_inbox_threads\ngmail.show_thread\ngmail.show_email\nphone.login\nphone.create_alarm\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "gmail.login",
+      "gmail.show_inbox_threads",
+      "gmail.show_thread",
+      "gmail.show_email",
+      "phone.login",
+      "phone.create_alarm",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile"
+    ],
+    "usage": {
+      "input_tokens": 7614,
+      "output_tokens": 47,
+      "total_tokens": 7661
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my profile info and logging into my accounts.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_xNI2b19rvrgwOijgvC6C8528",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_5S9ODGqEPt0X33QfPeNP6126",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_xNI2b19rvrgwOijgvC6C8528",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_5S9ODGqEPt0X33QfPeNP6126",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5182,
+      "output_tokens": 63,
+      "total_tokens": 5245
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5182,
+      "output_tokens": 63,
+      "total_tokens": 5245,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 14623,
+      "estimated_history_tokens_before_call": 3656
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_xNI2b19rvrgwOijgvC6C8528",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Nicholas",
+      "last_name": "Weber",
+      "email": "nicholas.weber@gmail.com",
+      "phone_number": "9503658964",
+      "birthday": "1986-10-19",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "Nicholas",
+      "last_name": "Weber",
+      "email": "nicholas.weber@gmail.com",
+      "phone_number": "9503658964",
+      "birthday": "1986-10-19",
+      "sex": "male"
+    },
+    "result_chars": 156,
+    "message_result_chars": 156
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_5S9ODGqEPt0X33QfPeNP6126",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "4+VWe8b"
+      },
+      {
+        "account_name": "file_system",
+        "password": "Ia$)7$5"
+      },
+      {
+        "account_name": "gmail",
+        "password": "_!L[Nre"
+      },
+      {
+        "account_name": "phone",
+        "password": "ox6SqF4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "*_C4I1G"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "&)IS{6r"
+      },
+      {
+        "account_name": "spotify",
+        "password": "@S-xYvd"
+      },
+      {
+        "account_name": "todoist",
+        "password": "DiAe#XN"
+      },
+      {
+        "account_name": "venmo",
+        "password": "W]!$p+I"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "4+VWe8b"
+      },
+      {
+        "account_name": "file_system",
+        "password": "Ia$)7$5"
+      },
+      {
+        "account_name": "gmail",
+        "password": "_!L[Nre"
+      },
+      {
+        "account_name": "phone",
+        "password": "ox6SqF4"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "*_C4I1G"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "&)IS{6r"
+      },
+      {
+        "account_name": "spotify",
+        "password": "@S-xYvd"
+      },
+      {
+        "account_name": "todoist",
+        "password": "DiAe#XN"
+      },
+      {
+        "account_name": "venmo",
+        "password": "W]!$p+I"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "Now let me log into Gmail to find the email from my manager about the weekly work meeting schedule.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_UwhDFaW1g3vhFn5pObel3939",
+        "type": "function",
+        "function": {
+          "name": "gmail__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"_!L[Nre\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_UwhDFaW1g3vhFn5pObel3939",
+        "type": "function",
+        "function": {
+          "name": "gmail__login",
+          "arguments": "{\"username\": \"nicholas.weber@gmail.com\", \"password\": \"_!L[Nre\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5486,
+      "output_tokens": 91,
+      "total_tokens": 5577
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5486,
+      "output_tokens": 91,
+      "total_tokens": 5577,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 15939,
+      "estimated_history_tokens_before_call": 3985
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_UwhDFaW1g3vhFn5pObel3939",
+    "name": "gmail__login",
+    "args": {
+      "username": "nicholas.weber@gmail.com",
+      "password": "_!L[Nre"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4",
+      "token_type": "Bearer"
+    },
+    "result_chars": 201,
+    "message_result_chars": 201
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_cQLcI8KhpaFnjQ82Omzh8451",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_inbox_threads",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4\", \"query\": \"weekly work meeting schedule\", \"page_limit\": 20}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_cQLcI8KhpaFnjQ82Omzh8451",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_inbox_threads",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4\", \"query\": \"weekly work meeting schedule\", \"page_limit\": 20}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5704,
+      "output_tokens": 187,
+      "total_tokens": 5891
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5704,
+      "output_tokens": 187,
+      "total_tokens": 5891,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 16588,
+      "estimated_history_tokens_before_call": 4147
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_cQLcI8KhpaFnjQ82Omzh8451",
+    "name": "gmail__show_inbox_threads",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4",
+      "query": "weekly work meeting schedule",
+      "page_limit": 20
+    },
+    "executed": true,
+    "result": [
+      {
+        "email_thread_id": 47825,
+        "email_ids": [
+          20867
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-23T13:45:01",
+        "updated_at": "2023-05-23T13:45:01",
+        "subject": "Weekly Meeting Schedule",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5300,
+        "email_ids": [
+          1615
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-30T16:18:28",
+        "updated_at": "2023-04-30T16:18:28",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 6048,
+        "email_ids": [
+          1833
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-08T15:31:17",
+        "updated_at": "2023-04-08T15:31:17",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 8087,
+        "email_ids": [
+          2493
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-27T14:35:22",
+        "updated_at": "2023-04-27T14:35:22",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5658,
+        "email_ids": [
+          1717,
+          1718
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-08T11:52:32",
+        "updated_at": "2023-04-08T11:52:32",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7448,
+        "email_ids": [
+          2283,
+          2284
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": true,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-08-03T16:12:43",
+        "updated_at": "2022-08-03T16:12:43",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 12103,
+        "email_ids": [
+          3746,
+          3747
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-06-08T16:07:17",
+        "updated_at": "2022-06-08T16:07:17",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 6000,
+        "email_ids": [
+          1817,
+          1818
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-16T12:57:27",
+        "updated_at": "2023-05-16T12:57:27",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 13679,
+        "email_ids": [
+          4270,
+          4271
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-03T17:43:32",
+        "updated_at": "2023-05-03T17:43:32",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 14029,
+        "email_ids": [
+          4362,
+          4363
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-24T15:44:26",
+        "updated_at": "2023-04-24T15:44:26",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 3581,
+        "email_ids": [
+          1092,
+          1093
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-23T09:57:10",
+        "updated_at": "2023-04-23T09:57:10",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7950,
+        "email_ids": [
+          2461,
+          2462
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-22T15:32:21",
+        "updated_at": "2023-04-22T15:32:21",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 14064,
+        "email_ids": [
+          4367
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-10-22T14:41:35",
+        "updated_at": "2022-10-22T14:41:35",
+        "subject": "Remote Work Policy Refinement",
+        "participants": [
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5952,
+        "email_ids": [
+          1807,
+          1808
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-25T17:54:12",
+        "updated_at": "2023-04-25T17:54:12",
+        "subject": "Project Update: Milestone Achieved",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7438,
+        "email_ids": [
+          2280,
+          2281
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-30T17:30:25",
+        "updated_at": "2023-04-30T17:30:25",
+        "subject": "Project Update: Milestone Achieved",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 30477,
+        "email_ids": [
+          12195
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-06-27T18:38:41",
+        "updated_at": "2022-06-27T18:38:41",
+        "subject": "Amazon Delivery Update for Order #1449",
+        "participants": [
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Amazon Notifications",
+            "email": "notifications@amazon.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 47829,
+        "email_ids": [
+          20868,
+          20869
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": true,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-23T12:52:20",
+        "updated_at": "2023-05-23T12:52:20",
+        "subject": "Skip 1-1?",
+        "participants": [
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 294,
+        "email_ids": [
+          86
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-10-23T15:38:59",
+        "updated_at": "2022-10-23T15:38:59",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 3524,
+        "email_ids": [
+          1079
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-16T10:08:44",
+        "updated_at": "2023-05-16T10:08:44",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5309,
+        "email_ids": [
+          1616
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-09T10:37:35",
+        "updated_at": "2023-05-09T10:37:35",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "email_thread_id": 47825,
+        "email_ids": [
+          20867
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-23T13:45:01",
+        "updated_at": "2023-05-23T13:45:01",
+        "subject": "Weekly Meeting Schedule",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5300,
+        "email_ids": [
+          1615
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-30T16:18:28",
+        "updated_at": "2023-04-30T16:18:28",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 6048,
+        "email_ids": [
+          1833
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-08T15:31:17",
+        "updated_at": "2023-04-08T15:31:17",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 8087,
+        "email_ids": [
+          2493
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-27T14:35:22",
+        "updated_at": "2023-04-27T14:35:22",
+        "subject": "Weekly Team Meeting Agenda",
+        "participants": [
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5658,
+        "email_ids": [
+          1717,
+          1718
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-08T11:52:32",
+        "updated_at": "2023-04-08T11:52:32",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7448,
+        "email_ids": [
+          2283,
+          2284
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": true,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-08-03T16:12:43",
+        "updated_at": "2022-08-03T16:12:43",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 12103,
+        "email_ids": [
+          3746,
+          3747
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-06-08T16:07:17",
+        "updated_at": "2022-06-08T16:07:17",
+        "subject": "Need Help with Cleaning Schedule",
+        "participants": [
+          {
+            "name": "Anita Burch",
+            "email": "anita.burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Melissa Bailey",
+            "email": "mel.bailey@gmail.com"
+          },
+          {
+            "name": "Anthony Harrison",
+            "email": "an-harrison@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 6000,
+        "email_ids": [
+          1817,
+          1818
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-16T12:57:27",
+        "updated_at": "2023-05-16T12:57:27",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 13679,
+        "email_ids": [
+          4270,
+          4271
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-03T17:43:32",
+        "updated_at": "2023-05-03T17:43:32",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 14029,
+        "email_ids": [
+          4362,
+          4363
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-24T15:44:26",
+        "updated_at": "2023-04-24T15:44:26",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 3581,
+        "email_ids": [
+          1092,
+          1093
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-23T09:57:10",
+        "updated_at": "2023-04-23T09:57:10",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7950,
+        "email_ids": [
+          2461,
+          2462
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-22T15:32:21",
+        "updated_at": "2023-04-22T15:32:21",
+        "subject": "Upcoming Team Meeting",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 14064,
+        "email_ids": [
+          4367
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-10-22T14:41:35",
+        "updated_at": "2022-10-22T14:41:35",
+        "subject": "Remote Work Policy Refinement",
+        "participants": [
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5952,
+        "email_ids": [
+          1807,
+          1808
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-25T17:54:12",
+        "updated_at": "2023-04-25T17:54:12",
+        "subject": "Project Update: Milestone Achieved",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 7438,
+        "email_ids": [
+          2280,
+          2281
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-04-30T17:30:25",
+        "updated_at": "2023-04-30T17:30:25",
+        "subject": "Project Update: Milestone Achieved",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 30477,
+        "email_ids": [
+          12195
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-06-27T18:38:41",
+        "updated_at": "2022-06-27T18:38:41",
+        "subject": "Amazon Delivery Update for Order #1449",
+        "participants": [
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Amazon Notifications",
+            "email": "notifications@amazon.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 47829,
+        "email_ids": [
+          20868,
+          20869
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": true,
+        "read": true,
+        "label": null,
+        "starred": false,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-23T12:52:20",
+        "updated_at": "2023-05-23T12:52:20",
+        "subject": "Skip 1-1?",
+        "participants": [
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 294,
+        "email_ids": [
+          86
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2022-10-23T15:38:59",
+        "updated_at": "2022-10-23T15:38:59",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 3524,
+        "email_ids": [
+          1079
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": false,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-16T10:08:44",
+        "updated_at": "2023-05-16T10:08:44",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      },
+      {
+        "email_thread_id": 5309,
+        "email_ids": [
+          1616
+        ],
+        "draft_ids": [],
+        "incoming": true,
+        "outgoing": false,
+        "read": true,
+        "label": null,
+        "starred": true,
+        "archived": false,
+        "spam": false,
+        "created_at": "2023-05-09T10:37:35",
+        "updated_at": "2023-05-09T10:37:35",
+        "subject": "Employee Training Session",
+        "participants": [
+          {
+            "name": "Chelsea Burch",
+            "email": "chelsea-burch@gmail.com"
+          },
+          {
+            "name": "Chris Mccoy",
+            "email": "chris.mcco@gmail.com"
+          },
+          {
+            "name": "Susan Burton",
+            "email": "susanmiller@gmail.com"
+          },
+          {
+            "name": "Valerie Blackburn",
+            "email": "va-blac@gmail.com"
+          },
+          {
+            "name": "Nicholas Weber",
+            "email": "nicholas.weber@gmail.com"
+          },
+          {
+            "name": "Kyle Moore",
+            "email": "kyl_moor@gmail.com"
+          },
+          {
+            "name": "Andrew Brown",
+            "email": "andrew_brow@gmail.com"
+          },
+          {
+            "name": "Patricia Ritter",
+            "email": "pa_ritter@gmail.com"
+          },
+          {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          }
+        ]
+      }
+    ],
+    "result_chars": 15531,
+    "message_result_chars": 15531
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "The most relevant thread is \"Weekly Meeting Schedule\" (thread ID 47825). Let me look at it.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qaQLDsFkYcYE6Qz6AdgI1631",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_thread",
+          "arguments": "{\"email_thread_id\": 47825, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qaQLDsFkYcYE6Qz6AdgI1631",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_thread",
+          "arguments": "{\"email_thread_id\": 47825, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 11095,
+      "output_tokens": 189,
+      "total_tokens": 11284
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 11095,
+      "output_tokens": 189,
+      "total_tokens": 11284,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 34536,
+      "estimated_history_tokens_before_call": 8634
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_qaQLDsFkYcYE6Qz6AdgI1631",
+    "name": "gmail__show_thread",
+    "args": {
+      "email_thread_id": 47825,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCtuaWNob2xhcy53ZWJlckBnbWFpbC5jb20iLCJleHAiOjE2ODQ0MTIwOTh9.87m6UObNakMKdBMM0zDGG6DVVsNMsKv-8-GkNVXuKs4"
+    },
+    "executed": true,
+    "result": {
+      "email_thread_id": 47825,
+      "incoming": true,
+      "outgoing": false,
+      "read": false,
+      "label": null,
+      "starred": false,
+      "archived": false,
+      "spam": false,
+      "created_at": "2023-05-23T13:45:01",
+      "updated_at": "2023-05-23T13:45:01",
+      "emails": [
+        {
+          "email_id": 20867,
+          "subject": "Weekly Meeting Schedule",
+          "sender": {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          "recipients": [
+            {
+              "name": "Chris Mccoy",
+              "email": "chris.mcco@gmail.com"
+            },
+            {
+              "name": "Susan Burton",
+              "email": "susanmiller@gmail.com"
+            },
+            {
+              "name": "Chelsea Burch",
+              "email": "chelsea-burch@gmail.com"
+            },
+            {
+              "name": "Valerie Blackburn",
+              "email": "va-blac@gmail.com"
+            },
+            {
+              "name": "Nicholas Weber",
+              "email": "nicholas.weber@gmail.com"
+            },
+            {
+              "name": "Kyle Moore",
+              "email": "kyl_moor@gmail.com"
+            },
+            {
+              "name": "Andrew Brown",
+              "email": "andrew_brow@gmail.com"
+            },
+            {
+              "name": "Patricia Ritter",
+              "email": "pa_ritter@gmail.com"
+            }
+          ],
+          "body": "Dear team members,\n        Please find the schedule for our weekly meetings below starting next week.\n        - Research and Development Showcase => Tuesday @ 11:30\n- Project Kickoff Meeting => Friday @ 09:00\n- Quality Assurance and Testing Roundtable => Friday @ 14:00\n- Leadership Training Session => Friday @ 14:30\n        All meetings are for 30 minutes. Everyone is expected to attend.\n        Best regards,\n        Eric",
+          "attachments": [],
+          "created_at": "2023-05-23T13:45:01"
+        }
+      ],
+      "drafts": []
+    },
+    "message_result": {
+      "email_thread_id": 47825,
+      "incoming": true,
+      "outgoing": false,
+      "read": false,
+      "label": null,
+      "starred": false,
+      "archived": false,
+      "spam": false,
+      "created_at": "2023-05-23T13:45:01",
+      "updated_at": "2023-05-23T13:45:01",
+      "emails": [
+        {
+          "email_id": 20867,
+          "subject": "Weekly Meeting Schedule",
+          "sender": {
+            "name": "Eric Bailey",
+            "email": "eric.bailey@gmail.com"
+          },
+          "recipients": [
+            {
+              "name": "Chris Mccoy",
+              "email": "chris.mcco@gmail.com"
+            },
+            {
+              "name": "Susan Burton",
+              "email": "susanmiller@gmail.com"
+            },
+            {
+              "name": "Chelsea Burch",
+              "email": "chelsea-burch@gmail.com"
+            },
+            {
+              "name": "Valerie Blackburn",
+              "email": "va-blac@gmail.com"
+            },
+            {
+              "name": "Nicholas Weber",
+              "email": "nicholas.weber@gmail.com"
+            },
+            {
+              "name": "Kyle Moore",
+              "email": "kyl_moor@gmail.com"
+            },
+            {
+              "name": "Andrew Brown",
+              "email": "andrew_brow@gmail.com"
+            },
+            {
+              "name": "Patricia Ritter",
+              "email": "pa_ritter@gmail.com"
+            }
+          ],
+          "body": "Dear team members,\n        Please find the schedule for our weekly meetings below starting next week.\n        - Research and Development Showcase => Tuesday @ 11:30\n- Project Kickoff Meeting => Friday @ 09:00\n- Quality Assurance and Testing Roundtable => Friday @ 14:00\n- Leadership Training Session => Friday @ 14:30\n        All meetings are for 30 minutes. Everyone is expected to attend.\n        Best regards,\n        Eric",
+          "attachments": [],
+          "created_at": "2023-05-23T13:45:01"
+        }
+      ],
+      "drafts": []
+    },
+    "result_chars": 1373,
+    "message_result_chars": 1373
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "I can see the schedule. Let me parse the meetings:\n\n1. **Research and Development Showcase** - Tuesday @ 11:30 → Alarm at 11:20\n2. **Project Kickoff Meeting** - Friday @ 09:00 → Alarm at 08:50\n3. **Quality Assurance and Testing Roundtable** - Friday @ 14:00 → Alarm at 13:50\n4. **Leadership Training Session** - Friday @ 14:30 → Alarm at 14:20\n\nNow let me log into the phone app to create the alarms.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_cdWfOlOmdS9HY769miCx8145",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"9503658964\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_cdWfOlOmdS9HY769miCx8145",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"9503658964\", \"password\": \"ox6SqF4\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 11712,
+      "output_tokens": 186,
+      "total_tokens": 11898
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 11712,
+      "output_tokens": 186,
+      "total_tokens": 11898,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 36615,
+      "estimated_history_tokens_before_call": 9154
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_cdWfOlOmdS9HY769miCx8145",
+    "name": "phone__login",
+    "args": {
+      "username": "9503658964",
+      "password": "ox6SqF4"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E",
+      "token_type": "Bearer"
+    },
+    "result_chars": 183,
+    "message_result_chars": 183
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "Now let me create all 4 alarms. Each alarm should be 10 minutes before the meeting, repeat weekly on that day, labeled with the meeting name, and have 10 minutes of snooze.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_8TFbd2V9xy8sH3naeW026967",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"11:20\", \"repeat_days\": [\"tuesday\"], \"label\": \"Research and Development Showcase\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_qzqEbvyvXHDo4gj1xzIh7984",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"08:50\", \"repeat_days\": [\"friday\"], \"label\": \"Project Kickoff Meeting\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_ebmkWSEcDtQvGiRjLOdk1725",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"13:50\", \"repeat_days\": [\"friday\"], \"label\": \"Quality Assurance and Testing Roundtable\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 3,
+        "id": "call_03_IpURtn4XLs0NxXRlAnNV1600",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"14:20\", \"repeat_days\": [\"friday\"], \"label\": \"Leadership Training Session\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_8TFbd2V9xy8sH3naeW026967",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"11:20\", \"repeat_days\": [\"tuesday\"], \"label\": \"Research and Development Showcase\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_qzqEbvyvXHDo4gj1xzIh7984",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"08:50\", \"repeat_days\": [\"friday\"], \"label\": \"Project Kickoff Meeting\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_ebmkWSEcDtQvGiRjLOdk1725",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"13:50\", \"repeat_days\": [\"friday\"], \"label\": \"Quality Assurance and Testing Roundtable\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      },
+      {
+        "index": 3,
+        "id": "call_03_IpURtn4XLs0NxXRlAnNV1600",
+        "type": "function",
+        "function": {
+          "name": "phone__create_alarm",
+          "arguments": "{\"time\": \"14:20\", \"repeat_days\": [\"friday\"], \"label\": \"Leadership Training Session\", \"snooze_minutes\": 10, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 12021,
+      "output_tokens": 891,
+      "total_tokens": 12912
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 4,
+      "num_tool_calls": 4,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 12021,
+      "output_tokens": 891,
+      "total_tokens": 12912,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 37540,
+      "estimated_history_tokens_before_call": 9385
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_8TFbd2V9xy8sH3naeW026967",
+    "name": "phone__create_alarm",
+    "args": {
+      "time": "11:20",
+      "repeat_days": [
+        "tuesday"
+      ],
+      "label": "Research and Development Showcase",
+      "snooze_minutes": 10,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E"
+    },
+    "executed": true,
+    "result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 743
+    },
+    "message_result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 743
+    },
+    "result_chars": 59,
+    "message_result_chars": 59
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_01_qzqEbvyvXHDo4gj1xzIh7984",
+    "name": "phone__create_alarm",
+    "args": {
+      "time": "08:50",
+      "repeat_days": [
+        "friday"
+      ],
+      "label": "Project Kickoff Meeting",
+      "snooze_minutes": 10,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E"
+    },
+    "executed": true,
+    "result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 744
+    },
+    "message_result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 744
+    },
+    "result_chars": 59,
+    "message_result_chars": 59
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_02_ebmkWSEcDtQvGiRjLOdk1725",
+    "name": "phone__create_alarm",
+    "args": {
+      "time": "13:50",
+      "repeat_days": [
+        "friday"
+      ],
+      "label": "Quality Assurance and Testing Roundtable",
+      "snooze_minutes": 10,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E"
+    },
+    "executed": true,
+    "result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 745
+    },
+    "message_result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 745
+    },
+    "result_chars": 59,
+    "message_result_chars": 59
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_03_IpURtn4XLs0NxXRlAnNV1600",
+    "name": "phone__create_alarm",
+    "args": {
+      "time": "14:20",
+      "repeat_days": [
+        "friday"
+      ],
+      "label": "Leadership Training Session",
+      "snooze_minutes": 10,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSs5NTAzNjU4OTY0IiwiZXhwIjoxNjg0NDEyNzQxfQ.c4PTC5a3iT3_cYlQhWA7hv7tK7A5kNL5kyfCmIJ_g5E"
+    },
+    "executed": true,
+    "result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 746
+    },
+    "message_result": {
+      "message": "Alarm created successfully.",
+      "alarm_id": 746
+    },
+    "result_chars": 59,
+    "message_result_chars": 59
+  },
+  {
+    "turn": 7,
+    "role": "assistant",
+    "content": "All 4 alarms have been created successfully. Let me complete the task.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_wVmlR4YOBAsOm2zDwxIp7523",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_wVmlR4YOBAsOm2zDwxIp7523",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 13012,
+      "output_tokens": 44,
+      "total_tokens": 13056
+    },
+    "request_stats": {
+      "turn": 7,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 13012,
+      "output_tokens": 44,
+      "total_tokens": 13056,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5773,
+      "estimated_tool_schema_tokens": 1444,
+      "history_chars_before_call": 40066,
+      "estimated_history_tokens_before_call": 10017
+    }
+  },
+  {
+    "turn": 7,
+    "role": "tool",
+    "tool_call_id": "call_00_wVmlR4YOBAsOm2zDwxIp7523",
+    "name": "supervisor__complete_task",
+    "args": {},
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

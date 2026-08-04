@@ -1,0 +1,10 @@
+id,condition,enabled_modules,purpose,status,tgc,sgc,avg_tokens,false_completion_rate,max_turn_rate,success_tasks,total_tasks
+A0,Baseline,none,isolates ungoverned runner,measured_primary,41.73,29.50,484350,46.79,21.82,174,417
+A1,+StateVerification,State & Verification,tests evidence-grounded completion,simulated_projection,47.00,33.81,440000,25.00,18.50,196,417
+A2,+ToolGuard,A1 + Tool Execution Guard,tests schema/effect/dependency controls,simulated_projection,52.52,38.13,400000,20.00,15.00,219,417
+A3,+Recovery,A2 + Recovery Controller,tests typed recovery and stagnation handling,simulated_projection,57.07,42.45,360000,18.00,10.00,238,417
+A4,+Context (Full SafeDesk),all four modules,full SafeDesk,simulated_projection,61.39,46.77,287770,16.61,10.07,256,417
+B1,Full minus StateVerification,all except State & Verification,leave-one-module-out,simulated_projection,53.00,38.85,300000,35.00,11.50,221,417
+B2,Full minus ToolGuard,all except Tool Execution Guard,leave-one-module-out,simulated_projection,55.88,41.01,295000,17.50,11.00,233,417
+B3,Full minus Recovery,all except Recovery Controller,leave-one-module-out,simulated_projection,55.40,40.29,290000,17.00,18.50,231,417
+B4,Full minus Context,all except Context Manager,leave-one-module-out,simulated_projection,58.03,43.17,390000,16.50,10.50,242,417

@@ -1,0 +1,98 @@
+{
+  "$defs": {
+    "RecoveryState": {
+      "enum": [
+        "detected",
+        "classified",
+        "state_refreshed",
+        "planned",
+        "policy_checked",
+        "executing",
+        "verifying",
+        "recovered",
+        "failed",
+        "budget_exhausted"
+      ],
+      "title": "RecoveryState",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/recovery-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "failure_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Failure Id",
+      "type": "string"
+    },
+    "final_state": {
+      "$ref": "#/$defs/RecoveryState"
+    },
+    "plan_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Plan Id",
+      "type": "string"
+    },
+    "progress_after": {
+      "minimum": 0,
+      "title": "Progress After",
+      "type": "integer"
+    },
+    "progress_before": {
+      "minimum": 0,
+      "title": "Progress Before",
+      "type": "integer"
+    },
+    "reason": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "success": {
+      "title": "Success",
+      "type": "boolean"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "verification_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Verification Id"
+    }
+  },
+  "required": [
+    "plan_id",
+    "task_id",
+    "failure_id",
+    "final_state",
+    "success",
+    "progress_before",
+    "progress_after",
+    "reason"
+  ],
+  "title": "RecoveryResult",
+  "type": "object"
+}

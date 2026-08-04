@@ -1,0 +1,269 @@
+{
+  "data_status": "synthetic_projection_not_observed",
+  "warning": "This is a deterministic development target projection, not an observed SafeDesk benchmark result; it must not be used for tuning or model selection.",
+  "projection_version": "safedesk_target_v2",
+  "generated_at": "2026-07-16T08:21:09.771839+00:00",
+  "source": {
+    "experiment_id": "appworld_deepseek_v4_flash_no_thinking_test_challenge_aligned",
+    "dataset": "test_challenge",
+    "model": "deepseek-v4-flash",
+    "thinking": "disabled",
+    "results_csv": "C:\\Users\\86132\\Desktop\\SafeDesk\\benchmarks\\results\\appworld_deepseek_v4_flash_no_thinking_test_challenge_aligned\\results.csv",
+    "results_csv_sha256": "d0b747aad0a0df3dab4d190ce88dea04ce7c755c72ecb0ebb8a78487feda1fa2",
+    "summary_json": "C:\\Users\\86132\\Desktop\\SafeDesk\\benchmarks\\results\\appworld_deepseek_v4_flash_no_thinking_test_challenge_aligned\\summary.json",
+    "summary_json_sha256": "f86be41e6205700966b49c750c18e220d68595797b6e3a2e5d6f6d1066133cc6"
+  },
+  "projection_assumptions": {
+    "baseline_success_regressions": 0,
+    "target_successes": 256,
+    "target_max_turn_tasks": 47,
+    "target_completion_gate_blocks": 58,
+    "target_no_completion_tasks": 49,
+    "target_token_reduction": 0.42149578818772315,
+    "target_invalid_call_count_reduction": 0.665474060822898,
+    "target_out_of_schema_count_reduction": 0.8183908045977011,
+    "target_duplicate_call_count_reduction": 0.684903748733536,
+    "target_duplicate_write_count_reduction": 0.8359375,
+    "selection_uses_hidden_ground_truth": false
+  },
+  "metric_definitions": {
+    "tgc": {
+      "scope": "task",
+      "numerator": "num_success",
+      "denominator": "num_tasks",
+      "formula": "num_success / num_tasks"
+    },
+    "sgc": {
+      "scope": "scenario",
+      "numerator": "num_successful_scenarios",
+      "denominator": "num_scenarios",
+      "formula": "num_successful_scenarios / num_scenarios"
+    },
+    "evaluator_test_pass_rate": {
+      "scope": "evaluator_test",
+      "numerator": "num_passed_tests",
+      "denominator": "num_total_tests",
+      "formula": "num_passed_tests / num_total_tests"
+    },
+    "false_completion_rate": {
+      "scope": "completion",
+      "numerator": "num_false_completion",
+      "denominator": "num_completion_called",
+      "formula": "num_false_completion / num_completion_called",
+      "meaning": "failed tasks where the model proposed complete_task"
+    },
+    "allowed_false_completion_rate": {
+      "scope": "allowed_completion",
+      "numerator": "num_allowed_false_completion",
+      "denominator": "num_completion_allowed",
+      "formula": "num_allowed_false_completion / num_completion_allowed",
+      "availability": "projection_only"
+    },
+    "max_turn_rate": {
+      "scope": "task",
+      "numerator": "num_max_turn_tasks",
+      "denominator": "num_tasks",
+      "formula": "num_max_turn_tasks / num_tasks"
+    },
+    "invalid_call_rate": {
+      "scope": "model_tool_call",
+      "numerator": "num_invalid_tool_calls",
+      "denominator": "num_model_tool_calls",
+      "formula": "num_invalid_tool_calls / num_model_tool_calls"
+    },
+    "invalid_task_rate": {
+      "scope": "task",
+      "numerator": "num_tasks_with_invalid_calls",
+      "denominator": "num_tasks",
+      "formula": "num_tasks_with_invalid_calls / num_tasks"
+    },
+    "out_of_schema_call_rate": {
+      "scope": "model_tool_call",
+      "numerator": "num_out_of_schema_tool_calls",
+      "denominator": "num_model_tool_calls",
+      "formula": "num_out_of_schema_tool_calls / num_model_tool_calls"
+    },
+    "out_of_schema_task_rate": {
+      "scope": "task",
+      "numerator": "num_tasks_with_out_of_schema_calls",
+      "denominator": "num_tasks",
+      "formula": "num_tasks_with_out_of_schema_calls / num_tasks"
+    },
+    "duplicate_call_rate": {
+      "scope": "model_tool_call",
+      "numerator": "num_duplicate_tool_calls",
+      "denominator": "num_model_tool_calls",
+      "formula": "num_duplicate_tool_calls / num_model_tool_calls"
+    },
+    "duplicate_task_rate": {
+      "scope": "task",
+      "numerator": "num_tasks_with_duplicate_calls",
+      "denominator": "num_tasks",
+      "formula": "num_tasks_with_duplicate_calls / num_tasks"
+    },
+    "duplicate_write_rate": {
+      "scope": "write_tool_call",
+      "numerator": "num_duplicate_write_actions",
+      "denominator": "num_write_tool_calls",
+      "formula": "num_duplicate_write_actions / num_write_tool_calls"
+    },
+    "duplicate_write_task_rate": {
+      "scope": "task",
+      "numerator": "num_tasks_with_duplicate_writes",
+      "denominator": "num_tasks",
+      "formula": "num_tasks_with_duplicate_writes / num_tasks"
+    },
+    "completion_precision": {
+      "scope": "completion",
+      "numerator": "num_success",
+      "denominator": "num_completion_called",
+      "formula": "num_success / num_completion_called"
+    },
+    "completion_gate_block_rate": {
+      "scope": "completion_attempt",
+      "numerator": "num_completion_gate_blocked",
+      "denominator": "num_completion_attempts",
+      "formula": "num_completion_gate_blocked / num_completion_attempts",
+      "availability": "projection_only"
+    },
+    "verification_failure_rate": {
+      "scope": "runtime_verification",
+      "numerator": "num_verification_failures",
+      "denominator": "num_verification_checks",
+      "formula": "num_verification_failures / num_verification_checks",
+      "availability": "projection_only"
+    },
+    "recovery_success_rate": {
+      "scope": "recovery",
+      "numerator": "num_recovery_successes",
+      "denominator": "num_recovery_attempts",
+      "formula": "num_recovery_successes / num_recovery_attempts",
+      "availability": "projection_only"
+    },
+    "avg_tokens_per_task": {
+      "scope": "task",
+      "numerator": "total_tokens",
+      "denominator": "num_tasks",
+      "formula": "total_tokens / num_tasks"
+    },
+    "unintended_side_effect_rate": {
+      "scope": "task",
+      "availability": "unavailable",
+      "reason": "baseline lacks trace-level state diffs"
+    }
+  },
+  "baseline": {
+    "num_tasks": 417,
+    "num_success": 174,
+    "tgc": 0.4172661870503597,
+    "num_scenarios": 139,
+    "num_successful_scenarios": 41,
+    "sgc": 0.2949640287769784,
+    "num_passed_tests": 2218,
+    "num_total_tests": 3348,
+    "evaluator_test_pass_rate": 0.6624850657108722,
+    "num_completion_called": 327,
+    "num_false_completion": 153,
+    "false_completion_rate": 0.46788990825688076,
+    "completion_precision": 0.5321100917431193,
+    "num_max_turn_tasks": 91,
+    "max_turn_rate": 0.2182254196642686,
+    "num_model_tool_calls": 15066,
+    "num_tool_calls": 14631,
+    "num_read_tool_calls": 12795,
+    "num_write_tool_calls": 1836,
+    "num_other_tool_calls": 0,
+    "num_invalid_tool_calls": 559,
+    "invalid_call_rate": 0.03710341165538298,
+    "num_tasks_with_invalid_calls": 232,
+    "invalid_task_rate": 0.5563549160671463,
+    "num_out_of_schema_tool_calls": 435,
+    "out_of_schema_call_rate": 0.028872958980485863,
+    "num_tasks_with_out_of_schema_calls": 217,
+    "out_of_schema_task_rate": 0.5203836930455635,
+    "num_duplicate_tool_calls": 987,
+    "duplicate_call_rate": 0.06551174830744723,
+    "num_tasks_with_duplicate_calls": 179,
+    "duplicate_task_rate": 0.4292565947242206,
+    "num_duplicate_write_actions": 128,
+    "duplicate_write_rate": 0.06971677559912855,
+    "num_tasks_with_duplicate_writes": 40,
+    "duplicate_write_task_rate": 0.09592326139088729,
+    "total_tokens": 201973864,
+    "input_tokens": 195563935,
+    "output_tokens": 6409929,
+    "avg_tokens_per_task": 484349.793764988
+  },
+  "projected": {
+    "num_tasks": 417,
+    "num_success": 256,
+    "tgc": 0.6139088729016786,
+    "num_scenarios": 139,
+    "num_successful_scenarios": 65,
+    "sgc": 0.4676258992805755,
+    "num_passed_tests": 2375,
+    "num_total_tests": 3348,
+    "evaluator_test_pass_rate": 0.709378733572282,
+    "num_completion_called": 368,
+    "num_false_completion": 112,
+    "false_completion_rate": 0.30434782608695654,
+    "completion_precision": 0.6956521739130435,
+    "num_max_turn_tasks": 47,
+    "max_turn_rate": 0.11270983213429256,
+    "num_model_tool_calls": 11107,
+    "num_tool_calls": 11028,
+    "num_read_tool_calls": 9357,
+    "num_write_tool_calls": 1671,
+    "num_other_tool_calls": 0,
+    "num_invalid_tool_calls": 187,
+    "invalid_call_rate": 0.016836229404879804,
+    "num_tasks_with_invalid_calls": 117,
+    "invalid_task_rate": 0.2805755395683453,
+    "num_out_of_schema_tool_calls": 79,
+    "out_of_schema_call_rate": 0.007112631673719276,
+    "num_tasks_with_out_of_schema_calls": 76,
+    "out_of_schema_task_rate": 0.18225419664268586,
+    "num_duplicate_tool_calls": 311,
+    "duplicate_call_rate": 0.028000360133249302,
+    "num_tasks_with_duplicate_calls": 132,
+    "duplicate_task_rate": 0.31654676258992803,
+    "num_duplicate_write_actions": 21,
+    "duplicate_write_rate": 0.012567324955116697,
+    "num_tasks_with_duplicate_writes": 17,
+    "duplicate_write_task_rate": 0.0407673860911271,
+    "total_tokens": 116842731,
+    "input_tokens": 113293159,
+    "output_tokens": 3549572,
+    "avg_tokens_per_task": 280198.39568345324,
+    "num_completion_gate_blocked": 58,
+    "num_completion_attempts": 368,
+    "num_completion_allowed": 310,
+    "num_allowed_false_completion": 54,
+    "allowed_false_completion_rate": 0.17419354838709677,
+    "allowed_completion_precision": 0.8258064516129032,
+    "num_without_completion_attempt": 49,
+    "completion_gate_block_rate": 0.15760869565217392,
+    "num_verification_checks": 2088,
+    "num_verification_failures": 243,
+    "verification_failure_rate": 0.11637931034482758,
+    "num_recovery_attempts": 124,
+    "num_recovery_successes": 82,
+    "recovery_success_rate": 0.6612903225806451,
+    "num_unintended_side_effects": null
+  },
+  "delta": {
+    "tgc_percentage_points": 19.66426858513189,
+    "sgc_percentage_points": 17.26618705035971,
+    "false_completion_relative_reduction": 0.34953111679454385,
+    "max_turn_relative_reduction": 0.4835164835164836,
+    "invalid_call_rate_relative_reduction": 0.5462350049840445,
+    "out_of_schema_call_rate_relative_reduction": 0.7536576809281503,
+    "duplicate_call_rate_relative_reduction": 0.572590247449307,
+    "duplicate_write_rate_relative_reduction": 0.8197374326750448,
+    "avg_token_relative_reduction": 0.42149578818772315
+  },
+  "converted_tasks_by_primary_intervention": {
+    "state_and_verification": 72,
+    "tool_execution_guard": 10
+  }
+}

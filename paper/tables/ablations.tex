@@ -1,0 +1,42 @@
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Leave-one-out ablations and their prespecified primary metrics.}
+\label{tab:leave-one-out}
+\small
+\begin{tabularx}{\linewidth}{@{}lYYr@{}}
+\toprule
+Condition & Removed module & Primary outcomes & TGC \\
+\midrule
+Full & None & TGC, SGC, reliability, efficiency & \AblFullTGC \\
+w/o S\&V & State \& Verification & TGC, false completion, false block & \AblWithoutSVTGC \\
+w/o TEG & Tool Execution Guard & invalid, out-of-schema, duplicate write & \AblWithoutTEGTGC \\
+w/o RC & Recovery Controller & max-turn, duplicate call, rescue rate & \AblWithoutRCTGC \\
+w/o CM & Context Manager & mean/P95 tokens, TGC change & \AblWithoutCMTGC \\
+\bottomrule
+\end{tabularx}
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.88\linewidth}
+\centering
+\captionof{table}{Incremental assembly analysis.}
+\label{tab:incremental}
+\small
+\begin{tabularx}{\linewidth}{@{}lYr@{}}
+\toprule
+Condition & Active governance & TGC \\
+\midrule
+Baseline & None & \AblIncrementalBaseTGC \\
++ S\&V & State and evidence-grounded completion & \AblIncrementalSVTGC \\
++ TEG & Schema, policy, dependency, and effect control & \AblIncrementalTEGTGC \\
++ RC & Typed recovery and stagnation control & \AblIncrementalRCTGC \\
++ CM & Bounded context management & \AblIncrementalCMTGC \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\small Incremental gains depend on module order and cannot be interpreted
+as independent causal contributions.
+\end{minipage}
+\end{center}

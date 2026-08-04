@@ -1,0 +1,77 @@
+{
+  "$defs": {
+    "DecisionOutcome": {
+      "enum": [
+        "allow",
+        "deny",
+        "replan",
+        "require_evidence",
+        "require_confirmation",
+        "require_approval",
+        "already_applied",
+        "defer"
+      ],
+      "title": "DecisionOutcome",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/stagnation-assessment.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "consecutive_no_progress_turns": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Consecutive No Progress Turns",
+      "type": "integer"
+    },
+    "identical_call_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Identical Call Count",
+      "type": "integer"
+    },
+    "reason_codes": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "recommended_outcome": {
+      "$ref": "#/$defs/DecisionOutcome"
+    },
+    "same_failure_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Same Failure Count",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stagnant": {
+      "title": "Stagnant",
+      "type": "boolean"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "stagnant",
+    "recommended_outcome"
+  ],
+  "title": "StagnationAssessment",
+  "type": "object"
+}

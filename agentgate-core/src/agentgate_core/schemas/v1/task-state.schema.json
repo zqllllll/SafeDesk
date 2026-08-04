@@ -1,0 +1,255 @@
+{
+  "$defs": {
+    "Blocker": {
+      "additionalProperties": false,
+      "properties": {
+        "blocker_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Blocker Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "resolvable": {
+          "default": true,
+          "title": "Resolvable",
+          "type": "boolean"
+        },
+        "source_failure_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Failure Id"
+        }
+      },
+      "required": [
+        "blocker_id",
+        "reason"
+      ],
+      "title": "Blocker",
+      "type": "object"
+    },
+    "SubgoalState": {
+      "additionalProperties": false,
+      "properties": {
+        "blocker_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Blocker Ids",
+          "type": "array"
+        },
+        "effect_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Effect Ids",
+          "type": "array"
+        },
+        "evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/SubgoalStatus",
+          "default": "pending"
+        },
+        "subgoal_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Subgoal Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "subgoal_id"
+      ],
+      "title": "SubgoalState",
+      "type": "object"
+    },
+    "SubgoalStatus": {
+      "enum": [
+        "pending",
+        "ready",
+        "in_progress",
+        "waiting_for_evidence",
+        "waiting_for_approval",
+        "blocked",
+        "completed_unverified",
+        "completed_verified",
+        "failed",
+        "cancelled"
+      ],
+      "title": "SubgoalStatus",
+      "type": "string"
+    },
+    "TaskPhase": {
+      "enum": [
+        "collect",
+        "act",
+        "verify",
+        "repair",
+        "complete",
+        "blocked",
+        "failed"
+      ],
+      "title": "TaskPhase",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/task-state.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "active_subgoal_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Active Subgoal Ids",
+      "type": "array"
+    },
+    "blockers": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Blocker"
+      },
+      "title": "Blockers",
+      "type": "array"
+    },
+    "contract_version": {
+      "minimum": 1,
+      "title": "Contract Version",
+      "type": "integer"
+    },
+    "effect_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Effect Ids",
+      "type": "array"
+    },
+    "evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "failure_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Failure Ids",
+      "type": "array"
+    },
+    "pending_approval_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Pending Approval Ids",
+      "type": "array"
+    },
+    "pending_confirmation_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Pending Confirmation Ids",
+      "type": "array"
+    },
+    "phase": {
+      "$ref": "#/$defs/TaskPhase",
+      "default": "collect"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_version": {
+      "minimum": 1,
+      "title": "State Version",
+      "type": "integer"
+    },
+    "subgoals": {
+      "items": {
+        "$ref": "#/$defs/SubgoalState"
+      },
+      "minItems": 1,
+      "title": "Subgoals",
+      "type": "array"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "verification_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Verification Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task_id",
+    "contract_version",
+    "state_version",
+    "subgoals"
+  ],
+  "title": "TaskState",
+  "type": "object"
+}

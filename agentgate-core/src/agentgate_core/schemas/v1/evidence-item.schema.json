@@ -1,0 +1,157 @@
+{
+  "$defs": {
+    "EvidenceSourceType": {
+      "enum": [
+        "user",
+        "tool_result",
+        "environment_verification",
+        "model_inference",
+        "policy",
+        "runtime"
+      ],
+      "title": "EvidenceSourceType",
+      "type": "string"
+    },
+    "EvidenceStatus": {
+      "enum": [
+        "observed",
+        "inferred",
+        "verified",
+        "conflicted",
+        "stale",
+        "revoked"
+      ],
+      "title": "EvidenceStatus",
+      "type": "string"
+    },
+    "JsonValue": {}
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/evidence-item.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "confidence": {
+      "default": 1.0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "evidence_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Evidence Id",
+      "type": "string"
+    },
+    "note": {
+      "anyOf": [
+        {
+          "maxLength": 20000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Note"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "predicate": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Predicate",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "default": "task",
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "source_event_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Event Id",
+      "type": "string"
+    },
+    "source_type": {
+      "$ref": "#/$defs/EvidenceSourceType"
+    },
+    "status": {
+      "$ref": "#/$defs/EvidenceStatus",
+      "default": "observed"
+    },
+    "subject": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Subject",
+      "type": "string"
+    },
+    "supersedes": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Supersedes",
+      "type": "array"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "valid_until": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Valid Until"
+    },
+    "value": {
+      "$ref": "#/$defs/JsonValue"
+    },
+    "verification_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Verification Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "evidence_id",
+    "task_id",
+    "subject",
+    "predicate",
+    "value",
+    "source_type",
+    "source_event_id"
+  ],
+  "title": "EvidenceItem",
+  "type": "object"
+}

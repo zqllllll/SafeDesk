@@ -1,0 +1,47 @@
+{
+  "$defs": {
+    "FeatureMode": {
+      "enum": [
+        "off",
+        "shadow",
+        "enforce"
+      ],
+      "title": "FeatureMode",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/agentgate-feature-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allow_read_on_trace_failure": {
+      "default": false,
+      "title": "Allow Read On Trace Failure",
+      "type": "boolean"
+    },
+    "context_manager": {
+      "$ref": "#/$defs/FeatureMode",
+      "default": "off"
+    },
+    "recovery_controller": {
+      "$ref": "#/$defs/FeatureMode",
+      "default": "off"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_verification": {
+      "$ref": "#/$defs/FeatureMode",
+      "default": "off"
+    },
+    "tool_execution_guard": {
+      "$ref": "#/$defs/FeatureMode",
+      "default": "off"
+    }
+  },
+  "title": "AgentGateFeatureConfig",
+  "type": "object"
+}

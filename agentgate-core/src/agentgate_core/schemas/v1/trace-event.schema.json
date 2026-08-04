@@ -1,0 +1,198 @@
+{
+  "$defs": {
+    "JsonValue": {},
+    "RedactionMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "policy_version": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Policy Version"
+        },
+        "redacted": {
+          "default": false,
+          "title": "Redacted",
+          "type": "boolean"
+        },
+        "redacted_fields": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Redacted Fields",
+          "type": "array"
+        }
+      },
+      "title": "RedactionMetadata",
+      "type": "object"
+    },
+    "TraceActor": {
+      "enum": [
+        "user",
+        "model",
+        "runtime",
+        "tool",
+        "schema_guard",
+        "policy_gate",
+        "scheduler",
+        "verifier",
+        "recovery_controller",
+        "context_manager"
+      ],
+      "title": "TraceActor",
+      "type": "string"
+    },
+    "TraceEventType": {
+      "enum": [
+        "task_created",
+        "task_state_changed",
+        "context_built",
+        "model_response",
+        "action_proposed",
+        "stage_decision",
+        "schema_decision",
+        "policy_decision",
+        "tool_resolution",
+        "tool_set_changed",
+        "effect_reserved",
+        "effect_linked",
+        "effect_status_changed",
+        "evidence_recorded",
+        "evidence_status_changed",
+        "evidence_conflicted",
+        "tool_started",
+        "tool_finished",
+        "tool_not_executed",
+        "verification_finished",
+        "failure_classified",
+        "progress_assessed",
+        "stagnation_detected",
+        "recovery_planned",
+        "recovery_finished",
+        "completion_decision",
+        "response_grounding_decision",
+        "checkpoint_created",
+        "checkpoint_restored",
+        "final_response"
+      ],
+      "title": "TraceEventType",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/trace-event.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actor": {
+      "$ref": "#/$defs/TraceActor"
+    },
+    "correlation_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "event_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "$ref": "#/$defs/TraceEventType"
+    },
+    "parent_event_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Event Id"
+    },
+    "payload": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Payload",
+      "type": "object"
+    },
+    "redaction_metadata": {
+      "$ref": "#/$defs/RedactionMetadata"
+    },
+    "run_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence_number": {
+      "minimum": 0,
+      "title": "Sequence Number",
+      "type": "integer"
+    },
+    "state_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "State Version"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "timestamp": {
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "turn": {
+      "minimum": 0,
+      "title": "Turn",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "event_id",
+    "task_id",
+    "run_id",
+    "sequence_number",
+    "turn",
+    "event_type",
+    "actor",
+    "correlation_id"
+  ],
+  "title": "TraceEvent",
+  "type": "object"
+}

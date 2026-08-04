@@ -1,0 +1,69 @@
+{
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/active-tool-set.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_version": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Catalog Version",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "schema_versions": {
+      "additionalProperties": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "propertyNames": {
+        "maxLength": 256,
+        "minLength": 1
+      },
+      "title": "Schema Versions",
+      "type": "object"
+    },
+    "set_version": {
+      "minimum": 1,
+      "title": "Set Version",
+      "type": "integer"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "tool_names": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Tool Names",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task_id",
+    "set_version",
+    "catalog_version",
+    "tool_names",
+    "schema_versions",
+    "reason"
+  ],
+  "title": "ActiveToolSet",
+  "type": "object"
+}

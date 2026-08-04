@@ -1,0 +1,421 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "file_system.show_directory\nfile_system.delete_file",
+    "reasoning_content": "Okay, let's tackle this task: \"Delete all .jpg files from my file system ~/downloads folder.\" \n\nFirst, I need to figure out which APIs are relevant here. The user is talking about the file system, specifically deleting .jpg files from the downloads folder. Looking at the available APIs, there's a section under 'file_system' that includes operations like show_directory, delete_file, and others.\n\nThe first step would be to access the downloads folder. The 'file_system.show_directory' API can list all files and subdirectories. But the user wants to delete .jpg files, so I need to check if this API can recursively list all files. The description says it can show files and subdirectories optionally recursively. So, using that with the path ~/downloads and recursive=True would get all files.\n\nOnce I have the list, I need to filter out the .jpg files. The API returns a list of files, so I can iterate through them, check the file extension, and collect the ones ending with .jpg.\n\nNext, for each .jpg file, I need to delete them. The 'file_system.delete_file' API can delete a file if it exists. So, for each identified .jpg file, call delete_file with the file's path.\n\nWait, but what about subdirectories? If the downloads folder has subfolders with .jpg files, the show_directory with recursive=True would include them. So the process would handle all .jpg files in any subfolder under ~/downloads.\n\nI should also check if the user has permission to delete files. But the APIs don't mention permissions, so assuming the user has the necessary rights.\n\nPotential issues: What if the directory doesn't exist? The 'file_system.directory_exists' API could check that first. But the task says to delete files from ~/downloads, so maybe it's safe to assume the directory exists. However, including a check might be good practice. But the user's instruction doesn't mention handling errors, so maybe proceed as per the task.\n\nSo the steps are:\n\n1. Use file_system.show_directory on ~/downloads with recursive=True to get all files.\n2. Filter the files to find those with .jpg extension.\n3. For each .jpg file, use file_system.delete_file to delete it.\n\nThe relevant APIs here are file_system.show_directory and file_system.delete_file. Also, maybe file_system.file_exists to check if the file exists before deleting, but the delete_file API might handle that internally.\n\nSo the answer should list these APIs.",
+    "predicted_apis": [
+      "file_system.show_directory",
+      "file_system.delete_file"
+    ],
+    "usage": {
+      "input_tokens": 6903,
+      "output_tokens": 524,
+      "total_tokens": 7427
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "Okay, let's tackle this real task. The user wants to delete all .jpg files from the ~/downloads folder in their file system. First, I need to figure out how to access the file system app and perform the necessary operations.\n\nFirst step: I should check the available functions. The file_system app has show_directory and delete_file functions. To delete files, I need to first list all the files in the ~/downloads directory, filter out the .jpg files, and then delete each one.\n\nBut wait, the user mentioned using the correct APIs. So I need to get the access token for the file_system app. The supervisor app can provide the password for the file_system account. So first, I should call supervisor__show_account_passwords to get the password for file_system. Then, use that password to log in to the file_system app, but wait, looking at the tools provided earlier, there's no login function for file_system. The functions given are show_directory and delete_file, which require an access_token. How do I get the access_token? Maybe the access_token is obtained through a login process, but the tools don't include a login function. Hmm, maybe the access_token is automatically handled, or perhaps the user's credentials are used directly. Wait, in the previous examples, when logging into Spotify, they used the username and password. But for the file_system, maybe the access_token is obtained via a login function that isn't listed here. However, the tools provided don't include a login function for file_system. The user might have to assume that the access_token is already available, but that's not the case. Wait, looking back at the initial tools provided, the functions for file_system are show_directory and delete_file, both requiring an access_token. But how to obtain that token? The supervisor app might have the password, but without a login function, perhaps the access_token is generated automatically upon calling the functions with the correct credentials. Alternatively, maybe the access_token is obtained via the supervisor's account password. Wait, in the previous tutorial examples, when the user logged into Spotify, they used the username and password from the supervisor's profile and account passwords. So perhaps for the file_system, the access_token is obtained by logging in with the username and password. But the tools don't have a login function for file_system. This is a problem. Wait, maybe the access_token is not needed, but the functions require the password. Or maybe the access_token is generated by the system when the user has the correct password. This is unclear. However, in the initial tools provided, the functions for file_system__show_directory and file_system__delete_file require an access_token. But how to get that token? The user might have to assume that the access_token is obtained through some other means, but since the tools don't include a login function, perhaps the access_token is derived from the supervisor's password for the file_system account. Alternatively, maybe the access_token is a placeholder and the actual implementation would handle it. But given the information available, I need to proceed with the functions provided.\n\nWait, looking back at the tools, the functions for file_system require an access_token. But how to get that? In the previous examples, when the user logged into Spotify, they used the username and password. But for the file_system, there's no login function. This is a contradiction. Maybe the access_token is generated automatically when the user has the correct password, but the tools don't specify that. Alternatively, perhaps the access_token is not required, and the password is used instead. However, according to the function definitions, the access_token is a required parameter. This is a problem. Without knowing how to obtain the access_token, the task can't be completed. But since this is a real task, I need to proceed with the available information.\n\nWait, maybe the access_token is obtained by calling the supervisor's show_account_passwords to get the password for the file_system app, and then using that password as the access_token. But that's just a guess. Alternatively, maybe the access_token is a separate value that needs to be retrieved, but the tools don't provide a way. This is a critical missing piece. However, given the previous examples, perhaps the access_token is generated by the system when the user logs in with their credentials. But without a login function, this is unclear. \n\nAlternatively, maybe the access_token is not required, and the password is used directly. But according to the function definitions, the access_token is a required parameter. This is a problem. However, since the user has provided the tools, perhaps the access_token is obtained via the supervisor's account password. For example, in the previous tutorial, the user used the password from the supervisor's account to log into Spotify. So perhaps for the file_system, the access_token is the password retrieved from supervisor__show_account_passwords for the file_system account. \n\nSo, the steps would be:\n\n1. Use supervisor__show_account_passwords to get the password for the file_system app.\n2. Use that password as the access_token for the file_system functions.\n3. Call file_system__show_directory with the directory_path set to ~/downloads, entry_type as \"files\", and substring \".jpg\" to list all .jpg files.\n4. For each file found, call file_system__delete_file with the file_path.\n\nBut wait, the file_system__show_directory function's parameters include access_token, directory_path, entry_type, recursive, and substring. So, first, get the access_token (password) for file_system from the supervisor's account passwords. Then, use that access_token in the show_directory function to list the files. Then, for each .jpg file, delete them using delete_file.\n\nSo, the first step is to get the password for the file_system account via supervisor__show_account_passwords. Then, use that password as the access_token in the show_directory function. Then, process the results and delete each .jpg file.\n\nBut in the previous tutorial examples, when the user logged into Spotify, they used the username and password. However, for the file_system, there's no login function, so the access_token is likely the password retrieved from the supervisor's account passwords. Therefore, the process would be:\n\n- Call supervisor__show_account_passwords to get the password for file_system.\n- Use that password as the access_token in the show_directory function.\n- List the files in ~/downloads, filtering for .jpg.\n- For each .jpg file, call delete_file with the file_path.\n\nSo, the first function call would be to supervisor__show_account_passwords to get the password for the file_system app. Then, use that password in the show_directory function. Then, process the results and delete each file.\n\nBut the user's instruction says not to reuse values from the tutorial examples. So, I need to retrieve the real values through APIs, not use the fake ones from the tutorials. Therefore, I need to call the supervisor__show_account_passwords API to get the current password for the file_system app. Then, proceed with the",
+    "tool_calls": [
+      {
+        "id": "call_b8b90cde1a0748cca0212c",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "id": "call_b8b90cde1a0748cca0212c",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 3716,
+      "output_tokens": 1485,
+      "total_tokens": 5201
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 3716,
+      "output_tokens": 1485,
+      "total_tokens": 5201,
+      "tool_schema_count": 2,
+      "tool_schema_chars": 1431,
+      "estimated_tool_schema_tokens": 358,
+      "history_chars_before_call": 14417,
+      "estimated_history_tokens_before_call": 3605
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_b8b90cde1a0748cca0212c",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "5+=z(GQ"
+      },
+      {
+        "account_name": "file_system",
+        "password": "YUmI+0Z"
+      },
+      {
+        "account_name": "gmail",
+        "password": "Ubom@Nj"
+      },
+      {
+        "account_name": "phone",
+        "password": "QsxhMHd"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "2$=C=WK"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "1IfBZBx"
+      },
+      {
+        "account_name": "spotify",
+        "password": "s]C22hx"
+      },
+      {
+        "account_name": "todoist",
+        "password": "vRf+92J"
+      },
+      {
+        "account_name": "venmo",
+        "password": "=#dOpGE"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "5+=z(GQ"
+      },
+      {
+        "account_name": "file_system",
+        "password": "YUmI+0Z"
+      },
+      {
+        "account_name": "gmail",
+        "password": "Ubom@Nj"
+      },
+      {
+        "account_name": "phone",
+        "password": "QsxhMHd"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "2$=C=WK"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "1IfBZBx"
+      },
+      {
+        "account_name": "spotify",
+        "password": "s]C22hx"
+      },
+      {
+        "account_name": "todoist",
+        "password": "vRf+92J"
+      },
+      {
+        "account_name": "venmo",
+        "password": "=#dOpGE"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "Okay, I need to delete all .jpg files from the ~/downloads folder. First, I got the file_system password from the supervisor's account passwords. Now, I'll use that password as the access token to interact with the file system.\n\nNext, I should list all files in the ~/downloads directory. The file_system__show_directory function can do that. I'll set the directory_path to \"~/downloads\", entry_type to \"files\", and substring to \".jpg\" to filter only the JPEG files. Recursive is set to true to include all subdirectories, but since the user specified the downloads folder, maybe it's just the immediate directory. Wait, the default for recursive is true, so it might include subfolders. But the user didn't specify subfolders, so maybe I should check. However, the task says \"from my file system ~/downloads folder,\" which might mean the main downloads directory. But to be safe, I'll proceed with the default recursive setting.\n\nOnce I get the list of .jpg files, I'll need to delete each one using file_system__delete_file. Each deletion requires the access token and the file path. So after retrieving the files, I'll loop through them and make delete calls.\n\nWait, but the tools allow multiple function calls in one turn. So I can first list the files, then in the next step delete them. Let me first call show_directory",
+    "tool_calls": [
+      {
+        "id": "call_a7a3ba102fa041a4861dac",
+        "type": "function",
+        "function": {
+          "name": "file_system__show_directory",
+          "arguments": "{\"access_token\": \"YUmI+0Z\", \"directory_path\": \"~/downloads\", \"entry_type\": \"files\", \"substring\": \".jpg\", \"recursive\": true}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "id": "call_a7a3ba102fa041a4861dac",
+        "type": "function",
+        "function": {
+          "name": "file_system__show_directory",
+          "arguments": "{\"access_token\": \"YUmI+0Z\", \"directory_path\": \"~/downloads\", \"entry_type\": \"files\", \"substring\": \".jpg\", \"recursive\": true}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5378,
+      "output_tokens": 344,
+      "total_tokens": 5722
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5378,
+      "output_tokens": 344,
+      "total_tokens": 5722,
+      "tool_schema_count": 2,
+      "tool_schema_chars": 1431,
+      "estimated_tool_schema_tokens": 358,
+      "history_chars_before_call": 22524,
+      "estimated_history_tokens_before_call": 5631
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_a7a3ba102fa041a4861dac",
+    "name": "file_system__show_directory",
+    "args": {
+      "access_token": "YUmI+0Z",
+      "directory_path": "~/downloads",
+      "entry_type": "files",
+      "substring": ".jpg",
+      "recursive": true
+    },
+    "executed": true,
+    "result": {
+      "message": "You are either not authorized to access this file_system API endpoint or your access token is missing, invalid or expired."
+    },
+    "message_result": {
+      "message": "You are either not authorized to access this file_system API endpoint or your access token is missing, invalid or expired."
+    },
+    "result_chars": 137,
+    "message_result_chars": 137
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "Okay, the user tried to access the file_system__show_directory function but got an authorization error. That probably means the access token they used was incorrect or invalid. Let me check the steps again.\n\nFirst, they retrieved the file_system password from the supervisor's account passwords, which was \"YUmI+0Z\". They used that as the access_token. But maybe the access token isn't the same as the password. Wait, in the previous examples, when logging into Spotify, they used the username and password, but for the file_system, there's no login function mentioned. The functions require an access_token, but how is that obtained?\n\nMaybe the access_token is generated through a different process, like a login API that wasn't listed in the tools. Since the user doesn't have a login function for file_system, they might not have the correct access token. Alternatively, maybe the password is used as the access token, but the system expects a different format or additional parameters.\n\nSince the initial attempt failed, perhaps the access token needs to be obtained through a different method. But given the tools provided, there's no login function. This is a problem. Without the correct access token, the show_directory and delete_file functions can't be used. The user might need to find another way to get the access token, but based on the information given, it's unclear. \n\nAlternatively, maybe the access token is derived from the password by some transformation, but that's just a guess. Since the user can't proceed without the correct access token, the task might be impossible with the current tools. However, the user must complete the task, so perhaps there's a mistake in the access token usage. Let me try again, maybe the access token is different. Wait, maybe the access token is a bearer token that needs to be generated via a separate login process, but since that's not available, the user can't proceed. This might be a limitation",
+    "tool_calls": [
+      {
+        "id": "call_bcbfa2f0a8ce43c49c2a74",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "id": "call_bcbfa2f0a8ce43c49c2a74",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5760,
+      "output_tokens": 422,
+      "total_tokens": 6182
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5760,
+      "output_tokens": 422,
+      "total_tokens": 6182,
+      "tool_schema_count": 2,
+      "tool_schema_chars": 1431,
+      "estimated_tool_schema_tokens": 358,
+      "history_chars_before_call": 24433,
+      "estimated_history_tokens_before_call": 6109
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_bcbfa2f0a8ce43c49c2a74",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "David",
+      "last_name": "Martinez",
+      "email": "dav.mart@gmail.com",
+      "phone_number": "7228796993",
+      "birthday": "1957-11-09",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "David",
+      "last_name": "Martinez",
+      "email": "dav.mart@gmail.com",
+      "phone_number": "7228796993",
+      "birthday": "1957-11-09",
+      "sex": "male"
+    },
+    "result_chars": 150,
+    "message_result_chars": 150
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "Okay, let's see. The user is trying to delete all .jpg files from the ~/downloads folder. They first tried to get the file_system password from the supervisor's account passwords, which gave them \"YUmI+0Z\". Then they used that as the access token for the file_system__show_directory function, but it failed with an authorization error.\n\nHmm, maybe the access token isn't the same as the password. In previous examples, when logging into Spotify, they used the username and password, but for the file_system, there's no login function mentioned. The functions require an access_token, but how is that obtained?\n\nWait, maybe the access token is generated by the file_system app when you log in, but since there's no login function provided, the user doesn't know how to get it. The error message says the access token is missing, invalid, or expired. So perhaps the password retrieved from the supervisor isn't the correct access token.\n\nBut the user has no other way to get the access token. The tools don't include a login function for file_system. This is a problem. Without the correct access token, they can't proceed. Maybe the access token is derived from the password in some way, but that's just a guess.\n\nAlternatively, maybe the user needs to use their own credentials, but the supervisor's profile doesn't have the file_system username. Wait, the supervisor's profile has the user's email and phone number, but not the file_system username. So that's not helpful.\n\nThis seems like a dead end. The user can't get the access token, so they can't list or delete the files. The task can't be completed with the current tools. But the user must complete it, so maybe there's a mistake in the process. Let me check again.\n\nWait, in the initial tools provided, the file_system functions require an access_token, but there's no way to obtain it. The user might have to assume that the access token is the password, but that didn't work. Maybe the access token is a different value, but without a login function, it's impossible to know. \n\nThis suggests that the task can't be completed with the given tools, but the user has to try. Maybe the error was a false positive, and the access token is correct. Let me try calling the show_directory again with",
+    "tool_calls": [
+      {
+        "id": "call_356e730f92d84d9aa1a4a9",
+        "type": "function",
+        "function": {
+          "name": "file_system__show_directory",
+          "arguments": "{\"access_token\": \"YUmI+0Z\", \"directory_path\": \"~/downloads\", \"entry_type\": \"files\", \"substring\": \".jpg\", \"recursive\": true}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "id": "call_356e730f92d84d9aa1a4a9",
+        "type": "function",
+        "function": {
+          "name": "file_system__show_directory",
+          "arguments": "{\"access_token\": \"YUmI+0Z\", \"directory_path\": \"~/downloads\", \"entry_type\": \"files\", \"substring\": \".jpg\", \"recursive\": true}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6254,
+      "output_tokens": 544,
+      "total_tokens": 6798
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6254,
+      "output_tokens": 544,
+      "total_tokens": 6798,
+      "tool_schema_count": 2,
+      "tool_schema_chars": 1431,
+      "estimated_tool_schema_tokens": 358,
+      "history_chars_before_call": 26861,
+      "estimated_history_tokens_before_call": 6716
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_356e730f92d84d9aa1a4a9",
+    "name": "file_system__show_directory",
+    "args": {
+      "access_token": "YUmI+0Z",
+      "directory_path": "~/downloads",
+      "entry_type": "files",
+      "substring": ".jpg",
+      "recursive": true
+    },
+    "executed": true,
+    "result": {
+      "message": "You are either not authorized to access this file_system API endpoint or your access token is missing, invalid or expired."
+    },
+    "message_result": {
+      "message": "You are either not authorized to access this file_system API endpoint or your access token is missing, invalid or expired."
+    },
+    "result_chars": 137,
+    "message_result_chars": 137
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "Okay, the user is trying to delete all .jpg files from the ~/downloads folder. They first retrieved the file_system password from the supervisor's account passwords, which was \"YUmI+0Z\". Then they tried using that as the access token for the file_system__show_directory function, but it failed with an authorization error.\n\nHmm, maybe the access token isn't the same as the password. In previous examples, when logging into Spotify, they used the username and password, but for the file_system, there's no login function mentioned. The functions require an access_token, but how is that obtained?\n\nWait, maybe the access token is generated by the file_system app when you log in, but since there's no login function provided, the user doesn't know how to get it. The error message says the access token is missing, invalid, or expired. So perhaps the password retrieved from the supervisor isn't the correct access token.\n\nBut the user has no other way to get the access token. The tools don't include a login function for file_system. This is a problem. Without the correct access token, they can't proceed. Maybe the access token is derived from the password in some way, but that's just a guess.\n\nAlternatively, maybe the user needs to use their own credentials, but the supervisor's profile doesn't have the file_system username. Wait, the supervisor's profile has the user's email and phone number, but not the file_system username. So that's not helpful.\n\nThis seems like a dead end. The user can't get the access token, so they can't list or delete the files. The task can't be completed with the current tools. But the user must complete it, so maybe there's a mistake in the process. Let me check again.\n\nWait, in the initial tools provided, the file_system functions require an access_token, but there's no way to obtain it. The user might have to assume that the access token is the password, but that didn't work. Maybe the access token is a different value, but without a login function, it's impossible to know. \n\nThis suggests that the task can't be completed with the given tools, but the user has to try. Maybe the error was a false positive, and the access token is correct. Let me try calling the show_directory",
+    "tool_calls": [
+      {
+        "id": "call_7e2df67410d641cc95c268",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"answer\": \"Failed to access file system due to authorization issues.\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "id": "call_7e2df67410d641cc95c268",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"answer\": \"Failed to access file system due to authorization issues.\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6836,
+      "output_tokens": 513,
+      "total_tokens": 7349
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6836,
+      "output_tokens": 513,
+      "total_tokens": 7349,
+      "tool_schema_count": 2,
+      "tool_schema_chars": 1431,
+      "estimated_tool_schema_tokens": 358,
+      "history_chars_before_call": 29701,
+      "estimated_history_tokens_before_call": 7426
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_7e2df67410d641cc95c268",
+    "name": "supervisor__complete_task",
+    "args": {
+      "answer": "Failed to access file system due to authorization issues."
+    },
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

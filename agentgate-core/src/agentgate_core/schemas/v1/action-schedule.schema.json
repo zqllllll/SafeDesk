@@ -1,0 +1,127 @@
+{
+  "$defs": {
+    "ScheduleDisposition": {
+      "enum": [
+        "execute",
+        "defer",
+        "replan",
+        "suppressed_pending_state_refresh"
+      ],
+      "title": "ScheduleDisposition",
+      "type": "string"
+    },
+    "ScheduledAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "disposition": {
+          "$ref": "#/$defs/ScheduleDisposition"
+        },
+        "execution_group": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execution Group"
+        },
+        "reason": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "unmet_action_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Unmet Action Ids",
+          "type": "array"
+        },
+        "unmet_evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Unmet Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "action_id",
+        "disposition",
+        "reason"
+      ],
+      "title": "ScheduledAction",
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/action-schedule.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actions": {
+      "items": {
+        "$ref": "#/$defs/ScheduledAction"
+      },
+      "minItems": 1,
+      "title": "Actions",
+      "type": "array"
+    },
+    "contains_write": {
+      "title": "Contains Write",
+      "type": "boolean"
+    },
+    "requires_state_refresh": {
+      "title": "Requires State Refresh",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state_version": {
+      "minimum": 1,
+      "title": "State Version",
+      "type": "integer"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "state_version",
+    "actions",
+    "contains_write",
+    "requires_state_refresh"
+  ],
+  "title": "ActionSchedule",
+  "type": "object"
+}

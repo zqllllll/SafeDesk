@@ -1,0 +1,2066 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "amazon.login\namazon.show_orders\nsimple_note.login\nsimple_note.search_notes\nsimple_note.show_note\nsimple_note.update_note\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "amazon.login",
+      "amazon.show_orders",
+      "simple_note.login",
+      "simple_note.search_notes",
+      "simple_note.show_note",
+      "simple_note.update_note",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile"
+    ],
+    "usage": {
+      "input_tokens": 7585,
+      "output_tokens": 53,
+      "total_tokens": 7638
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my profile info and current date/time.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_RvNrSLQJGSsuiebWtddH1215",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_ML4RX4q9hw89QSSHrbeV4131",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_CdowS9vLRkJhSsghadnv3227",
+        "type": "function",
+        "function": {
+          "name": "phone__get_current_date_and_time",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_RvNrSLQJGSsuiebWtddH1215",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_ML4RX4q9hw89QSSHrbeV4131",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5084,
+      "output_tokens": 81,
+      "total_tokens": 5165
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5084,
+      "output_tokens": 81,
+      "total_tokens": 5165,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 14475,
+      "estimated_history_tokens_before_call": 3619
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_RvNrSLQJGSsuiebWtddH1215",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Robert",
+      "last_name": "Martinez",
+      "email": "robertmartinez@gmail.com",
+      "phone_number": "7195945426",
+      "birthday": "1993-01-28",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "Robert",
+      "last_name": "Martinez",
+      "email": "robertmartinez@gmail.com",
+      "phone_number": "7195945426",
+      "birthday": "1993-01-28",
+      "sex": "male"
+    },
+    "result_chars": 157,
+    "message_result_chars": 157
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_ML4RX4q9hw89QSSHrbeV4131",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "KPYwxHe"
+      },
+      {
+        "account_name": "file_system",
+        "password": "SGNqY{T"
+      },
+      {
+        "account_name": "gmail",
+        "password": "nFzW$zu"
+      },
+      {
+        "account_name": "phone",
+        "password": "$DAuq3s"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "kmd&]aZ"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "]tnU*lT"
+      },
+      {
+        "account_name": "spotify",
+        "password": "nFG!Sep"
+      },
+      {
+        "account_name": "todoist",
+        "password": "XA&fo2H"
+      },
+      {
+        "account_name": "venmo",
+        "password": "f8E!V+1"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "KPYwxHe"
+      },
+      {
+        "account_name": "file_system",
+        "password": "SGNqY{T"
+      },
+      {
+        "account_name": "gmail",
+        "password": "nFzW$zu"
+      },
+      {
+        "account_name": "phone",
+        "password": "$DAuq3s"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "kmd&]aZ"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "]tnU*lT"
+      },
+      {
+        "account_name": "spotify",
+        "password": "nFG!Sep"
+      },
+      {
+        "account_name": "todoist",
+        "password": "XA&fo2H"
+      },
+      {
+        "account_name": "venmo",
+        "password": "f8E!V+1"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_02_CdowS9vLRkJhSsghadnv3227",
+    "name": "phone__get_current_date_and_time",
+    "args": {},
+    "executed": false,
+    "result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "message_result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "result_chars": 225,
+    "message_result_chars": 225
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "I don't have a phone API available. Let me check what tools I have. I'll log into Amazon and SimpleNote to get started.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qwJ47geyz8YYFzzQImMx9498",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"robertmartinez@gmail.com\", \"password\": \"KPYwxHe\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_sJXM8V0l2ZvLwPgUM1kR6847",
+        "type": "function",
+        "function": {
+          "name": "simple_note__login",
+          "arguments": "{\"username\": \"robertmartinez@gmail.com\", \"password\": \"kmd&]aZ\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_qwJ47geyz8YYFzzQImMx9498",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"robertmartinez@gmail.com\", \"password\": \"KPYwxHe\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_sJXM8V0l2ZvLwPgUM1kR6847",
+        "type": "function",
+        "function": {
+          "name": "simple_note__login",
+          "arguments": "{\"username\": \"robertmartinez@gmail.com\", \"password\": \"kmd&]aZ\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5466,
+      "output_tokens": 156,
+      "total_tokens": 5622
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5466,
+      "output_tokens": 156,
+      "total_tokens": 5622,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 16258,
+      "estimated_history_tokens_before_call": 4065
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_qwJ47geyz8YYFzzQImMx9498",
+    "name": "amazon__login",
+    "args": {
+      "username": "robertmartinez@gmail.com",
+      "password": "KPYwxHe"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcm9iZXJ0bWFydGluZXpAZ21haWwuY29tIiwiZXhwIjoxNjg1NTU0MDkxfQ.lju5M5eAyXmNyU8x87FO1S3E0bVw8iHE0RZPD1B4N3s",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcm9iZXJ0bWFydGluZXpAZ21haWwuY29tIiwiZXhwIjoxNjg1NTU0MDkxfQ.lju5M5eAyXmNyU8x87FO1S3E0bVw8iHE0RZPD1B4N3s",
+      "token_type": "Bearer"
+    },
+    "result_chars": 203,
+    "message_result_chars": 203
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_01_sJXM8V0l2ZvLwPgUM1kR6847",
+    "name": "simple_note__login",
+    "args": {
+      "username": "robertmartinez@gmail.com",
+      "password": "kmd&]aZ"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg",
+      "token_type": "Bearer"
+    },
+    "result_chars": 209,
+    "message_result_chars": 209
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "Now let me search for the SimpleNote note about monthly Amazon expenses.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_c0qW4kjbhE693K0UtxNj0006",
+        "type": "function",
+        "function": {
+          "name": "simple_note__search_notes",
+          "arguments": "{\"query\": \"monthly log total expenses Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_c0qW4kjbhE693K0UtxNj0006",
+        "type": "function",
+        "function": {
+          "name": "simple_note__search_notes",
+          "arguments": "{\"query\": \"monthly log total expenses Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5888,
+      "output_tokens": 190,
+      "total_tokens": 6078
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5888,
+      "output_tokens": 190,
+      "total_tokens": 6078,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 17440,
+      "estimated_history_tokens_before_call": 4360
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_c0qW4kjbhE693K0UtxNj0006",
+    "name": "simple_note__search_notes",
+    "args": {
+      "query": "monthly log total expenses Amazon",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg"
+    },
+    "executed": true,
+    "result": [
+      {
+        "note_id": 2206,
+        "title": "Habit Tracking Log for 2023-05-17",
+        "tags": [
+          "habit-tracker"
+        ],
+        "created_at": "2023-05-17T20:18:27",
+        "updated_at": "2023-05-17T20:18:27",
+        "pinned": true
+      },
+      {
+        "note_id": 3085,
+        "title": "Target Monthly Expenses",
+        "tags": [],
+        "created_at": "2023-05-29T20:52:42.999999",
+        "updated_at": "2023-05-29T20:52:42.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 3084,
+        "title": "Amazon Expenses per Months",
+        "tags": [],
+        "created_at": "2023-04-30T18:42:59.999999",
+        "updated_at": "2023-04-30T18:42:59.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 3086,
+        "title": "Amazon Interview Prep",
+        "tags": [
+          "interview",
+          "prep"
+        ],
+        "created_at": "2023-05-29T19:07:33.999999",
+        "updated_at": "2023-05-29T19:07:33.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 2199,
+        "title": "Gift Ideas for Various Occasions",
+        "tags": [
+          "shopping",
+          "list"
+        ],
+        "created_at": "2023-03-02T22:20:36",
+        "updated_at": "2023-03-02T22:20:36",
+        "pinned": false
+      }
+    ],
+    "message_result": [
+      {
+        "note_id": 2206,
+        "title": "Habit Tracking Log for 2023-05-17",
+        "tags": [
+          "habit-tracker"
+        ],
+        "created_at": "2023-05-17T20:18:27",
+        "updated_at": "2023-05-17T20:18:27",
+        "pinned": true
+      },
+      {
+        "note_id": 3085,
+        "title": "Target Monthly Expenses",
+        "tags": [],
+        "created_at": "2023-05-29T20:52:42.999999",
+        "updated_at": "2023-05-29T20:52:42.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 3084,
+        "title": "Amazon Expenses per Months",
+        "tags": [],
+        "created_at": "2023-04-30T18:42:59.999999",
+        "updated_at": "2023-04-30T18:42:59.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 3086,
+        "title": "Amazon Interview Prep",
+        "tags": [
+          "interview",
+          "prep"
+        ],
+        "created_at": "2023-05-29T19:07:33.999999",
+        "updated_at": "2023-05-29T19:07:33.999999",
+        "pinned": false
+      },
+      {
+        "note_id": 2199,
+        "title": "Gift Ideas for Various Occasions",
+        "tags": [
+          "shopping",
+          "list"
+        ],
+        "created_at": "2023-03-02T22:20:36",
+        "updated_at": "2023-03-02T22:20:36",
+        "pinned": false
+      }
+    ],
+    "result_chars": 903,
+    "message_result_chars": 903
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "I see \"Amazon Expenses per Months\" (note_id: 3084). Let me check its content.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_2y1JmBov3ziUbDMp1Rv81700",
+        "type": "function",
+        "function": {
+          "name": "simple_note__show_note",
+          "arguments": "{\"note_id\": 3084, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_2y1JmBov3ziUbDMp1Rv81700",
+        "type": "function",
+        "function": {
+          "name": "simple_note__show_note",
+          "arguments": "{\"note_id\": 3084, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6449,
+      "output_tokens": 195,
+      "total_tokens": 6644
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6449,
+      "output_tokens": 195,
+      "total_tokens": 6644,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 19037,
+      "estimated_history_tokens_before_call": 4760
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_2y1JmBov3ziUbDMp1Rv81700",
+    "name": "simple_note__show_note",
+    "args": {
+      "note_id": 3084,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg"
+    },
+    "executed": true,
+    "result": {
+      "note_id": 3084,
+      "title": "Amazon Expenses per Months",
+      "content": "# Amazon Expenses per Months\n- 11/22 => $1534.6\n- 12/22 => $1737.89\n- 01/23 => $1131.9\n- 02/23 => $1801.8\n- 03/23 => $2012.78\n- 04/23 => $297.0",
+      "tags": [],
+      "created_at": "2023-04-30T18:42:59.999999",
+      "updated_at": "2023-04-30T18:42:59.999999",
+      "pinned": false
+    },
+    "message_result": {
+      "note_id": 3084,
+      "title": "Amazon Expenses per Months",
+      "content": "# Amazon Expenses per Months\n- 11/22 => $1534.6\n- 12/22 => $1737.89\n- 01/23 => $1131.9\n- 02/23 => $1801.8\n- 03/23 => $2012.78\n- 04/23 => $297.0",
+      "tags": [],
+      "created_at": "2023-04-30T18:42:59.999999",
+      "updated_at": "2023-04-30T18:42:59.999999",
+      "pinned": false
+    },
+    "result_chars": 337,
+    "message_result_chars": 337
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "Great! So the note has monthly entries up to 04/23. I need to figure out what \"this month\" is. Since the last entry is 04/23 (April 2023), and the note was created on 2023-04-30, the current month is likely May 2023 (05/23). Let me get the Amazon orders to calculate this month's expenses.\n\nLet me search for orders. I'll look at orders from this month. Since the last entry is April 2023, \"this month\" would be May 2023. Let me get orders.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_mqQiWGdeA9K4F1Plu51i4561",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcm9iZXJ0bWFydGluZXpAZ21haWwuY29tIiwiZXhwIjoxNjg1NTU0MDkxfQ.lju5M5eAyXmNyU8x87FO1S3E0bVw8iHE0RZPD1B4N3s\", \"sort_by\": \"-created_at\", \"page_limit\": 20}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_mqQiWGdeA9K4F1Plu51i4561",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcm9iZXJ0bWFydGluZXpAZ21haWwuY29tIiwiZXhwIjoxNjg1NTU0MDkxfQ.lju5M5eAyXmNyU8x87FO1S3E0bVw8iHE0RZPD1B4N3s\", \"sort_by\": \"-created_at\", \"page_limit\": 20}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6804,
+      "output_tokens": 318,
+      "total_tokens": 7122
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6804,
+      "output_tokens": 318,
+      "total_tokens": 7122,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 19969,
+      "estimated_history_tokens_before_call": 4993
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_mqQiWGdeA9K4F1Plu51i4561",
+    "name": "amazon__show_orders",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcm9iZXJ0bWFydGluZXpAZ21haWwuY29tIiwiZXhwIjoxNjg1NTU0MDkxfQ.lju5M5eAyXmNyU8x87FO1S3E0bVw8iHE0RZPD1B4N3s",
+      "sort_by": "-created_at",
+      "page_limit": 20
+    },
+    "executed": true,
+    "result": [
+      {
+        "order_id": 3148,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 dish soap",
+        "tax": 0.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-26T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 8.3,
+        "order_items": [
+          {
+            "product_id": 762,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2023-05-27T17:06:04",
+            "delivered_at": "2023-05-27T17:06:04"
+          }
+        ]
+      },
+      {
+        "order_id": 3146,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "2 sweaters, 1 espresso machine",
+        "tax": 17.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-10T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 196.9,
+        "order_items": [
+          {
+            "product_id": 1010,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-05-13T19:26:33",
+            "delivered_at": "2023-05-13T19:26:33"
+          },
+          {
+            "product_id": 1371,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2023-05-14T18:58:59",
+            "delivered_at": "2023-05-14T18:58:59"
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 handheld vacuum cleaner",
+        "tax": 20.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-04T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 220.0,
+        "order_items": [
+          {
+            "product_id": 2602,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 200.0,
+            "expected_delivery_at": "2023-05-07T19:51:01",
+            "delivered_at": "2023-05-07T19:51:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3151,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "1 corkboard",
+        "tax": 1.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-27T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 11.0,
+        "order_items": [
+          {
+            "product_id": 561,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-04-30T17:38:23",
+            "delivered_at": "2023-04-30T17:38:23"
+          }
+        ]
+      },
+      {
+        "order_id": 3149,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "2 hammocks",
+        "tax": 14.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-24T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 154.0,
+        "order_items": [
+          {
+            "product_id": 2355,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 70.0,
+            "expected_delivery_at": "2023-04-30T17:21:29",
+            "delivered_at": "2023-04-30T17:21:29"
+          }
+        ]
+      },
+      {
+        "order_id": 3150,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "1 flip-flop",
+        "tax": 2.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-17T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 22.0,
+        "order_items": [
+          {
+            "product_id": 1836,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-04-24T18:04:04",
+            "delivered_at": "2023-04-24T18:04:04"
+          }
+        ]
+      },
+      {
+        "order_id": 2287,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 pressure cooker",
+        "tax": 10.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-16T07:15:42",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 110.0,
+        "order_items": [
+          {
+            "product_id": 2629,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-04-18T18:34:43",
+            "delivered_at": "2023-04-18T18:34:43"
+          }
+        ]
+      },
+      {
+        "order_id": 3153,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "3 snow goggles",
+        "tax": 74.7,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-25T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 821.7,
+        "order_items": [
+          {
+            "product_id": 1649,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-03-26T17:35:35",
+            "delivered_at": "2023-03-26T17:35:35"
+          }
+        ]
+      },
+      {
+        "order_id": 2282,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 toilet paper holder, 2 bath towels, 2 smart thermostats, 1 garbage disposal",
+        "tax": 68.28,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-15T09:16:35",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 751.08,
+        "order_items": [
+          {
+            "product_id": 303,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.8,
+            "expected_delivery_at": "2023-03-18T17:39:01",
+            "delivered_at": "2023-03-18T17:39:01"
+          },
+          {
+            "product_id": 555,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 21.0,
+            "expected_delivery_at": "2023-03-19T19:54:41",
+            "delivered_at": "2023-03-19T19:54:41"
+          },
+          {
+            "product_id": 1460,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-03-21T19:04:40",
+            "delivered_at": "2023-03-21T19:04:40"
+          },
+          {
+            "product_id": 2394,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-03-21T18:00:21",
+            "delivered_at": "2023-03-21T18:00:21"
+          }
+        ]
+      },
+      {
+        "order_id": 3152,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 file cabinets, 2 food dehydrators",
+        "tax": 40.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-12T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 440.0,
+        "order_items": [
+          {
+            "product_id": 766,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2023-03-16T17:04:13",
+            "delivered_at": "2023-03-16T17:04:13"
+          },
+          {
+            "product_id": 1428,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2023-03-16T17:21:49",
+            "delivered_at": "2023-03-16T17:21:49"
+          }
+        ]
+      },
+      {
+        "order_id": 3154,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 bath towels, 2 dish soaps, 3 espresso machines",
+        "tax": 142.8,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-28T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1570.8,
+        "order_items": [
+          {
+            "product_id": 560,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-03-05T17:17:34",
+            "delivered_at": "2023-03-05T17:17:34"
+          },
+          {
+            "product_id": 762,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2023-03-01T17:04:51",
+            "delivered_at": "2023-03-01T17:04:51"
+          },
+          {
+            "product_id": 1375,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 449.0,
+            "expected_delivery_at": "2023-03-03T18:36:46",
+            "delivered_at": "2023-03-03T18:36:46"
+          }
+        ]
+      },
+      {
+        "order_id": 3155,
+        "address_id": 154,
+        "payment_card_id": 345,
+        "name": "2 flip-flops, 3 air mattresses",
+        "tax": 21.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "9020",
+        "paid_amount": 231.0,
+        "order_items": [
+          {
+            "product_id": 1891,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-02-12T17:47:25",
+            "delivered_at": "2023-02-12T17:47:25"
+          },
+          {
+            "product_id": 2326,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2023-02-15T19:40:58",
+            "delivered_at": "2023-02-15T19:40:58"
+          }
+        ]
+      },
+      {
+        "order_id": 3158,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 tambourine, 2 face shields, 1 snow goggle",
+        "tax": 33.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-15T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 372.9,
+        "order_items": [
+          {
+            "product_id": 716,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-01-19T19:51:32",
+            "delivered_at": "2023-01-19T19:51:32"
+          },
+          {
+            "product_id": 728,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-01-16T17:49:43",
+            "delivered_at": "2023-01-16T17:49:43"
+          },
+          {
+            "product_id": 1649,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-01-16T17:19:39",
+            "delivered_at": "2023-01-16T17:19:39"
+          }
+        ]
+      },
+      {
+        "order_id": 3157,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 portable camping grills",
+        "tax": 45.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-13T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 495.0,
+        "order_items": [
+          {
+            "product_id": 2537,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 150.0,
+            "expected_delivery_at": "2023-01-17T18:54:10",
+            "delivered_at": "2023-01-17T18:54:10"
+          }
+        ]
+      },
+      {
+        "order_id": 3156,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "2 picnic baskets, 2 waffle makers",
+        "tax": 24.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-11T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 264.0,
+        "order_items": [
+          {
+            "product_id": 524,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-01-15T18:39:40",
+            "delivered_at": "2023-01-15T18:39:40"
+          },
+          {
+            "product_id": 1556,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-01-18T17:03:19",
+            "delivered_at": "2023-01-18T17:03:19"
+          }
+        ]
+      },
+      {
+        "order_id": 3159,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "2 gaming mice",
+        "tax": 8.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-30T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 88.0,
+        "order_items": [
+          {
+            "product_id": 440,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-01-06T19:46:18",
+            "delivered_at": "2023-01-06T19:46:18"
+          }
+        ]
+      },
+      {
+        "order_id": 2281,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 jigsaw puzzle, 2 water filter pitchers, 1 espresso machine",
+        "tax": 48.99,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-24T06:32:19",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 538.89,
+        "order_items": [
+          {
+            "product_id": 381,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-31T19:36:05",
+            "delivered_at": "2022-12-31T19:36:05"
+          },
+          {
+            "product_id": 383,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-12-28T19:46:03",
+            "delivered_at": "2022-12-28T19:46:03"
+          },
+          {
+            "product_id": 1374,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 349.9,
+            "expected_delivery_at": "2022-12-30T17:47:20",
+            "delivered_at": "2022-12-30T17:47:20"
+          }
+        ]
+      },
+      {
+        "order_id": 2286,
+        "address_id": 154,
+        "payment_card_id": 345,
+        "name": "1 soap dispenser",
+        "tax": 7.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-14T01:44:42",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "9020",
+        "paid_amount": 77.0,
+        "order_items": [
+          {
+            "product_id": 2220,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 70.0,
+            "expected_delivery_at": "2022-12-20T17:14:30",
+            "delivered_at": "2022-12-20T17:14:30"
+          }
+        ]
+      },
+      {
+        "order_id": 3160,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 frying pans, 2 fitness trackers, 1 e-reader",
+        "tax": 94.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-02T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1034.0,
+        "order_items": [
+          {
+            "product_id": 604,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2022-12-09T17:40:51",
+            "delivered_at": "2022-12-09T17:40:51"
+          },
+          {
+            "product_id": 2427,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2022-12-04T17:48:50",
+            "delivered_at": "2022-12-04T17:48:50"
+          },
+          {
+            "product_id": 2637,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 250.0,
+            "expected_delivery_at": "2022-12-06T17:29:05",
+            "delivered_at": "2022-12-06T17:29:05"
+          }
+        ]
+      },
+      {
+        "order_id": 2291,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "2 teapots, 2 sewing machines",
+        "tax": 96.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-29T16:12:18",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1056.0,
+        "order_items": [
+          {
+            "product_id": 512,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-11-30T19:48:41",
+            "delivered_at": "2022-11-30T19:48:41"
+          },
+          {
+            "product_id": 1507,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 400.0,
+            "expected_delivery_at": "2022-11-30T18:40:41",
+            "delivered_at": "2022-11-30T18:40:41"
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "order_id": 3148,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 dish soap",
+        "tax": 0.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-26T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 8.3,
+        "order_items": [
+          {
+            "product_id": 762,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2023-05-27T17:06:04",
+            "delivered_at": "2023-05-27T17:06:04"
+          }
+        ]
+      },
+      {
+        "order_id": 3146,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "2 sweaters, 1 espresso machine",
+        "tax": 17.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-10T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 196.9,
+        "order_items": [
+          {
+            "product_id": 1010,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-05-13T19:26:33",
+            "delivered_at": "2023-05-13T19:26:33"
+          },
+          {
+            "product_id": 1371,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2023-05-14T18:58:59",
+            "delivered_at": "2023-05-14T18:58:59"
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 handheld vacuum cleaner",
+        "tax": 20.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-04T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 220.0,
+        "order_items": [
+          {
+            "product_id": 2602,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 200.0,
+            "expected_delivery_at": "2023-05-07T19:51:01",
+            "delivered_at": "2023-05-07T19:51:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3151,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "1 corkboard",
+        "tax": 1.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-27T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 11.0,
+        "order_items": [
+          {
+            "product_id": 561,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-04-30T17:38:23",
+            "delivered_at": "2023-04-30T17:38:23"
+          }
+        ]
+      },
+      {
+        "order_id": 3149,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "2 hammocks",
+        "tax": 14.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-24T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 154.0,
+        "order_items": [
+          {
+            "product_id": 2355,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 70.0,
+            "expected_delivery_at": "2023-04-30T17:21:29",
+            "delivered_at": "2023-04-30T17:21:29"
+          }
+        ]
+      },
+      {
+        "order_id": 3150,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "1 flip-flop",
+        "tax": 2.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-17T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 22.0,
+        "order_items": [
+          {
+            "product_id": 1836,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-04-24T18:04:04",
+            "delivered_at": "2023-04-24T18:04:04"
+          }
+        ]
+      },
+      {
+        "order_id": 2287,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "1 pressure cooker",
+        "tax": 10.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-16T07:15:42",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 110.0,
+        "order_items": [
+          {
+            "product_id": 2629,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-04-18T18:34:43",
+            "delivered_at": "2023-04-18T18:34:43"
+          }
+        ]
+      },
+      {
+        "order_id": 3153,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "3 snow goggles",
+        "tax": 74.7,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-25T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 821.7,
+        "order_items": [
+          {
+            "product_id": 1649,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-03-26T17:35:35",
+            "delivered_at": "2023-03-26T17:35:35"
+          }
+        ]
+      },
+      {
+        "order_id": 2282,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 toilet paper holder, 2 bath towels, 2 smart thermostats, 1 garbage disposal",
+        "tax": 68.28,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-15T09:16:35",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 751.08,
+        "order_items": [
+          {
+            "product_id": 303,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.8,
+            "expected_delivery_at": "2023-03-18T17:39:01",
+            "delivered_at": "2023-03-18T17:39:01"
+          },
+          {
+            "product_id": 555,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 21.0,
+            "expected_delivery_at": "2023-03-19T19:54:41",
+            "delivered_at": "2023-03-19T19:54:41"
+          },
+          {
+            "product_id": 1460,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-03-21T19:04:40",
+            "delivered_at": "2023-03-21T19:04:40"
+          },
+          {
+            "product_id": 2394,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-03-21T18:00:21",
+            "delivered_at": "2023-03-21T18:00:21"
+          }
+        ]
+      },
+      {
+        "order_id": 3152,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 file cabinets, 2 food dehydrators",
+        "tax": 40.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-12T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 440.0,
+        "order_items": [
+          {
+            "product_id": 766,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2023-03-16T17:04:13",
+            "delivered_at": "2023-03-16T17:04:13"
+          },
+          {
+            "product_id": 1428,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2023-03-16T17:21:49",
+            "delivered_at": "2023-03-16T17:21:49"
+          }
+        ]
+      },
+      {
+        "order_id": 3154,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 bath towels, 2 dish soaps, 3 espresso machines",
+        "tax": 142.8,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-28T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1570.8,
+        "order_items": [
+          {
+            "product_id": 560,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-03-05T17:17:34",
+            "delivered_at": "2023-03-05T17:17:34"
+          },
+          {
+            "product_id": 762,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2023-03-01T17:04:51",
+            "delivered_at": "2023-03-01T17:04:51"
+          },
+          {
+            "product_id": 1375,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 449.0,
+            "expected_delivery_at": "2023-03-03T18:36:46",
+            "delivered_at": "2023-03-03T18:36:46"
+          }
+        ]
+      },
+      {
+        "order_id": 3155,
+        "address_id": 154,
+        "payment_card_id": 345,
+        "name": "2 flip-flops, 3 air mattresses",
+        "tax": 21.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "9020",
+        "paid_amount": 231.0,
+        "order_items": [
+          {
+            "product_id": 1891,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-02-12T17:47:25",
+            "delivered_at": "2023-02-12T17:47:25"
+          },
+          {
+            "product_id": 2326,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2023-02-15T19:40:58",
+            "delivered_at": "2023-02-15T19:40:58"
+          }
+        ]
+      },
+      {
+        "order_id": 3158,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 tambourine, 2 face shields, 1 snow goggle",
+        "tax": 33.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-15T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 372.9,
+        "order_items": [
+          {
+            "product_id": 716,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-01-19T19:51:32",
+            "delivered_at": "2023-01-19T19:51:32"
+          },
+          {
+            "product_id": 728,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-01-16T17:49:43",
+            "delivered_at": "2023-01-16T17:49:43"
+          },
+          {
+            "product_id": 1649,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 249.0,
+            "expected_delivery_at": "2023-01-16T17:19:39",
+            "delivered_at": "2023-01-16T17:19:39"
+          }
+        ]
+      },
+      {
+        "order_id": 3157,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 portable camping grills",
+        "tax": 45.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-13T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 495.0,
+        "order_items": [
+          {
+            "product_id": 2537,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 150.0,
+            "expected_delivery_at": "2023-01-17T18:54:10",
+            "delivered_at": "2023-01-17T18:54:10"
+          }
+        ]
+      },
+      {
+        "order_id": 3156,
+        "address_id": 153,
+        "payment_card_id": 345,
+        "name": "2 picnic baskets, 2 waffle makers",
+        "tax": 24.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-11T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "9020",
+        "paid_amount": 264.0,
+        "order_items": [
+          {
+            "product_id": 524,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-01-15T18:39:40",
+            "delivered_at": "2023-01-15T18:39:40"
+          },
+          {
+            "product_id": 1556,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-01-18T17:03:19",
+            "delivered_at": "2023-01-18T17:03:19"
+          }
+        ]
+      },
+      {
+        "order_id": 3159,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "2 gaming mice",
+        "tax": 8.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-30T00:00:00",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 88.0,
+        "order_items": [
+          {
+            "product_id": 440,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-01-06T19:46:18",
+            "delivered_at": "2023-01-06T19:46:18"
+          }
+        ]
+      },
+      {
+        "order_id": 2281,
+        "address_id": 153,
+        "payment_card_id": 344,
+        "name": "1 jigsaw puzzle, 2 water filter pitchers, 1 espresso machine",
+        "tax": 48.99,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-24T06:32:19",
+        "address_text": "26157 Camacho Ports Suite 673\nSeattle\nWashington\nUnited States\n73233",
+        "payment_card_digits": "4009",
+        "paid_amount": 538.89,
+        "order_items": [
+          {
+            "product_id": 381,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-31T19:36:05",
+            "delivered_at": "2022-12-31T19:36:05"
+          },
+          {
+            "product_id": 383,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-12-28T19:46:03",
+            "delivered_at": "2022-12-28T19:46:03"
+          },
+          {
+            "product_id": 1374,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 349.9,
+            "expected_delivery_at": "2022-12-30T17:47:20",
+            "delivered_at": "2022-12-30T17:47:20"
+          }
+        ]
+      },
+      {
+        "order_id": 2286,
+        "address_id": 154,
+        "payment_card_id": 345,
+        "name": "1 soap dispenser",
+        "tax": 7.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-14T01:44:42",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "9020",
+        "paid_amount": 77.0,
+        "order_items": [
+          {
+            "product_id": 2220,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 70.0,
+            "expected_delivery_at": "2022-12-20T17:14:30",
+            "delivered_at": "2022-12-20T17:14:30"
+          }
+        ]
+      },
+      {
+        "order_id": 3160,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "3 frying pans, 2 fitness trackers, 1 e-reader",
+        "tax": 94.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-02T00:00:00",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1034.0,
+        "order_items": [
+          {
+            "product_id": 604,
+            "ordered_quantity": 3,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2022-12-09T17:40:51",
+            "delivered_at": "2022-12-09T17:40:51"
+          },
+          {
+            "product_id": 2427,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2022-12-04T17:48:50",
+            "delivered_at": "2022-12-04T17:48:50"
+          },
+          {
+            "product_id": 2637,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 250.0,
+            "expected_delivery_at": "2022-12-06T17:29:05",
+            "delivered_at": "2022-12-06T17:29:05"
+          }
+        ]
+      },
+      {
+        "order_id": 2291,
+        "address_id": 154,
+        "payment_card_id": 344,
+        "name": "2 teapots, 2 sewing machines",
+        "tax": 96.0,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-29T16:12:18",
+        "address_text": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "payment_card_digits": "4009",
+        "paid_amount": 1056.0,
+        "order_items": [
+          {
+            "product_id": 512,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-11-30T19:48:41",
+            "delivered_at": "2022-11-30T19:48:41"
+          },
+          {
+            "product_id": 1507,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 400.0,
+            "expected_delivery_at": "2022-11-30T18:40:41",
+            "delivered_at": "2022-11-30T18:40:41"
+          }
+        ]
+      }
+    ],
+    "result_chars": 14495,
+    "message_result_chars": 14495
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "I can see the orders. The last entry in the note is \"04/23 => $297.0\". Looking at the orders, I can see orders from May 2023 (05/23):\n\n1. Order 3147 - 2023-05-04 - $220.0\n2. Order 3146 - 2023-05-10 - $196.9\n3. Order 3148 - 2023-05-26 - $8.3\n\nLet me calculate the total for May 2023: $220.0 + $196.9 + $8.3 = $425.2\n\nNow let me update the note with this month's entry.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_dU4aDqo88BA5sd7M3eSF8763",
+        "type": "function",
+        "function": {
+          "name": "simple_note__update_note",
+          "arguments": "{\"note_id\": 3084, \"title\": \"Amazon Expenses per Months\", \"content\": \"# Amazon Expenses per Months\\n- 11/22 => $1534.6\\n- 12/22 => $1737.89\\n- 01/23 => $1131.9\\n- 02/23 => $1801.8\\n- 03/23 => $2012.78\\n- 04/23 => $297.0\\n- 05/23 => $425.2\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_dU4aDqo88BA5sd7M3eSF8763",
+        "type": "function",
+        "function": {
+          "name": "simple_note__update_note",
+          "arguments": "{\"note_id\": 3084, \"title\": \"Amazon Expenses per Months\", \"content\": \"# Amazon Expenses per Months\\n- 11/22 => $1534.6\\n- 12/22 => $1737.89\\n- 01/23 => $1131.9\\n- 02/23 => $1801.8\\n- 03/23 => $2012.78\\n- 04/23 => $297.0\\n- 05/23 => $425.2\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 13057,
+      "output_tokens": 439,
+      "total_tokens": 13496
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 13057,
+      "output_tokens": 439,
+      "total_tokens": 13496,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 36828,
+      "estimated_history_tokens_before_call": 9207
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_dU4aDqo88BA5sd7M3eSF8763",
+    "name": "simple_note__update_note",
+    "args": {
+      "note_id": 3084,
+      "title": "Amazon Expenses per Months",
+      "content": "# Amazon Expenses per Months\n- 11/22 => $1534.6\n- 12/22 => $1737.89\n- 01/23 => $1131.9\n- 02/23 => $1801.8\n- 03/23 => $2012.78\n- 04/23 => $297.0\n- 05/23 => $425.2",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1wbGVfbm90ZStyb2JlcnRtYXJ0aW5lekBnbWFpbC5jb20iLCJleHAiOjE2ODU1NTQ3MzR9.aEZl_SvCyVVFm72OkaPrY0RSwtnUDF6b_WGwajzhMCg"
+    },
+    "executed": true,
+    "result": {
+      "message": "Note updated."
+    },
+    "message_result": {
+      "message": "Note updated."
+    },
+    "result_chars": 28,
+    "message_result_chars": 28
+  },
+  {
+    "turn": 7,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_1gvpYdmFJURAJMlO9ixl0617",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_1gvpYdmFJURAJMlO9ixl0617",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 13515,
+      "output_tokens": 30,
+      "total_tokens": 13545
+    },
+    "request_stats": {
+      "turn": 7,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 13515,
+      "output_tokens": 30,
+      "total_tokens": 13545,
+      "tool_schema_count": 9,
+      "tool_schema_chars": 5534,
+      "estimated_tool_schema_tokens": 1384,
+      "history_chars_before_call": 37964,
+      "estimated_history_tokens_before_call": 9491
+    }
+  },
+  {
+    "turn": 7,
+    "role": "tool",
+    "tool_call_id": "call_00_1gvpYdmFJURAJMlO9ixl0617",
+    "name": "supervisor__complete_task",
+    "args": {},
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

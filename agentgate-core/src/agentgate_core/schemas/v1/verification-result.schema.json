@@ -1,0 +1,306 @@
+{
+  "$defs": {
+    "DifferenceKind": {
+      "enum": [
+        "missing",
+        "unexpected",
+        "different",
+        "type_mismatch"
+      ],
+      "title": "DifferenceKind",
+      "type": "string"
+    },
+    "EffectKind": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "send",
+        "submit",
+        "session",
+        "other"
+      ],
+      "title": "EffectKind",
+      "type": "string"
+    },
+    "FieldDifference": {
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "$ref": "#/$defs/JsonValue",
+          "default": null
+        },
+        "kind": {
+          "$ref": "#/$defs/DifferenceKind"
+        },
+        "observed": {
+          "$ref": "#/$defs/JsonValue",
+          "default": null
+        },
+        "path": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "kind"
+      ],
+      "title": "FieldDifference",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ObservedEffect": {
+      "additionalProperties": false,
+      "properties": {
+        "change": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Change",
+          "type": "object"
+        },
+        "kind": {
+          "$ref": "#/$defs/EffectKind"
+        },
+        "operation": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation",
+          "type": "string"
+        },
+        "resolution_status": {
+          "$ref": "#/$defs/UnexpectedEffectStatus",
+          "default": "observed"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceRef"
+        }
+      },
+      "required": [
+        "kind",
+        "operation",
+        "resource"
+      ],
+      "title": "ObservedEffect",
+      "type": "object"
+    },
+    "ResourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Id"
+        },
+        "resource_type": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        }
+      },
+      "required": [
+        "resource_type"
+      ],
+      "title": "ResourceRef",
+      "type": "object"
+    },
+    "UnexpectedEffectStatus": {
+      "description": "Resolution lifecycle for an unexpected observed side effect.",
+      "enum": [
+        "observed",
+        "rollback_pending",
+        "rolled_back",
+        "policy_accepted",
+        "unresolved"
+      ],
+      "title": "UnexpectedEffectStatus",
+      "type": "string"
+    },
+    "VerificationStatus": {
+      "enum": [
+        "verified",
+        "mismatch",
+        "unknown",
+        "error"
+      ],
+      "title": "VerificationStatus",
+      "type": "string"
+    },
+    "VerificationType": {
+      "enum": [
+        "action",
+        "goal",
+        "invariant",
+        "trace"
+      ],
+      "title": "VerificationType",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/verification-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Action Id"
+    },
+    "checked_at": {
+      "format": "date-time",
+      "title": "Checked At",
+      "type": "string"
+    },
+    "differences": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/FieldDifference"
+      },
+      "title": "Differences",
+      "type": "array"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Code"
+    },
+    "error_message": {
+      "anyOf": [
+        {
+          "maxLength": 20000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Message"
+    },
+    "evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "expected_state": {
+      "$ref": "#/$defs/JsonValue"
+    },
+    "observed_state": {
+      "$ref": "#/$defs/JsonValue",
+      "default": null
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/VerificationStatus"
+    },
+    "target_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Target Id",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "unintended_effects": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ObservedEffect"
+      },
+      "title": "Unintended Effects",
+      "type": "array"
+    },
+    "verification_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Verification Id",
+      "type": "string"
+    },
+    "verification_type": {
+      "$ref": "#/$defs/VerificationType"
+    },
+    "verifier_name": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Verifier Name",
+      "type": "string"
+    },
+    "verifier_version": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Verifier Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "verification_id",
+    "task_id",
+    "verification_type",
+    "target_id",
+    "verifier_name",
+    "verifier_version",
+    "expected_state",
+    "status"
+  ],
+  "title": "VerificationResult",
+  "type": "object"
+}

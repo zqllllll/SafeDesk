@@ -1,0 +1,88 @@
+{
+  "$defs": {
+    "ContextBudgetStatus": {
+      "enum": [
+        "within_budget",
+        "soft_exceeded",
+        "hard_exceeded"
+      ],
+      "title": "ContextBudgetStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/token-budget-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dropped_section_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Dropped Section Ids",
+      "type": "array"
+    },
+    "estimated_input_tokens": {
+      "minimum": 0,
+      "title": "Estimated Input Tokens",
+      "type": "integer"
+    },
+    "hard_limit": {
+      "minimum": 1,
+      "title": "Hard Limit",
+      "type": "integer"
+    },
+    "projected_section_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Projected Section Ids",
+      "type": "array"
+    },
+    "reserved_output_tokens": {
+      "minimum": 0,
+      "title": "Reserved Output Tokens",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "section_tokens": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "propertyNames": {
+        "maxLength": 256,
+        "minLength": 1
+      },
+      "title": "Section Tokens",
+      "type": "object"
+    },
+    "soft_limit": {
+      "minimum": 1,
+      "title": "Soft Limit",
+      "type": "integer"
+    },
+    "status": {
+      "$ref": "#/$defs/ContextBudgetStatus"
+    }
+  },
+  "required": [
+    "soft_limit",
+    "hard_limit",
+    "estimated_input_tokens",
+    "reserved_output_tokens",
+    "status"
+  ],
+  "title": "TokenBudgetReport",
+  "type": "object"
+}

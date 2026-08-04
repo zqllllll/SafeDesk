@@ -1,0 +1,152 @@
+{
+  "$defs": {
+    "CompletionBlocker": {
+      "additionalProperties": false,
+      "properties": {
+        "blocker_type": {
+          "$ref": "#/$defs/CompletionBlockerType"
+        },
+        "explanation": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "reference_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reference Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "blocker_type",
+        "reference_id",
+        "explanation"
+      ],
+      "title": "CompletionBlocker",
+      "type": "object"
+    },
+    "CompletionBlockerType": {
+      "enum": [
+        "missing_task_contract",
+        "required_subgoal_not_verified",
+        "completion_condition_not_verified",
+        "effect_not_verified",
+        "unresolved_failure",
+        "pending_confirmation",
+        "pending_approval",
+        "evidence_conflict",
+        "unintended_effect",
+        "duplicate_irreversible_effect"
+      ],
+      "title": "CompletionBlockerType",
+      "type": "string"
+    },
+    "FeatureMode": {
+      "enum": [
+        "off",
+        "shadow",
+        "enforce"
+      ],
+      "title": "FeatureMode",
+      "type": "string"
+    },
+    "TaskPhase": {
+      "enum": [
+        "collect",
+        "act",
+        "verify",
+        "repair",
+        "complete",
+        "blocked",
+        "failed"
+      ],
+      "title": "TaskPhase",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/completion-gate-decision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blockers": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CompletionBlocker"
+      },
+      "title": "Blockers",
+      "type": "array"
+    },
+    "checked_at": {
+      "format": "date-time",
+      "title": "Checked At",
+      "type": "string"
+    },
+    "decision_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "effective_allowed": {
+      "title": "Effective Allowed",
+      "type": "boolean"
+    },
+    "evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "mode": {
+      "$ref": "#/$defs/FeatureMode"
+    },
+    "proposed_allowed": {
+      "title": "Proposed Allowed",
+      "type": "boolean"
+    },
+    "recommended_phase": {
+      "$ref": "#/$defs/TaskPhase"
+    },
+    "run_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "task_id",
+    "run_id",
+    "mode",
+    "proposed_allowed",
+    "effective_allowed",
+    "recommended_phase"
+  ],
+  "title": "CompletionGateDecision",
+  "type": "object"
+}

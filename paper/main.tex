@@ -1,0 +1,850 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% The bundled offline compiler lacks only ec-lmr6.tfm; use the adjacent
+% optical size for 6pt subscripts while retaining the standard arXiv font stack.
+\DeclareFontShape{T1}{lmr}{m}{n}{%
+  <-5.5> ec-lmr5
+  <5.5-7.5> ec-lmr7
+  <7.5-8.5> ec-lmr8
+  <8.5-9.5> ec-lmr9
+  <9.5-11> ec-lmr10
+  <11-15> ec-lmr12
+  <15-> ec-lmr17}{}
+\usepackage{microtype}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\crefname{table}{Table}{Tables}
+\crefname{figure}{Figure}{Figures}
+\crefname{section}{Section}{Sections}
+
+\input{results_macros}
+\input{author_metadata}
+
+\definecolor{safeblue}{HTML}{276FBF}
+\definecolor{safegreen}{HTML}{2A9D8F}
+\definecolor{safecoral}{HTML}{C8553D}
+\definecolor{safegold}{HTML}{B77900}
+\definecolor{safelight}{HTML}{F3F5F7}
+\definecolor{safedark}{HTML}{263442}
+
+\hypersetup{
+  pdftitle={SafeDesk: Evidence-Grounded Runtime Governance for Long-Horizon Tool-Using Agents},
+  pdfauthor={\PaperAuthors},
+  pdfsubject={Runtime governance for reliable tool-using language-model agents},
+  pdfkeywords={LLM agents, tool calling, runtime governance, verification, recovery, context management},
+  colorlinks=true,
+  linkcolor=safeblue,
+  citecolor=safeblue,
+  urlcolor=safeblue
+}
+
+\captionsetup{hypcap=false,font=small,labelfont=bf}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\safedesk}{SafeDesk}
+\newcommand{\tgc}{\mathrm{TGC}}
+\newcommand{\sgc}{\mathrm{SGC}}
+\newcommand{\code}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{1.5em}
+\setlist{leftmargin=*,itemsep=2pt,topsep=3pt}
+
+\title{\safedesk: Evidence-Grounded Runtime Governance\\
+for Long-Horizon Tool-Using Agents\\[0.45em]
+\large Runtime Design, Prototype Tests, and a Proposed Evaluation Protocol}
+\author{\PaperAuthors%
+  \ifdefempty{\PaperAffiliation}{}{\\\small\PaperAffiliation}%
+  \ifdefempty{\PaperEmail}{}{\\\small\texttt{\PaperEmail}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\ifdefempty{\CodeRepository}{}{\begin{center}\small Code: \url{\CodeRepository}\end{center}}
+
+\begin{abstract}
+Long-horizon tool-using agents fail through more than isolated reasoning errors:
+goals drift, subgoals are omitted, invalid calls are proposed, side effects are
+repeated, failures trigger blind retries, completion is asserted without evidence,
+and growing histories bury critical constraints. We introduce \safedesk, a
+model-interface-agnostic runtime governance layer that leaves model weights unchanged and
+coordinates four modules: State \& Verification, Tool Execution Guard, Recovery
+Controller, and Context Manager. The runtime separates model-proposed actions,
+runtime-authorized execution and completion, and evaluator-confirmed outcomes.
+It induces a task contract, tracks admissible evidence and write effects,
+validates and schedules calls before execution, applies typed recovery after
+classified failures, and assembles bounded model contexts without discarding hard
+constraints. Completion is permitted only when required goals, effects, evidence,
+and policy conditions are satisfied.
+We implement a locally unit-tested runtime prototype, validate one deterministic
+end-to-end mock scenario over \PrototypeValidationRepetitionCount{} repetitions,
+and unit-test schema conversion against the AppWorld public API catalog. We also
+specify a proposed, resource-capped protocol for AppWorld and $\tau^2$-bench. A
+historical AppWorld diagnostic is retained only in
+the appendix and is not a SafeDesk comparison. We make no claim here that
+SafeDesk improves benchmark performance: that claim requires a newly constructed,
+independently administered held-out evaluation with interleaved conditions and
+recorded provider response metadata. The resulting artifact is a falsifiable
+runtime design, a locally tested prototype, and a prespecified protocol for
+studying whether governance complements stronger models and agentic training
+without updating model weights.
+\end{abstract}
+
+\section{Introduction}
+
+The central reliability gap in tool agents is not simply whether a language model
+can generate a plausible API call. It is whether a multi-step execution lifecycle
+preserves the user's goals, obeys policy, controls side effects, verifies state,
+recovers from failures, and terminates on evidence. AppWorld exposes this gap with
+\AWAppCount{} applications, \AWAPICount{} APIs, cross-application tasks, and
+state-based evaluators \citep{trivedi2024appworld}. $\tau^2$-bench adds dual-control,
+text-based half-duplex collaboration among a user, an agent, and domain tools
+under business policies \citep{barres2025tau2,yao2024taubench}. Together they
+distinguish syntactically valid tool use
+from reliable task execution.
+
+Consider a request to create a calendar event and notify its attendees. An agent
+may omit the notification subgoal, submit a creation call with a missing field,
+retry by creating a second event, trust a nominal success response without reading
+the calendar back, and then declare completion. Each local action may look
+plausible, yet the final environment contains a duplicate event and no notification.
+A stronger prompt or a larger turn cap does not systematically track the omitted
+goal, prevent the duplicate write, establish the postcondition, or ensure that the
+final claim matches the persisted state.
+
+We study the following question: \emph{Can a model-interface-agnostic runtime improve
+long-horizon task completion, execution reliability, and resource efficiency
+without updating model weights?} Training and agentic reinforcement learning can
+improve the model's proposal distribution, but deployed systems still need
+deterministic controls over what is executed, what is believed, and when completion
+is allowed.
+
+\safedesk{} addresses this execution layer through four composable modules. State
+\& Verification maintains an explicit contract, evidence, and effects. Tool
+Execution Guard validates and schedules calls before they reach the environment.
+Recovery Controller classifies failures and applies bounded, typed recovery.
+Context Manager reconstructs a compact model-facing view while preserving hard
+invariants. The same runtime hook records every proposal, disposition, state
+transition, and evaluator-facing artifact.
+
+Our contributions are fourfold:
+\begin{enumerate}
+  \item \textbf{Runtime abstraction.} We separate task state, admissible evidence,
+        side effects, failure state, and model context rather than treating message
+        history as the only execution state.
+  \item \textbf{Four governance modules.} We design composable controls for state
+        verification, tool execution, typed recovery, and bounded context.
+  \item \textbf{Runtime interface and prototype adapters.} We provide a
+        framework-neutral interface design, Action IR, structured traces, a
+        unit-tested AppWorld adapter prototype, and prototype benchmark adapters; their
+        tested scope and untested end-to-end boundary are reported explicitly.
+  \item \textbf{Falsifiable evaluation protocol.} We specify a future held-out,
+        interleaved, fixed-resource comparison with leave-one-out ablations and
+        analyses of completion, invalid calls, side effects, stagnation, and token cost.
+\end{enumerate}
+
+\section{Related Work}
+
+\subsection{Reasoning and recovery agents}
+
+ReAct interleaves reasoning and environmental action
+\citep{yao2023react}; Reflexion uses verbal feedback across attempts
+\citep{shinn2023reflexion}; and CRITIC revises outputs using tool-mediated critique
+\citep{gou2023critic}. Voyager combines an automatic curriculum, a reusable skill
+library, and environment-feedback-driven program refinement
+\citep{wang2023voyager}. ReWOO separates planning from observations to reduce
+repeated prompting and tool interleaving cost \citep{xu2023rewoo}. These methods
+improve reasoning traces, feedback, plans, or reflection over tool results.
+\safedesk{} is complementary: an external runtime can deterministically reject,
+defer, verify, or recover a proposed action regardless of how the proposal was generated.
+
+\subsection{Agent safety and guardrails}
+
+ToolEmu uses an LM-emulated sandbox and evaluator to expose risky tool-agent
+behavior \citep{ruan2024toolemu}. GuardAgent translates guard requests into
+executable checks around another agent \citep{xiang2025guardagent}. Tool input and
+output guardrails commonly validate schemas, filter sensitive fields, and enforce
+local policy; durable workflow systems additionally rely on idempotent effects and
+explicit retry boundaries. \safedesk{} extends the protected surface beyond a
+single action: it governs task induction, dependency ordering, effect identity,
+post-action verification, recovery, completion, and grounded response generation.
+
+\subsection{Harness-level systems and evaluation}
+
+Harness-Bench measures how realistic agent workflows change across harness
+configurations while holding task environments, budgets, and evaluation protocols
+comparable \citep{yao2026harnessbench}. AI Harness Engineering frames the harness
+as a runtime substrate responsible for task specification, context, tool access,
+state, observability, verification, permissions, and failure attribution
+\citep{zhong2026aiharness}. These works directly motivate reporting the
+model--harness configuration rather than attributing outcomes to the base model
+alone. SafeDesk is neither a new benchmark nor a general taxonomy of harness
+responsibilities. Its narrower contribution is a typed API-agent runtime design
+for three enforceable properties: effect idempotency, evidence-grounded completion,
+and authoritative-state isolation. The proposed AppWorld and $\tau^2$ protocols
+are designed to test this runtime under matched budgets; they do not replace the
+benchmark contribution of Harness-Bench.
+
+\subsection{State and context management}
+
+LangGraph persists graph state as ordered checkpoints and supports replay and
+state updates through reducers \citep{langgraph2026persistence}. MemGPT manages
+hierarchical memory to extend effective context \citep{packer2023memgpt}, while
+InfiAgent externalizes persistent workspace state and reconstructs bounded context
+for very long tasks \citep{yu2026infiagent}. Most closely related, StructAgent
+organizes long-horizon agents around explicit task state, verifier-backed state
+transitions, evidence-driven completion, and targeted recovery
+\citep{wu2026structagent}. We do not claim priority for state-driven agents.
+\safedesk{} instead specializes the abstraction for API/function-calling settings:
+it adds an explicit Effect Ledger, schema repair and tool-boundary control,
+dependency-aware scheduling, duplicate-write and idempotency checks, policy and
+user-coordination gates for $\tau^2$-bench, and joint measurement of false
+completion, invalid calls, side effects, and tokens.
+
+\subsection{Training-based tool agents}
+
+ToolLLM constructs large-scale API-use data and trains models with an API retriever
+and search procedure \citep{qin2023toolllm}. Qwen3 supports thinking and
+non-thinking modes and reports broad agent capability \citep{yang2025qwen3}.
+Sequence-level agentic RL methods such as SeeUPO optimize multi-turn behavior
+\citep{hu2026seeupo}, and the AppWorld leaderboard reports strong AgentRL systems
+\citep{appworldleaderboard2026}. Runtime governance and agentic training are
+complementary rather than mutually exclusive: training changes which actions are
+proposed, while the runtime governs the execution lifecycle of those proposals.
+
+The distinctions above are scoped claims about mechanisms, not a scorecard of
+overall system quality. Direct empirical comparisons require matched tasks,
+models, resources, and evaluators.
+
+\section{Problem Formulation}
+
+\subsection{State and task contract}
+
+We use the notation summarized in \cref{tab:notation}.
+\begin{center}
+\begin{minipage}{0.82\linewidth}
+\centering
+\captionof{table}{Runtime notation.}
+\label{tab:notation}
+\small
+\begin{tabular}{@{}cl@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$W_t$ & environment world state \\
+$\widehat{W}_t$ & runtime-observable projection of world state \\
+$H_t$ & \safedesk{} task state \\
+$E_t$ & Evidence Board \\
+$L_t$ & Effect Ledger \\
+$F_t$ & Failure State \\
+$C_t$ & bounded Context Pack \\
+$A_t$ & model-proposed actions \\
+$O_t$ & tool observations \\
+$\Delta W_t$ & observed environment-state change \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+A task contract is
+\begin{equation}
+  \mathcal{T}=(G,D,\Gamma,P,V),
+\end{equation}
+where $G$ contains goals and subgoals, $D$ is the directed dependency relation on
+those goals, $\Gamma$ contains user constraints and invariants, $P$ defines tool
+permissions and business policies, and $V$ maps each required subgoal or intended
+effect to admissible completion evidence. Unresolved fields $U_t$ are execution
+state, not contractual requirements: they belong to $H_t$ and block relevant
+transitions until resolved. At step $t$, the model receives $C_t$ and proposes
+$A_t$. The runtime assigns each action a disposition, authorized tools return
+$O_t$, and the State Reducer updates $(H_t,E_t,L_t,F_t)$ together with observed
+$\Delta W_t$.
+
+\subsection{Task Contract Induction}
+\label{sec:contract-induction}
+
+Contract induction maps a user instruction $u$, active tool schemas $\Sigma_t$,
+and explicit policy $P$ to a typed proposal
+$Q=(G,D,\Gamma,P,V,U)$: contractual goals, dependencies, constraints, policy,
+evidence requirements, and unresolved execution fields. After deterministic
+validation, the authoritative contract is $\mathcal T=(G,D,\Gamma,P,V)$ and $U$
+is placed in $H_t$. The proposal conforms to a versioned JSON Schema. Each goal has
+a stable identifier, required/optional status, arguments, dependencies, and a
+verifier recipe; each unresolved field records its source clause and blocking scope.
+
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+\small
+\textbf{Contract induction protocol}
+\begin{enumerate}
+  \item \textbf{Propose.} \code{propose\_contract} receives the instruction,
+        active schemas, and policy. The configured builder model emits a candidate
+        object, never a completion judgment.
+  \item \textbf{Validate.} \code{validate\_contract} applies JSON-Schema validation,
+        canonical goal IDs, exact-duplicate removal, policy checks, dependency-cycle
+        detection, and adapter-supported verifier checks deterministically.
+  \item If required fields are absent or the object is invalid, deterministic
+        normalization runs first, followed by at most one schema-constrained repair
+        call. Remaining uncertainty is written to $U$ rather than guessed.
+  \item \textbf{Reduce.} \code{reduce\_contract} is the only operation allowed to
+        change authoritative state in response to a validated contract event, tool
+        observation, user confirmation, or authorized readback.
+\end{enumerate}
+\end{minipage}
+\end{center}
+
+In matched runs, the builder and any repair call use the same endpoint and
+non-thinking setting as the main agent. Their calls, latency, input tokens, and
+output tokens are charged to runtime overhead. AppWorld and $\tau^2$-bench use the
+same output Schema and reducer semantics; adapters contribute only benchmark
+vocabulary, policy clauses, entity types, and supported evidence recipes. Evidence
+requirements are accepted only when a deterministic adapter maps the target tool
+effect or policy clause to a readback, state-difference, receipt, or confirmation
+predicate. Free-form model assertions are never admissible evidence.
+
+Implicit omissions can be surfaced by contract validation, a tool precondition,
+a user correction, or a Completion Gate deficit---never by consulting the benchmark
+evaluator online. A material user update invokes \code{propose\_contract} only for
+the affected subgraph; ordinary observations use \code{reduce\_contract} without
+another model call. Previously verified effects remain in $L_t$ even when future
+work is replanned. Every proposal, repair, rejection, and accepted contract edit is
+versioned in the Trace Recorder.
+
+Schema validity is not semantic adequacy. Development-set contract evaluation must
+therefore annotate and report Goal Recall, Constraint Recall, Spurious Goal Rate,
+Verifier Coverage, Contract Repair Rate, and Contract Failure Rate. These labels
+and measurements are not yet available for the historical diagnostics reported
+here; they are preregistered requirements for a confirmatory evaluation, not
+observed evidence of contract quality.
+
+\subsection{Three decision layers and completion}
+
+We distinguish three outcomes throughout: (i) a model-proposed action or completion,
+(ii) a runtime-authorized execution or gate-accepted completion, and (iii) an
+evaluator-confirmed result over persisted state. A model's \code{complete\_task}
+call is therefore an intent signal, not proof.
+
+The Completion Gate can inspect only the observable projection $\widehat W_t$
+constructed from authorized reads, not the latent world state $W_t$. It computes
+\begin{equation}
+\operatorname{AllowComplete}(H_t,E_t,L_t,P,\widehat W_t)=
+\mathbb{I}\!\left[
+\begin{aligned}
+&\forall g\in G_{\mathrm{req}},\ \operatorname{Satisfied}(g,E_t,\widehat W_t)\\
+&\land\ \forall \ell\in L_t^{\mathrm{intended}},\ \operatorname{Verified}(\ell,E_t,\widehat W_t)\\
+&\land\ \neg\operatorname{UnresolvedUnexpectedEffect}(L_t^{\mathrm{unexpected}})\\
+&\land\ \neg\operatorname{UnresolvedBlocker}(H_t)\\
+&\land\ \operatorname{PolicySatisfied}(P,H_t,E_t)
+\end{aligned}
+\right].
+\label{eq:completion}
+\end{equation}
+
+$G_{\mathrm{req}}$ contains validated goals marked required and not subsequently
+withdrawn by the user. The ledger distinguishes $L_t^{\mathrm{intended}}$, effects
+explicitly required by the contract; $L_t^{\mathrm{observed}}$, all effects actually
+observed; and $L_t^{\mathrm{unexpected}}=L_t^{\mathrm{observed}}\setminus
+L_t^{\mathrm{intended}}$. A non-idempotent or policy-sensitive write is always
+recorded and verified, but it becomes a required effect only when it is contractually
+intended. An unexpected effect blocks completion until it is rolled back or resolved
+under an explicit policy. Thus, verifying that an unintended deletion occurred can
+never convert it into a successful required effect. \textbf{Admissible evidence} comes from an authorized
+tool, scoped user confirmation, or adapter-defined observation and is linked to one
+contract item. \textbf{Freshness} uses an environment state version when available;
+otherwise the adapter supplies a policy-specific TTL, and any relevant write
+invalidates older evidence. Evidence conflicts are ordered by state version and
+source authority, not recency alone. Incomparable active conflicts conservatively
+block completion.
+
+For an effect without a readback API, the adapter must define an alternative proof
+such as an authenticated receipt plus a non-conflicting secondary observation or
+explicit confirmation. Without such a recipe, the effect remains unresolved.
+$\operatorname{Satisfied}$ and $\operatorname{Verified}$ are deterministic reducer or
+adapter predicates; an LLM may extract candidate fields but cannot decide either
+predicate. An \textbf{unresolved blocker} is a missing entity, confirmation,
+permission, dependency, active conflict, or failed postcondition. A \textbf{false
+acceptance} occurs when the gate allows completion but the offline evaluator fails.
+A \textbf{false block} occurs when an offline snapshot evaluation shows that the
+contract was already satisfied at a rejected attempt. The runtime never calls the
+benchmark evaluator online.
+
+\section{System Design}
+
+\cref{fig:architecture} shows the complete control loop and the four top-level
+modules. Solid arrows represent control flow; dashed lines represent trace events.
+\begin{center}
+\includegraphics[width=\linewidth]{figures/system_architecture.pdf}
+\captionof{figure}{\safedesk{} runtime architecture. Context Manager constructs
+each model call from runtime state and trace references. Completion Gate and
+Response Grounding are subcomponents of State \& Verification, not additional
+top-level modules. Trace Recorder receives events from every module.}
+\label{fig:architecture}
+\end{center}
+
+\subsection{Runtime invariants and enforcement assumptions}
+\label{sec:invariants}
+
+The implementation is designed around three runtime invariants rather than a
+claim to invent explicit state management. First, a verified non-idempotent effect
+cannot be executed again with the same normalized effect fingerprint unless the
+ledger records rollback evidence. Second, a completion request cannot be accepted
+while an intended effect is unverified or an observed unexpected effect remains
+unresolved. Third, the model cannot mutate authoritative runtime state: it can only
+propose typed actions, and the State Reducer accepts only validated contract,
+tool-observation, verification, or confirmation events. The first two statements
+hold provided that all effectful tools traverse the Runtime Hook and adapters map
+all relevant writes to effects; the third holds provided that the state-store
+interface is not exposed to the model process. These are implementation invariants,
+not claims that an adapter can observe an unobservable external side effect. The
+prototype tests cover selected enforcement paths; they are not a formal proof that
+an adapter has mapped every external write.
+
+\subsection{State \& Verification}
+
+State \& Verification implements the chain
+\emph{Task Contract $\rightarrow$ Task State $\rightarrow$ Evidence Board
+$\rightarrow$ Effect Ledger $\rightarrow$ Post-action Verification
+$\rightarrow$ Completion Gate $\rightarrow$ Response Grounding}.
+
+\paragraph{Task State.}
+$H_t$ maintains subgoals, dependencies, constraints, resolved entities, blockers,
+and execution phase. Reducer transitions are deterministic over typed events; the
+model cannot directly mutate $H_t$.
+
+\paragraph{Evidence Board.}
+Each evidence item records source, timestamp, scope, validity, linked subgoal, and
+whether later evidence supersedes it. Conflicts are retained for audit rather than
+silently overwritten.
+
+\paragraph{Effect Ledger.}
+Each write records its intent, target entity, normalized parameters, idempotency
+key, execution status, and verification status. This separates an attempted write,
+a tool-reported success, and an observed environment effect.
+
+\paragraph{Post-action Verification and completion.}
+Verification prefers environment readback, object queries, state differences, and
+tool-result consistency checks. Completion Gate never returns only ``incomplete'';
+it emits missing subgoals, stale or conflicting evidence, unverified effects,
+blockers, and unsatisfied policy conditions. Response Grounding applies the same
+evidence boundary to the final natural-language response.
+
+\subsection{Tool Execution Guard}
+
+The guard follows:
+\begin{center}
+\small Model Tool Call $\rightarrow$ Action IR $\rightarrow$ Schema Validation
+$\rightarrow$ Deterministic Repair $\rightarrow$ Policy/Precondition Check
+$\rightarrow$ Dependency Scheduling $\rightarrow$ Effect Preflight
+$\rightarrow$ Execute / Defer / Reject.
+\end{center}
+
+Action IR normalizes tool names, arguments, call identifiers, dependencies, and
+effect class. Deterministic repair handles unambiguous aliases, scalar coercions,
+and default-free formatting fixes; uncertain changes return a structured error to
+the model. Policy checks enforce authentication, confirmation, permission, and
+domain rules. Independent reads execute in parallel; dependent or state-changing
+calls execute serially. Non-idempotent writes are serial by default.
+
+\textbf{Defer never means discard.} We use explicit rejection and reproposal:
+the current call receives a structured \code{deferred/not\_executed} result and
+is permanently closed; after observing refreshed state, the model must issue a
+new call with a new \code{tool\_call\_id}. No identifier is executed after a tool
+result has been returned for it.
+
+Deterministic rebinding is allowed only when the model explicitly supplies an
+Action-IR placeholder such as \code{\$result\_1.contact\_id} and declares the
+dependency edge. The runtime substitutes the unique observed field and revalidates
+the call. It never replaces a model-guessed entity ID, chooses among multiple
+candidates, or resolves semantic ambiguity; those cases return to the model or
+user. Effect preflight compares normalized intent and idempotency fingerprints
+against $L_t$. A bounded resolver may add an out-of-schema tool only in the
+separate resolver augmentation described in \cref{sec:appworld-protocol}; the
+matched core experiment disables expansion.
+
+\subsection{Recovery Controller}
+
+Recovery follows \emph{Failure Classification $\rightarrow$ Recoverability
+Assessment $\rightarrow$ Typed Recovery $\rightarrow$ Progress Check
+$\rightarrow$ Stagnation Detection $\rightarrow$ Local Replanning
+$\rightarrow$ Safe Stop}. Failure classes include schema, parameter, entity,
+permission, policy, transient tool, environment mismatch, duplicate action, no
+progress, context loss, and unknown.
+
+The controller deterministically repairs parameters when the correction is unique,
+re-queries missing entities, applies bounded retry to transient faults, and reads
+the environment before repairing a write mismatch. No-progress failures trigger
+local replanning over the affected subgoal rather than a full restart. Permission
+and policy failures cannot be bypassed. A non-idempotent write is never replayed
+without evidence that the first attempt had no effect. Recovery budgets constrain
+attempts per failure class and total turns. Progress compares changes in goals,
+evidence, effects, and blockers; repeated equivalent reads or failures trigger a
+safe stop with an explicit unresolved state.
+
+Recovery success is typed rather than inferred from a later task result. A schema
+recovery succeeds when the repaired call validates and executes; entity recovery
+succeeds when re-query produces a uniquely valid entity; mismatch recovery succeeds
+when a post-repair readback satisfies the expected predicate; and no-progress
+recovery succeeds only when it adds admissible evidence or completes a new subgoal.
+Task success after recovery remains a separate evaluator-level outcome.
+
+\subsection{Context Manager}
+
+Context Manager constructs four layers before each model call: (i) the original
+task contract and hard constraints; (ii) current structured state; (iii) recent
+complete interaction; and (iv) summaries of older history with references to raw
+results. It must preserve entity identifiers, amounts, times, user confirmations,
+prohibitions, tool dependencies, idempotency keys, and unresolved errors.
+
+The token budget is partitioned among system instruction, task state, active tool
+schemas, recent turns, evidence, and recovery context. Large observations are
+projected to required fields, but their trace references remain available for
+targeted retrieval. Compression invariants detect dropped identities, numeric
+constraints, confirmations, dependencies, and active failures before the context
+is sent to the model.
+
+\cref{tab:trace-example} instantiates the four modules on the motivating example.
+It shows why a plausible tool response, a verified environmental effect, and an
+accepted completion are distinct runtime events.
+\input{tables/trace_example}
+
+\section{Implementation}
+
+\safedesk{} exposes a Runtime Hook around the harness model/tool loop. Adapters map
+benchmark calls into Action IR and map observations into typed reducer events. The
+State Reducer is the only component permitted to mutate runtime state. A persistent
+store commits task state, trace events, and evaluator inputs atomically at each
+turn. Configuration switches enable modules individually; disabling \safedesk{}
+passes proposals to the original baseline path without changing the prompt or
+evaluator.
+
+\begin{center}
+\begin{minipage}{0.88\linewidth}
+\small
+\hrule\vspace{4pt}
+\textbf{Runtime main loop}
+\begin{enumerate}[leftmargin=1.8em,itemsep=0pt]
+  \item initialize contract and runtime state;
+  \item while budget remains: build bounded context and obtain a model proposal;
+  \item normalize actions; guard and schedule calls; execute authorized tools;
+  \item update evidence and effects through the Reducer; verify writes;
+  \item classify failures, apply bounded recovery, and detect stagnation;
+  \item evaluate completion; persist state before evaluator access.
+\end{enumerate}
+\vspace{2pt}\hrule
+\end{minipage}
+\end{center}
+
+Every tool action passes through the Runtime Hook, and every disposition receives
+a protocol-compliant result. Trace records include proposals, Action IR, execute/
+defer/reject decisions, tool observations, state transitions, verification, and
+recovery. Redaction removes API keys, credentials, personal fields, and configured
+sensitive arguments before persistence.
+
+\section{Proposed Evaluation Protocol}
+
+\subsection{AppWorld matched comparison}
+\label{sec:appworld-protocol}
+
+No independently administered held-out AppWorld split exists in the present
+artifact. This subsection is therefore a preregistered construction protocol, not
+a completed confirmatory experiment. Once an independent curator creates and
+withholds a task split, the comparison will be Plain Baseline versus SafeDesk-core.
+Both must
+use the provider API model identifier \AWModelID{} through the OpenAI-compatible
+endpoint \AWAPIEndpoint{}, with \code{thinking.type=disabled} and temperature
+zero. The official documentation identifies \AWModelID{} as a provider API model
+identifier supporting function calling and explicit thinking control
+\citep{deepseek2026v4api,deepseek2026thinking}; it is not evidence of an immutable
+backend snapshot. The historical baseline was accessed on \AWModelAccessDate, and
+its response payloads did not retain a system fingerprint or provider build ID.
+It is therefore a diagnostic observation only and is not a matched comparator for
+any future SafeDesk result.
+
+The official API Predictor runs once per task, and its ordered output of at most
+\AWAPILimit{} APIs is persisted. Plain Baseline, the budget-matched control, and
+SafeDesk-core replay the exact same per-task schemas. Dynamic Tool Resolver is
+disabled in the primary comparison. SafeDesk+Resolver is a separate augmentation
+that reports APIs added, schema tokens added, resolver calls, and tasks rescued;
+it is never pooled with the core effect. DeepSeek V4 Pro is a reference condition,
+not evidence about SafeDesk unless every remaining setting is matched.
+
+The conditions are listed in \cref{tab:appworld-conditions}.
+\begin{center}
+\begin{minipage}{0.96\linewidth}
+\centering
+\captionof{table}{Preregistered AppWorld conditions. The held-out task set is not yet constructed.}
+\label{tab:appworld-conditions}
+\small
+\begin{tabularx}{\linewidth}{@{}lYYr@{}}
+\toprule
+Condition & Model & Runtime & Tasks \\
+\midrule
+Plain Baseline & \AWModelID & Function calling; fixed schemas & future held-out \\
+Resource control & \AWModelID & Plain agent; prescribed self-check schedule & future held-out \\
+SafeDesk-core & \AWModelID & Four modules; fixed schemas & future held-out \\
+SafeDesk+Resolver & \AWModelID & Separate dynamic-tool augmentation & future held-out \\
+Strong reference & \texttt{deepseek-v4-pro} & Plain function calling & future held-out \\
+\bottomrule
+\end{tabularx}
+\end{minipage}
+\end{center}
+
+For a confirmatory rerun, each task is assigned a deterministic seed and an
+interleaved condition order; Plain, resource control, and SafeDesk-core runs occur
+within the same provider window. The release stores the requested and returned
+model fields, system fingerprint when supplied, endpoint, request schema hash,
+base-policy hash, task-instruction hash, runtime context-renderer hash, Predictor
+output, \AWAPILimit-API cap, a \AWMaxTurns{}-turn cap, persistence logic, evaluator,
+retry policy, parallel-call setting, and token-accounting scope. ``Same prompt''
+means the same base policy and task instruction; runtime-generated state and
+evidence context are deliberately distinct and are versioned separately.
+Independent reads may be parallelized by the runtime, but both conditions receive
+the same model-level parallel-tool setting.
+
+\subsection{Budget accounting and controls}
+
+Resource accounting distinguishes: (i) \emph{agent turns}, model proposal cycles
+initiated by the harness; (ii) \emph{total LLM calls}, including Predictor,
+Contract Builder, repair, classifier, replanning, and summarization calls;
+(iii) \emph{agent-proposed tool calls}; (iv) \emph{runtime-generated verification
+calls}; (v) \emph{total executed tool calls}; (vi) \emph{total tokens} over every
+LLM call; and (vii) wall-clock latency. Verification calls consume the tool-call
+budget. Builder, classifier, recovery, resolver, and summarizer tokens contribute
+to total tokens. A recovery model call is not an agent turn but is a total LLM
+call. Runtime-assisted calls use the same model ID and thinking setting as the
+agent; no stronger helper is permitted.
+
+The primary protocol fixes a per-task vector of total LLM input and
+output tokens, total LLM calls, executed tool calls, and environment reads. Every
+condition stops when any component is exhausted; verification reads count against
+the same environment-read and tool-call budgets. The resource-control condition is
+not matched post hoc. It receives exactly three predeclared controls: (A) one fixed
+self-check after every write, (B) one fixed reflection after every five agent
+turns, and (C) one fixed self-verification after every model-proposed
+\code{complete\_task}. It has no structured Task State, Evidence Board, Effect
+Ledger, Guard, or completion logic. All conditions share the same token, call,
+tool, and read ceilings. A secondary resource--performance analysis repeats the
+study at predeclared token and tool-call budgets. Once the \AWMaxTurns{} agent-turn cap is
+reached, a condition may only persist state and emit a safe-stop record. No
+efficiency or reliability conclusion is made until it survives these controls.
+
+\subsection{Data validity and runner repairs}
+
+The AppWorld runner originally evaluated some tasks before flushing the in-memory
+world to the output database. The corrected runner persists through AppWorld's
+state-save API before every evaluation and records a per-task persistence flag;
+all \AWTaskCount{} final rows satisfy that flag. Separately,
+\AWGBKRepairCount{} Windows GBK infrastructure failures were rerun with
+interpreter-level UTF-8, and \AWGBKRepairSuccessCount{} produced evaluator success
+after the infrastructure repair. Only these infrastructure failures were replaced;
+model or evaluator failures were not selectively rerun. The same persistence and
+encoding fixes apply to every future condition.
+
+All \AWShardCount{} shards were re-evaluated offline after persistence. The canonical sorted
+task-list and repair-subset SHA-256 values are reported in
+\cref{app:reproducibility}. Final infrastructure errors equal
+\AWFinalInfraErrorCount{}. \AWInvalidDurationCount{} historical negative duration values caused by
+environment time freezing are excluded; future runs use a monotonic host clock.
+Thus ``validated baseline'' below means a frozen task list with runner-level
+infrastructure repairs, not a post-hoc model correction.
+
+\subsection{Test-set exposure and confirmatory isolation}
+
+The historical AppWorld \code{test\_challenge} traces and task-level diagnostics
+were inspected while developing this runtime. The current \AWTaskCount{}-task
+aggregate is therefore explicitly exploratory and is not used for confirmatory
+statistics, model selection, or a claimed SafeDesk gain. A pre-exposure design
+freeze cannot be reconstructed from the available workspace history. Confirmatory
+evaluation requires a newly constructed split held by an independent curator or
+evaluation service. Before access, the release must archive the source
+revision, configuration, base-policy hash, context-renderer hash, thresholds,
+budget vector, task-order generator, and analysis script. This is an experimental
+boundary, not a post-hoc disclaimer.
+
+\subsection{\texorpdfstring{$\tau^2$-bench}{tau2-bench} matched comparison}
+
+The future comparison pins the local $\tau^2$-bench checkout to commit
+\TauBenchmarkRevision{} (package \TauPackageVersion{}), uses the recommended
+\code{base} split and text-based half-duplex setting, and records the sorted
+task-list SHA-256 \TauTaskListHash{}. The current checkout's task-fix status is
+``not independently audited''; later maintenance fixes are excluded unless the
+pin and hash are deliberately updated. The agent, user simulator, and judge model
+identifiers remain unassigned in this manuscript, so no $\tau^2$ result is claimed.
+Before the run, all three must be frozen in a manifest. The formal comparison then
+uses the selected agent with and without \safedesk{}, with GLM-5.2 as a reference
+only under an otherwise matched protocol.
+Z.AI documents \texttt{glm-5} function calling and explicit thinking control, while
+the GLM-5.2 model card is cited only for the reference identity
+\citep{zai2026glm5,zai2026glm52,barres2025tau2,tau2benchsoftware2026}. The historical
+endpoint was \TauAgentEndpoint{} on \TauModelAccessDate; its provider revision was
+\TauProviderVersion and cannot be reconstructed. A formal run records the
+evaluator command, version and configuration, agent/user/judge response metadata,
+seeds, turn limits, tool limits, and all role-separated token counts. Airline,
+retail, and telecom
+tasks each run \TauTrialsPerTask{} times, and the official saved-result procedure
+computes Pass$^1$ and Pass$^4$. We report per-domain and macro scores, policy
+violations, premature tool calls, response inconsistencies, turns, and agent-only
+tokens. The available single-run diagnostics are retained only as local adapter
+smoke evidence and are not reported as benchmark performance.
+
+\subsection{Metrics and statistical analysis}
+\label{sec:metrics}
+
+Metric definitions and denominators appear in \cref{app:metrics}. The primary TGC
+inference is a paired scenario-clustered bootstrap, with a clustered permutation
+test as a robustness check. On the future split, SGC treats its independently
+reported scenario count directly; the historical \AWScenarioCount{} count is used
+only in the appendix.
+The task transition matrix and ordinary McNemar test are auxiliary task-level
+descriptions because three variants within a scenario are correlated. Difficulty
+intervals also resample scenarios rather than individual tasks. Token, call, and
+turn differences use \AWBootstrapSamples{} paired bootstrap samples clustered by
+scenario; Holm correction controls multiplicity across ablations. P-values,
+paired contrasts, and transition counts are withheld until emitted by the frozen
+statistics script; no value is inferred from aggregate macros.
+
+\section{Prespecified Ablation Design}
+
+The primary necessity analysis removes State \& Verification, Tool Execution
+Guard, Recovery Controller, or Context Manager one at a time from the full runtime.
+The linked outcomes are respectively completion/false block, invalid and duplicate
+writes, stagnation/rescue, and token-tail statistics with TGC. A secondary
+incremental sequence adds the modules in that order for engineering interpretation.
+Incremental gains depend on module order and cannot be interpreted as independent
+causal contributions. The versioned configuration and analysis script must be
+released before held-out evaluation; no ablation outcome is claimed here.
+
+\section{Discussion}
+
+\paragraph{Why a runtime is useful.}
+The model proposes candidate actions; the runtime maintains state consistency,
+permissions, idempotency, verification, audit, and budgets. This division makes
+non-negotiable controls explicit and reusable across model versions.
+It also creates a stable experimental boundary: proposal quality can change while
+the execution contract remains fixed. This does not make the runtime infallible;
+it makes its decisions inspectable, replayable, and separately testable from the
+language model that produced a candidate action.
+
+\paragraph{Relationship to agentic RL.}
+RL can improve the proposal distribution and long-horizon policy, while \safedesk{}
+governs the consequences of sampled proposals. A trained agent can therefore run
+inside the same runtime; the approaches are complementary.
+The matched experiment deliberately holds model weights fixed so that the runtime
+effect is identifiable. A subsequent factorial study can cross training and
+runtime conditions to test whether better proposals reduce intervention frequency
+and whether governance preserves gains under rare but consequential failures.
+
+\paragraph{Completion Gate conservatism.}
+An incomplete Evidence Board can block an already completed task. Readback adds
+latency and tokens, and an overly strict gate can reduce TGC. False-block rate,
+verification coverage, and governance overhead must therefore accompany false
+completion and TGC.
+The appropriate threshold is domain dependent: a redundant read may be justified
+for a payment or account change but excessive for a reversible search preference.
+The gate therefore consumes evidence requirements from the Task Contract instead
+of applying one universal proof rule to every action.
+
+\paragraph{Dynamic tool expansion.}
+Resolver expansion can recover a missing API, but also increases schema tokens,
+ambiguity, attack surface, and the probability of selecting the wrong tool.
+Expansion must be scoped to the active subgoal, bounded, and policy checked.
+Candidate APIs should be logged with their retrieval reasons and rejected
+alternatives, so a capability gain is not confused with an unreported expansion
+of the action space. Matched evaluation must expose the same underlying catalog
+even when active subsets change over time.
+
+\paragraph{Context compression risk.}
+Summaries can drop entity identifiers, user confirmations, numeric constraints,
+tool dependencies, or prohibitions. Context invariants and trace-backed retrieval
+reduce this risk but cannot eliminate imperfect summarization.
+SafeDesk therefore treats the structured contract and current state as canonical,
+not as another free-form summary. Raw observations remain addressable by trace
+reference, allowing targeted recovery without repeatedly placing the full history
+in the model context.
+
+\paragraph{Module interaction.}
+Recovery depends on accurate task and failure state; completion depends on
+admissible evidence; context construction determines what recovery information the
+model can see; and Tool Execution Guard affects both side effects and stagnation.
+Accordingly, leave-one-out and interaction analyses are more informative than an
+incremental sequence alone.
+These dependencies also explain why module-local metrics cannot substitute for
+task success. Schema repair can reduce invalid calls while selecting the wrong
+entity, and aggressive compression can reduce tokens while suppressing evidence
+needed by the gate. Mechanism metrics must therefore be paired with
+evaluator-confirmed outcomes.
+
+\section{Limitations}
+
+\begin{enumerate}
+  \item Contract induction can split a goal incorrectly or omit an implicit subgoal.
+  \item Completion Gate is only as reliable as captured and fresh evidence.
+  \item Some external writes lack a readback API or observable state difference.
+  \item Idempotency fingerprints can conflate semantically distinct actions with similar arguments.
+  \item Dynamic Tool Resolver can expand the tool boundary and attack surface.
+  \item Context compression can discard a critical fact despite invariant checks.
+  \item Provider aliases and model behavior can drift unless immutable versions are recorded.
+  \item AppWorld and $\tau^2$-bench do not represent all production domains or policies.
+  \item Runtime checks add engineering complexity, latency, storage, and failure modes.
+  \item Domain-specific policies, evidence extractors, and verification adapters still require engineering.
+\end{enumerate}
+
+\section{Ethics and Safety}
+
+\safedesk{} is designed to reduce uncontrolled side effects, not expand agent
+privilege. Deployment should apply least privilege, explicit confirmation,
+sensitive-field redaction, bounded retries, rollback where available, and human
+takeover. Dynamic resolution must not bypass policy. Benchmark tools run in
+isolated environments; released traces must exclude keys, credentials, personal
+data, and replayable account state.
+
+\section{Artifact Availability}
+
+The local artifact contains the runtime core, versioned JSON Schemas, prototype
+tests, adapters, trace format, figure scripts, and paper sources. It is \emph{not}
+currently a public archival release: there is no public repository URL, release
+commit, archival test log, or assigned artifact license. The workspace contains a
+dependency lock and local tests, but readers cannot independently reproduce the
+reported prototype results until an archival release is made. A public version must
+pin source revision and dependencies, publish test logs and mock definitions,
+redact secrets from traces, state its license and release date, and include the
+frozen evaluation configuration required by \cref{app:reproducibility}.
+
+\section{Conclusion}
+
+\safedesk{} reframes long-horizon tool execution from a free-form message loop as
+state- and evidence-driven runtime governance. Its four modules govern completion
+judgment, tool execution, failure recovery, and context efficiency, while preserving
+the distinction between model proposals, runtime authorization, and evaluator
+outcomes. Prototype validation demonstrates the control path, while matched
+SafeDesk, repeated-trial $\tau^2$-bench, and ablation effects remain unmeasured
+and must not be inferred from historical diagnostics or synthetic targets. Runtime
+governance complements stronger models and agentic training rather than replacing them.
+
+\appendix
+\input{appendix/metric_definitions}
+\input{appendix/reproducibility}
+\input{appendix/runtime_specification}
+\input{appendix/prototype_validation}
+\input{appendix/historical_diagnostics}
+
+\ifdefempty{\AuthorContributions}{}{\section*{Author Contributions}
+\AuthorContributions}
+\ifdefempty{\ArtifactLicense}{}{\section*{Artifact License}
+\ArtifactLicense}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

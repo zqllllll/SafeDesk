@@ -1,0 +1,725 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "gmail.login\ngmail.show_drafts\ngmail.show_draft\ngmail.upload_attachments_to_draft\ngmail.send_email_from_draft\nfile_system.login\nfile_system.show_file\nfile_system.file_exists\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "gmail.login",
+      "gmail.show_drafts",
+      "gmail.show_draft",
+      "gmail.upload_attachments_to_draft",
+      "gmail.send_email_from_draft",
+      "file_system.login",
+      "file_system.show_file",
+      "file_system.file_exists",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile"
+    ],
+    "usage": {
+      "input_tokens": 7604,
+      "output_tokens": 69,
+      "total_tokens": 7673
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my profile info, account passwords, and the current date/time.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Dye6yEYDBEzyL9ZAA6DX2348",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_li0l4jibRPXpLNcqtbvW8924",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_sHLpuD2KxxFS9nFgVEMY1199",
+        "type": "function",
+        "function": {
+          "name": "phone__get_current_date_and_time",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Dye6yEYDBEzyL9ZAA6DX2348",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_li0l4jibRPXpLNcqtbvW8924",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5277,
+      "output_tokens": 86,
+      "total_tokens": 5363
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5277,
+      "output_tokens": 86,
+      "total_tokens": 5363,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 14534,
+      "estimated_history_tokens_before_call": 3634
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_Dye6yEYDBEzyL9ZAA6DX2348",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Ashley",
+      "last_name": "Moore",
+      "email": "as_moore@gmail.com",
+      "phone_number": "7336094411",
+      "birthday": "1959-09-03",
+      "sex": "female"
+    },
+    "message_result": {
+      "first_name": "Ashley",
+      "last_name": "Moore",
+      "email": "as_moore@gmail.com",
+      "phone_number": "7336094411",
+      "birthday": "1959-09-03",
+      "sex": "female"
+    },
+    "result_chars": 150,
+    "message_result_chars": 150
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_li0l4jibRPXpLNcqtbvW8924",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "_@+7@Ei"
+      },
+      {
+        "account_name": "file_system",
+        "password": "M*}9H25"
+      },
+      {
+        "account_name": "gmail",
+        "password": "FgP]brO"
+      },
+      {
+        "account_name": "phone",
+        "password": "eF@$eFT"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "tHH!E]U"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "o1nzdVD"
+      },
+      {
+        "account_name": "spotify",
+        "password": "%oxCE]q"
+      },
+      {
+        "account_name": "todoist",
+        "password": "7(%[]a8"
+      },
+      {
+        "account_name": "venmo",
+        "password": "YUtGXre"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "_@+7@Ei"
+      },
+      {
+        "account_name": "file_system",
+        "password": "M*}9H25"
+      },
+      {
+        "account_name": "gmail",
+        "password": "FgP]brO"
+      },
+      {
+        "account_name": "phone",
+        "password": "eF@$eFT"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "tHH!E]U"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "o1nzdVD"
+      },
+      {
+        "account_name": "spotify",
+        "password": "%oxCE]q"
+      },
+      {
+        "account_name": "todoist",
+        "password": "7(%[]a8"
+      },
+      {
+        "account_name": "venmo",
+        "password": "YUtGXre"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_02_sHLpuD2KxxFS9nFgVEMY1199",
+    "name": "phone__get_current_date_and_time",
+    "args": {},
+    "executed": false,
+    "result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "message_result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "result_chars": 225,
+    "message_result_chars": 225
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "I don't have a phone app tool available. Let me log into Gmail and file system to find the draft and file.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_7QdphdlSRMFEkqsMlpVU4949",
+        "type": "function",
+        "function": {
+          "name": "gmail__login",
+          "arguments": "{\"username\": \"as_moore@gmail.com\", \"password\": \"FgP]brO\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_gAvCofddpvlHRXOE8Pub7875",
+        "type": "function",
+        "function": {
+          "name": "file_system__login",
+          "arguments": "{\"username\": \"as_moore@gmail.com\", \"password\": \"M*}9H25\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_7QdphdlSRMFEkqsMlpVU4949",
+        "type": "function",
+        "function": {
+          "name": "gmail__login",
+          "arguments": "{\"username\": \"as_moore@gmail.com\", \"password\": \"FgP]brO\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_gAvCofddpvlHRXOE8Pub7875",
+        "type": "function",
+        "function": {
+          "name": "file_system__login",
+          "arguments": "{\"username\": \"as_moore@gmail.com\", \"password\": \"M*}9H25\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5666,
+      "output_tokens": 154,
+      "total_tokens": 5820
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5666,
+      "output_tokens": 154,
+      "total_tokens": 5820,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 16334,
+      "estimated_history_tokens_before_call": 4084
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_7QdphdlSRMFEkqsMlpVU4949",
+    "name": "gmail__login",
+    "args": {
+      "username": "as_moore@gmail.com",
+      "password": "FgP]brO"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I",
+      "token_type": "Bearer"
+    },
+    "result_chars": 193,
+    "message_result_chars": 193
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_01_gAvCofddpvlHRXOE8Pub7875",
+    "name": "file_system__login",
+    "args": {
+      "username": "as_moore@gmail.com",
+      "password": "M*}9H25"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8",
+      "token_type": "Bearer"
+    },
+    "result_chars": 201,
+    "message_result_chars": 201
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "Let me check if the file exists and find the draft.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_7YzS5sscfuXqBauQWKmh0394",
+        "type": "function",
+        "function": {
+          "name": "file_system__file_exists",
+          "arguments": "{\"file_path\": \"~/documents/work/resignation.pdf\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_5AFImiWVfp7Csv4bFtbw5325",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_drafts",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_7YzS5sscfuXqBauQWKmh0394",
+        "type": "function",
+        "function": {
+          "name": "file_system__file_exists",
+          "arguments": "{\"file_path\": \"~/documents/work/resignation.pdf\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_5AFImiWVfp7Csv4bFtbw5325",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_drafts",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6075,
+      "output_tokens": 325,
+      "total_tokens": 6400
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6075,
+      "output_tokens": 325,
+      "total_tokens": 6400,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 17472,
+      "estimated_history_tokens_before_call": 4368
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_7YzS5sscfuXqBauQWKmh0394",
+    "name": "file_system__file_exists",
+    "args": {
+      "file_path": "~/documents/work/resignation.pdf",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8"
+    },
+    "executed": true,
+    "result": {
+      "exists": true
+    },
+    "message_result": {
+      "exists": true
+    },
+    "result_chars": 16,
+    "message_result_chars": 16
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_01_5AFImiWVfp7Csv4bFtbw5325",
+    "name": "gmail__show_drafts",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I"
+    },
+    "executed": true,
+    "result": [
+      {
+        "draft_id": 518,
+        "subject": "Resignation",
+        "body": "Dear Cheryl,\nI am writing to inform you that I am resigning from my position.\nI have enjoyed working with you and appreciate the opportunities I have been given here.\nBut I have decided to move on. I wish you and the company all the best.\nPlease find my resignation letter attached.\nBest regards,\nAshley",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2023-05-18T11:46:59",
+        "updated_at": "2023-05-18T11:46:59",
+        "recipients": [
+          {
+            "name": "Cheryl Martinez",
+            "email": "cheweber@gmail.com"
+          }
+        ],
+        "attachments": []
+      }
+    ],
+    "message_result": [
+      {
+        "draft_id": 518,
+        "subject": "Resignation",
+        "body": "Dear Cheryl,\nI am writing to inform you that I am resigning from my position.\nI have enjoyed working with you and appreciate the opportunities I have been given here.\nBut I have decided to move on. I wish you and the company all the best.\nPlease find my resignation letter attached.\nBest regards,\nAshley",
+        "belongs_to_email_thread_id": null,
+        "response_to_email_id": null,
+        "scheduled_send_at": null,
+        "created_at": "2023-05-18T11:46:59",
+        "updated_at": "2023-05-18T11:46:59",
+        "recipients": [
+          {
+            "name": "Cheryl Martinez",
+            "email": "cheweber@gmail.com"
+          }
+        ],
+        "attachments": []
+      }
+    ],
+    "result_chars": 628,
+    "message_result_chars": 628
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "I found the draft (ID: 518) with subject \"Resignation\" and the file exists. Now I need to:\n1. Upload the attachment to the draft\n2. Figure out \"next Monday\" - since I don't have a date/time tool, let me check the draft's created_at date. It was created on 2023-05-18 which was a Thursday. Let me check what day that was.\n\nMay 18, 2023 was a Thursday. So next Monday would be May 22, 2023. Let me upload the attachment and schedule it.\n\nActually, I need to check the schedule functionality. Let me first upload the attachment.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_aUCwPb9xG9FUkETa2R3y3551",
+        "type": "function",
+        "function": {
+          "name": "gmail__upload_attachments_to_draft",
+          "arguments": "{\"draft_id\": 518, \"attachment_file_paths\": [\"~/documents/work/resignation.pdf\"], \"file_system_access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_aUCwPb9xG9FUkETa2R3y3551",
+        "type": "function",
+        "function": {
+          "name": "gmail__upload_attachments_to_draft",
+          "arguments": "{\"draft_id\": 518, \"attachment_file_paths\": [\"~/documents/work/resignation.pdf\"], \"file_system_access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 6608,
+      "output_tokens": 463,
+      "total_tokens": 7071
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 6608,
+      "output_tokens": 463,
+      "total_tokens": 7071,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 19122,
+      "estimated_history_tokens_before_call": 4781
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_aUCwPb9xG9FUkETa2R3y3551",
+    "name": "gmail__upload_attachments_to_draft",
+    "args": {
+      "draft_id": 518,
+      "attachment_file_paths": [
+        "~/documents/work/resignation.pdf"
+      ],
+      "file_system_access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmaWxlX3N5c3RlbSthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzg0MzR9.FQ0h7P6dtpo4an-l6T_-QiXkB14t4w2FM4cl00TuoI8",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I"
+    },
+    "executed": true,
+    "result": {
+      "message": "Uploaded attachments.",
+      "attachment_ids": [
+        8483
+      ]
+    },
+    "message_result": {
+      "message": "Uploaded attachments.",
+      "attachment_ids": [
+        8483
+      ]
+    },
+    "result_chars": 62,
+    "message_result_chars": 62
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "Now I need to schedule it. Let me check the draft to see if there's a way to schedule it. The draft has `scheduled_send_at` as null. Let me look at the draft details.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_MI05R9lG6IJhbt3L7T4H9963",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_draft",
+          "arguments": "{\"draft_id\": 518, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_MI05R9lG6IJhbt3L7T4H9963",
+        "type": "function",
+        "function": {
+          "name": "gmail__show_draft",
+          "arguments": "{\"draft_id\": 518, \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 7099,
+      "output_tokens": 208,
+      "total_tokens": 7307
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 7099,
+      "output_tokens": 208,
+      "total_tokens": 7307,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 20469,
+      "estimated_history_tokens_before_call": 5118
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_MI05R9lG6IJhbt3L7T4H9963",
+    "name": "gmail__show_draft",
+    "args": {
+      "draft_id": 518,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbWFpbCthc19tb29yZUBnbWFpbC5jb20iLCJleHAiOjE2ODQ1Nzc3OTF9.2yuM1chrNcPBHkbFyAP09EOYbGugqfw0KRwpWN33L1I"
+    },
+    "executed": true,
+    "result": {
+      "draft_id": 518,
+      "subject": "Resignation",
+      "body": "Dear Cheryl,\nI am writing to inform you that I am resigning from my position.\nI have enjoyed working with you and appreciate the opportunities I have been given here.\nBut I have decided to move on. I wish you and the company all the best.\nPlease find my resignation letter attached.\nBest regards,\nAshley",
+      "belongs_to_email_thread_id": null,
+      "response_to_email_id": null,
+      "scheduled_send_at": null,
+      "created_at": "2023-05-18T11:46:59",
+      "updated_at": "2023-05-18T11:46:59",
+      "recipients": [
+        {
+          "name": "Cheryl Martinez",
+          "email": "cheweber@gmail.com"
+        }
+      ],
+      "attachments": [
+        {
+          "id": 8483,
+          "file_name": "resignation.pdf"
+        }
+      ]
+    },
+    "message_result": {
+      "draft_id": 518,
+      "subject": "Resignation",
+      "body": "Dear Cheryl,\nI am writing to inform you that I am resigning from my position.\nI have enjoyed working with you and appreciate the opportunities I have been given here.\nBut I have decided to move on. I wish you and the company all the best.\nPlease find my resignation letter attached.\nBest regards,\nAshley",
+      "belongs_to_email_thread_id": null,
+      "response_to_email_id": null,
+      "scheduled_send_at": null,
+      "created_at": "2023-05-18T11:46:59",
+      "updated_at": "2023-05-18T11:46:59",
+      "recipients": [
+        {
+          "name": "Cheryl Martinez",
+          "email": "cheweber@gmail.com"
+        }
+      ],
+      "attachments": [
+        {
+          "id": 8483,
+          "file_name": "resignation.pdf"
+        }
+      ]
+    },
+    "result_chars": 670,
+    "message_result_chars": 670
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "I see the draft has a `scheduled_send_at` field but I don't have a direct API to schedule it. Let me check if there's a way to update the draft with scheduling info. Looking at the available tools, I don't see a \"schedule draft\" or \"update draft\" function. \n\nLet me check the `send_email_from_draft` - it says \"Send a new email from a draft right away\" so that's not scheduling.\n\nHmm, I don't have a tool to schedule the email. Let me check the `show_drafts` parameters - there's a `scheduled` filter parameter. Let me look more carefully at what tools I have.\n\nI don't have a tool to schedule a draft. But the draft has a `scheduled_send_at` field. Let me see if there's a way to update it.\n\nActually, looking at the draft creation date of 2023-05-18 (Thursday), next Monday would be 2023-05-22. But I'm not sure about the current date. Let me check if there's any way to get the current date.\n\nI don't have a phone app tool available. But the draft was created on 2023-05-18. Let me proceed with what I know.\n\nSince I don't have a \"schedule draft\" or \"update draft\" tool available, I'll need to check if there's another approach. Let me look at the available tools again...\n\nI only have: gmail__login, gmail__show_drafts, gmail__show_draft, gmail__upload_attachments_to_draft, gmail__send_email_from_draft.\n\nThere's no scheduling tool available. Let me check if the `send_email_from_draft` has any scheduling parameter... No, it just sends right away.\n\nSince I can't schedule the email with the available tools, I'll need to inform about this limitation. But wait - let me re-read the task. It says \"schedule it to be sent to my manager on next Monday at 9 am.\" \n\nLet me check if there's a way to update the draft's scheduled_send_at field. I don't see such a tool. Let me proceed with what I can do - I've attached the file. But I can't schedule it with the available tools.\n\nActually, I should complete the task and report what happened.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Lus2XsC3Uo6WuNkchWiG7536",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"status\": \"fail\", \"answer\": \"I was able to attach the resignation.pdf to the draft, but there is no available API to schedule the email for future sending. The available Gmail tools only allow sending immediately.\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_Lus2XsC3Uo6WuNkchWiG7536",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"status\": \"fail\", \"answer\": \"I was able to attach the resignation.pdf to the draft, but there is no available API to schedule the email for future sending. The available Gmail tools only allow sending immediately.\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 7520,
+      "output_tokens": 593,
+      "total_tokens": 8113
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 7520,
+      "output_tokens": 593,
+      "total_tokens": 8113,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 6319,
+      "estimated_tool_schema_tokens": 1580,
+      "history_chars_before_call": 21820,
+      "estimated_history_tokens_before_call": 5455
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_Lus2XsC3Uo6WuNkchWiG7536",
+    "name": "supervisor__complete_task",
+    "args": {
+      "status": "fail",
+      "answer": "I was able to attach the resignation.pdf to the draft, but there is no available API to schedule the email for future sending. The available Gmail tools only allow sending immediately."
+    },
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

@@ -1,0 +1,99 @@
+{
+  "$defs": {
+    "JsonValue": {}
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/verifier-spec.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "adapter_config": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Adapter Config",
+      "type": "object"
+    },
+    "eventual_consistency_delay_ms": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Eventual Consistency Delay Ms",
+      "type": "integer"
+    },
+    "expected_fields": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Expected Fields",
+      "type": "array"
+    },
+    "forbidden_fields": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Forbidden Fields",
+      "type": "array"
+    },
+    "ignored_fields": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Ignored Fields",
+      "type": "array"
+    },
+    "max_attempts": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Max Attempts",
+      "type": "integer"
+    },
+    "require_exact_resource_id": {
+      "default": true,
+      "title": "Require Exact Resource Id",
+      "type": "boolean"
+    },
+    "resource_types": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Resource Types",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "verifier_name": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Verifier Name",
+      "type": "string"
+    },
+    "verifier_version": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Verifier Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "verifier_name",
+    "verifier_version",
+    "resource_types"
+  ],
+  "title": "VerifierSpec",
+  "type": "object"
+}

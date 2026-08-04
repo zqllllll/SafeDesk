@@ -1,0 +1,106 @@
+\section{Reproducibility Checklist}
+\label{app:reproducibility}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+  \item Freeze benchmark commit, task list, task order, evaluator, and database seed.
+  \item Record exact provider-returned model identifier, non-thinking mode,
+        temperature, prompt hash, schema hash, and API Predictor output.
+  \item Use unique experiment, task, trial, and configuration identifiers.
+  \item Persist the final environment state before invoking the evaluator.
+  \item Save every model proposal, runtime disposition (execute, defer, reject),
+        tool result, state reduction, verification, recovery, and completion decision.
+  \item Close a deferred \texttt{tool\_call\_id} with one
+        \texttt{deferred/not\_executed} result; any later proposal uses a new ID.
+  \item Substitute dependent values only for explicit Action-IR placeholders with
+        a declared edge and one unambiguous observed output; never repair guessed IDs.
+  \item Separate agent, predictor, user-simulator, judge, and runtime token usage.
+  \item Classify infrastructure failures and rerun only under the identical frozen condition.
+  \item Redact API keys, credentials, personal information, and sensitive tool fields from traces.
+  \item Run the result-macro validator before compiling the paper; projected-target
+        macros are forbidden in manuscript sources.
+  \item Report the code commit, environment lock hash, source-data hashes, and
+        generated-result hashes with the final artifact.
+\end{itemize}
+
+\subsection{Frozen diagnostic configuration}
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}lYY@{}}
+\toprule
+Field & AppWorld diagnostic & $\tau^2$-bench diagnostic \\
+\midrule
+Agent model ID & \AWModelID & \TauAgentModelID \\
+Endpoint & \AWAPIEndpoint & \TauAgentEndpoint \\
+Access date & \AWModelAccessDate & \TauModelAccessDate \\
+Provider revision & \AWProviderVersion & \TauProviderVersion \\
+Benchmark package/revision & AppWorld revision not archived & $\tau^2$ \TauPackageVersion; \texttt{1901a301961c} (full hash in manifest) \\
+Thinking & disabled & disabled \\
+Temperature & \ModelTemperature & \ModelTemperature \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The AppWorld runner used an API Predictor capped at \AWAPILimit{} active APIs and
+an \AWMaxTurns{}-turn cap. Provider-returned immutable build identifiers were not
+preserved in the historical runs, so the endpoint, model alias, and access dates
+bound the result more precisely than an unsupported version claim. The historical
+run is exploratory because its task-level traces informed development. Formal reruns
+must persist the response model field, system fingerprint when available, and
+deployment revision when supplied.
+
+\subsection{Runner repair audit}
+
+The historical runner repair log records a state-save correction and
+\AWGBKRepairCount{} Windows GBK decoding failures rerun under interpreter-level
+UTF-8, of which \AWGBKRepairSuccessCount{} subsequently passed. The original
+runtime package version, environment lock, and repair execution logs were not
+archived together, so these counts are not used as a performance result or a
+reproducible repair-rate claim. Every future condition must record the persistence
+event, environment lock, runner revision, and exact rerun reason; model failures
+must never be selectively rerun. The available historical identifiers are:
+
+\begingroup
+\raggedright
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+  \item canonical sorted AppWorld task list SHA-256:
+        \texttt{\AWTaskListHashDisplay};
+  \item UTF-8 repair subset SHA-256:
+        \texttt{\AWRepairListHashDisplay}.
+\end{itemize}
+\endgroup
+
+\AWInvalidDurationCount{} historical negative duration values produced by environment time freezing
+are excluded from the archived duration summaries only. Future conditions use a
+monotonic host clock and retain the raw timing stream.
+
+\section{Implementation Inventory}
+\label{app:implementation}
+
+For artifact inspection only, the current workspace contains a framework-neutral
+runtime interface, versioned contracts, a DeerFlow hook, one tested AppWorld
+integration, and prototype $\tau^2$-bench adapters. Code size and schema counts
+are intentionally excluded from the main argument: they describe artifact scope,
+not correctness. The current workspace has
+no recoverable pre-exposure Git history, so it cannot prove a historical design
+freeze. The public release must publish a source revision, dependency lock, and
+CI log before confirmatory benchmark access.
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}lY@{}}
+\toprule
+Scope & Local validation outcome and boundary \\
+\midrule
+Runtime and AppWorld integration & \texttt{python -m pytest} over configured paths: \LocalUnitTestPassed{} passed. Contract, state-store, guard, trace, and public-catalog tests passed locally. \\
+End-to-end runtime prototype & \PrototypeValidationPassed{}/\PrototypeValidationRepetitionCount{} repetitions of one deterministic mock regression scenario passed; \PrototypeValidationCrashes{} crashes. Each used SQLite state and trace stores, rejected one invalid call, verified one write, blocked unverified completion, prevented a duplicate write, then reloaded durable state and trace. This is not an AppWorld score. \\
+DeerFlow live compatibility & \LocalUnitTestSkipped{} skipped because \texttt{deerflow.sandbox.tools} is not installed. This integration is not verified. \\
+AppWorld public catalog & The real API-document fixture yields \AppWorldCatalogToolCount{} tools. Schema conversion is unit-tested; this is not an end-to-end benchmark run. \\
+$\tau^2$ adapter & Local smoke invocation only. No repeated-trial or official Pass$^k$ claim is made. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The test outcome above is a local validation record, not a substitute for an
+external CI run, baseline-bypass equivalence test, or evaluator-confirmed agent
+success. Those release checks remain required before a confirmatory-results paper.

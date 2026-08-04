@@ -1,0 +1,4526 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "amazon.login\namazon.show_orders\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "amazon.login",
+      "amazon.show_orders",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile"
+    ],
+    "usage": {
+      "input_tokens": 7573,
+      "output_tokens": 27,
+      "total_tokens": 7600
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting the current date and my Amazon credentials.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_NXq4eDg14rR9QtVK1dBv1714",
+        "type": "function",
+        "function": {
+          "name": "phone__get_current_date_and_time",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_vrX9FrsUF0mcXqmqTW7L2097",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_6ShJ59GBAYLtOkilGWAd7077",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 1,
+        "id": "call_01_vrX9FrsUF0mcXqmqTW7L2097",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_6ShJ59GBAYLtOkilGWAd7077",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 4331,
+      "output_tokens": 81,
+      "total_tokens": 4412
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 4331,
+      "output_tokens": 81,
+      "total_tokens": 4412,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 14416,
+      "estimated_history_tokens_before_call": 3604
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_NXq4eDg14rR9QtVK1dBv1714",
+    "name": "phone__get_current_date_and_time",
+    "args": {},
+    "executed": false,
+    "result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "message_result": {
+      "executed": false,
+      "reason": "out_of_schema_tool_call",
+      "message": "Tool 'phone__get_current_date_and_time' was not executed because it is not in the active tool schema. Re-plan using only the tools provided for this task."
+    },
+    "result_chars": 225,
+    "message_result_chars": 225
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_vrX9FrsUF0mcXqmqTW7L2097",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Glenn",
+      "last_name": "Burton",
+      "email": "glenn.burton@gmail.com",
+      "phone_number": "8638518861",
+      "birthday": "1993-08-13",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "Glenn",
+      "last_name": "Burton",
+      "email": "glenn.burton@gmail.com",
+      "phone_number": "8638518861",
+      "birthday": "1993-08-13",
+      "sex": "male"
+    },
+    "result_chars": 152,
+    "message_result_chars": 152
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_02_6ShJ59GBAYLtOkilGWAd7077",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "kz0d(by"
+      },
+      {
+        "account_name": "file_system",
+        "password": "ym=Rysn"
+      },
+      {
+        "account_name": "gmail",
+        "password": "H9c5f9I"
+      },
+      {
+        "account_name": "phone",
+        "password": "F#_2d^6"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "}@}a=$h"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "FMLx3Hu"
+      },
+      {
+        "account_name": "spotify",
+        "password": "EbhXe%D"
+      },
+      {
+        "account_name": "todoist",
+        "password": "JBfGOar"
+      },
+      {
+        "account_name": "venmo",
+        "password": "zp$44pd"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "kz0d(by"
+      },
+      {
+        "account_name": "file_system",
+        "password": "ym=Rysn"
+      },
+      {
+        "account_name": "gmail",
+        "password": "H9c5f9I"
+      },
+      {
+        "account_name": "phone",
+        "password": "F#_2d^6"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "}@}a=$h"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "FMLx3Hu"
+      },
+      {
+        "account_name": "spotify",
+        "password": "EbhXe%D"
+      },
+      {
+        "account_name": "todoist",
+        "password": "JBfGOar"
+      },
+      {
+        "account_name": "venmo",
+        "password": "zp$44pd"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "I don't have a `phone__get_current_date_and_time` tool available. Let me check what tools I have. I have the supervisor, amazon, phone, file_system, spotify, venmo, gmail, splitwise, simple_note, and todoist apps. But the phone app's API isn't listed in the available tools. Let me log into Amazon first and see what I can do.\n\nActually, looking at the available tools, I only have `amazon__login` and `amazon__show_orders` from Amazon. Let me log in and check orders.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_ro3lNDOd2cfQ8Q9lXQLZ5283",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"glenn.burton@gmail.com\", \"password\": \"kz0d(by\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_ro3lNDOd2cfQ8Q9lXQLZ5283",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"glenn.burton@gmail.com\", \"password\": \"kz0d(by\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 4718,
+      "output_tokens": 194,
+      "total_tokens": 4912
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 4718,
+      "output_tokens": 194,
+      "total_tokens": 4912,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 16199,
+      "estimated_history_tokens_before_call": 4050
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_ro3lNDOd2cfQ8Q9lXQLZ5283",
+    "name": "amazon__login",
+    "args": {
+      "username": "glenn.burton@gmail.com",
+      "password": "kz0d(by"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ",
+      "token_type": "Bearer"
+    },
+    "result_chars": 200,
+    "message_result_chars": 200
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "Now I need to figure out the \"last calendar month\". Since I don't have a date/time API available, I'll need to work with what I have. Let me look at the orders to see what dates they cover.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_DvgyXNKLM30eVpuP0ek88201",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 0, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_DvgyXNKLM30eVpuP0ek88201",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 0, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5048,
+      "output_tokens": 237,
+      "total_tokens": 5285
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5048,
+      "output_tokens": 237,
+      "total_tokens": 5285,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 17217,
+      "estimated_history_tokens_before_call": 4305
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_DvgyXNKLM30eVpuP0ek88201",
+    "name": "amazon__show_orders",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ",
+      "page_index": 0,
+      "page_limit": 20
+    },
+    "executed": true,
+    "result": [
+      {
+        "order_id": 2987,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 tambourine, 1 barstool, 2 hiking boots",
+        "tax": 41.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 10.0,
+        "discount": 0.0,
+        "created_at": "2023-05-17T04:47:49",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 474.8,
+        "order_items": [
+          {
+            "product_id": 718,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 35.0,
+            "expected_delivery_at": "2023-05-20T18:54:24",
+            "delivered_at": null
+          },
+          {
+            "product_id": 1226,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 1,
+            "price": 125.0,
+            "expected_delivery_at": "2023-05-19T19:43:26",
+            "delivered_at": null
+          },
+          {
+            "product_id": 1441,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 129.0,
+            "expected_delivery_at": "2023-05-24T19:15:51",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 2977,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 tennis shoe",
+        "tax": 12.99,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-15T13:46:00",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 147.89,
+        "order_items": [
+          {
+            "product_id": 95,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 129.9,
+            "expected_delivery_at": "2023-05-21T18:25:48",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 2973,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 water bottles",
+        "tax": 2.58,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-07T19:13:57",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 33.38,
+        "order_items": [
+          {
+            "product_id": 359,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.9,
+            "expected_delivery_at": "2023-05-08T18:25:50",
+            "delivered_at": "2023-05-08T18:25:50"
+          }
+        ]
+      },
+      {
+        "order_id": 2979,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 e-readers",
+        "tax": 26.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-05-04T13:08:09",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 296.0,
+        "order_items": [
+          {
+            "product_id": 2641,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 130.0,
+            "expected_delivery_at": "2023-05-08T17:08:12",
+            "delivered_at": "2023-05-08T17:08:12"
+          }
+        ]
+      },
+      {
+        "order_id": 2988,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 toilet paper holder, 1 surfboard, 1 food storage container",
+        "tax": 81.49,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-01T02:11:32",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 901.39,
+        "order_items": [
+          {
+            "product_id": 304,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 24.9,
+            "expected_delivery_at": "2023-05-05T19:43:50",
+            "delivered_at": "2023-05-05T19:43:50"
+          },
+          {
+            "product_id": 815,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 750.0,
+            "expected_delivery_at": "2023-05-08T19:23:41",
+            "delivered_at": "2023-05-08T19:23:41"
+          },
+          {
+            "product_id": 2454,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-05-08T19:19:29",
+            "delivered_at": "2023-05-08T19:19:29"
+          }
+        ]
+      },
+      {
+        "order_id": 3146,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 flip-flops",
+        "tax": 5.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-28T16:14:10",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 60.0,
+        "order_items": [
+          {
+            "product_id": 1821,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-05-02T17:27:34",
+            "delivered_at": "2023-05-02T17:27:34"
+          }
+        ]
+      },
+      {
+        "order_id": 3148,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 t-shirts",
+        "tax": 1.2,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-21T09:04:27",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 18.2,
+        "order_items": [
+          {
+            "product_id": 226,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 6.0,
+            "expected_delivery_at": "2023-04-28T18:46:30",
+            "delivered_at": "2023-04-28T18:46:30"
+          }
+        ]
+      },
+      {
+        "order_id": 2980,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 baking sheet, 1 hair straightener, 1 paper shredder",
+        "tax": 44.5,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-21T04:48:26",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 494.5,
+        "order_items": [
+          {
+            "product_id": 484,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-04-24T17:33:45",
+            "delivered_at": "2023-04-24T17:33:45"
+          },
+          {
+            "product_id": 1274,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-04-23T19:36:06",
+            "delivered_at": "2023-04-23T19:36:06"
+          },
+          {
+            "product_id": 2676,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-04-23T18:48:46",
+            "delivered_at": "2023-04-23T18:48:46"
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 t-shirt",
+        "tax": 0.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-14T12:39:24",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 13.8,
+        "order_items": [
+          {
+            "product_id": 245,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 8.0,
+            "expected_delivery_at": "2023-04-21T18:38:26",
+            "delivered_at": "2023-04-21T18:38:26"
+          }
+        ]
+      },
+      {
+        "order_id": 3003,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 laundry detergents",
+        "tax": 3.6,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-04-06T20:59:24",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 49.6,
+        "order_items": [
+          {
+            "product_id": 2657,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 18.0,
+            "expected_delivery_at": "2023-04-08T17:17:01",
+            "delivered_at": "2023-04-08T17:17:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3149,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 sweaters",
+        "tax": 19.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-05T20:10:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 222.8,
+        "order_items": [
+          {
+            "product_id": 1160,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2023-04-09T18:48:53",
+            "delivered_at": "2023-04-09T18:48:53"
+          }
+        ]
+      },
+      {
+        "order_id": 2970,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 dumbbell, 1 office desk, 1 microwave, 1 bookshelf",
+        "tax": 102.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-02T01:21:20",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 1136.9,
+        "order_items": [
+          {
+            "product_id": 1289,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 330.0,
+            "expected_delivery_at": "2023-04-06T18:22:47",
+            "delivered_at": "2023-04-06T18:22:47"
+          },
+          {
+            "product_id": 1491,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 330.0,
+            "expected_delivery_at": "2023-04-05T19:26:06",
+            "delivered_at": "2023-04-05T19:26:06"
+          },
+          {
+            "product_id": 2166,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-04-04T19:40:43",
+            "delivered_at": "2023-04-04T19:40:43"
+          },
+          {
+            "product_id": 2467,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 69.0,
+            "expected_delivery_at": "2023-04-08T17:34:18",
+            "delivered_at": "2023-04-08T17:34:18"
+          }
+        ]
+      },
+      {
+        "order_id": 2972,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 water purification filter, 1 gaming console controller, 1 pliers set, 1 paint can",
+        "tax": 27.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-29T05:00:51",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 310.8,
+        "order_items": [
+          {
+            "product_id": 388,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-04-03T19:26:57",
+            "delivered_at": "2023-04-03T19:26:57"
+          },
+          {
+            "product_id": 1345,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-04-03T18:30:04",
+            "delivered_at": "2023-04-03T18:30:04"
+          },
+          {
+            "product_id": 2123,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-31T18:11:26",
+            "delivered_at": "2023-03-31T18:11:26"
+          },
+          {
+            "product_id": 2430,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 108.0,
+            "expected_delivery_at": "2023-04-02T17:33:21",
+            "delivered_at": "2023-04-02T17:33:21"
+          }
+        ]
+      },
+      {
+        "order_id": 3151,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 binoculars",
+        "tax": 60.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-24T02:02:12",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 665.0,
+        "order_items": [
+          {
+            "product_id": 2134,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-03-26T19:52:50",
+            "delivered_at": "2023-03-26T19:52:50"
+          }
+        ]
+      },
+      {
+        "order_id": 3152,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 flip-flops",
+        "tax": 4.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-22T08:13:43",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 49.0,
+        "order_items": [
+          {
+            "product_id": 1825,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-03-29T18:05:41",
+            "delivered_at": "2023-03-29T18:05:41"
+          }
+        ]
+      },
+      {
+        "order_id": 2963,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 electric scooter",
+        "tax": 59.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-20T22:09:10",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 663.9,
+        "order_items": [
+          {
+            "product_id": 1234,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 599.0,
+            "expected_delivery_at": "2023-03-23T17:56:08",
+            "delivered_at": "2023-03-23T17:56:08"
+          }
+        ]
+      },
+      {
+        "order_id": 3150,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 sleeping pads",
+        "tax": 9.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-19T20:11:32",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 104.0,
+        "order_items": [
+          {
+            "product_id": 45,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 45.0,
+            "expected_delivery_at": "2023-03-20T18:36:34",
+            "delivered_at": "2023-03-20T18:36:34"
+          }
+        ]
+      },
+      {
+        "order_id": 2969,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 air purifier",
+        "tax": 25.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-16T15:05:57",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 280.0,
+        "order_items": [
+          {
+            "product_id": 1193,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 250.0,
+            "expected_delivery_at": "2023-03-23T19:28:05",
+            "delivered_at": "2023-03-23T19:28:05"
+          }
+        ]
+      },
+      {
+        "order_id": 2976,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 tambourine, 1 picture frame, 1 cookware organizer",
+        "tax": 3.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-15T11:44:26",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 41.3,
+        "order_items": [
+          {
+            "product_id": 722,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-03-18T17:44:14",
+            "delivered_at": "2023-03-18T17:44:14"
+          },
+          {
+            "product_id": 1528,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 6.0,
+            "expected_delivery_at": "2023-03-20T17:52:10",
+            "delivered_at": "2023-03-20T17:52:10"
+          },
+          {
+            "product_id": 1607,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 17.0,
+            "expected_delivery_at": "2023-03-21T17:34:40",
+            "delivered_at": "2023-03-21T17:34:40"
+          }
+        ]
+      },
+      {
+        "order_id": 2986,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 hiking sock, 2 weightlifting gloves, 2 bookshelves",
+        "tax": 35.08,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-14T10:04:44",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 390.88,
+        "order_items": [
+          {
+            "product_id": 8,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 13.0,
+            "expected_delivery_at": "2023-03-15T18:34:25",
+            "delivered_at": "2023-03-15T18:34:25"
+          },
+          {
+            "product_id": 2118,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 19.9,
+            "expected_delivery_at": "2023-03-20T19:19:02",
+            "delivered_at": "2023-03-20T19:19:02"
+          },
+          {
+            "product_id": 2465,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 149.0,
+            "expected_delivery_at": "2023-03-21T18:28:32",
+            "delivered_at": "2023-03-21T18:28:32"
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "order_id": 2987,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 tambourine, 1 barstool, 2 hiking boots",
+        "tax": 41.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 10.0,
+        "discount": 0.0,
+        "created_at": "2023-05-17T04:47:49",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 474.8,
+        "order_items": [
+          {
+            "product_id": 718,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 35.0,
+            "expected_delivery_at": "2023-05-20T18:54:24",
+            "delivered_at": null
+          },
+          {
+            "product_id": 1226,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 1,
+            "price": 125.0,
+            "expected_delivery_at": "2023-05-19T19:43:26",
+            "delivered_at": null
+          },
+          {
+            "product_id": 1441,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 129.0,
+            "expected_delivery_at": "2023-05-24T19:15:51",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 2977,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 tennis shoe",
+        "tax": 12.99,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-15T13:46:00",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 147.89,
+        "order_items": [
+          {
+            "product_id": 95,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 129.9,
+            "expected_delivery_at": "2023-05-21T18:25:48",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 2973,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 water bottles",
+        "tax": 2.58,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-07T19:13:57",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 33.38,
+        "order_items": [
+          {
+            "product_id": 359,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.9,
+            "expected_delivery_at": "2023-05-08T18:25:50",
+            "delivered_at": "2023-05-08T18:25:50"
+          }
+        ]
+      },
+      {
+        "order_id": 2979,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 e-readers",
+        "tax": 26.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-05-04T13:08:09",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 296.0,
+        "order_items": [
+          {
+            "product_id": 2641,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 130.0,
+            "expected_delivery_at": "2023-05-08T17:08:12",
+            "delivered_at": "2023-05-08T17:08:12"
+          }
+        ]
+      },
+      {
+        "order_id": 2988,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 toilet paper holder, 1 surfboard, 1 food storage container",
+        "tax": 81.49,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-01T02:11:32",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 901.39,
+        "order_items": [
+          {
+            "product_id": 304,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 24.9,
+            "expected_delivery_at": "2023-05-05T19:43:50",
+            "delivered_at": "2023-05-05T19:43:50"
+          },
+          {
+            "product_id": 815,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 750.0,
+            "expected_delivery_at": "2023-05-08T19:23:41",
+            "delivered_at": "2023-05-08T19:23:41"
+          },
+          {
+            "product_id": 2454,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-05-08T19:19:29",
+            "delivered_at": "2023-05-08T19:19:29"
+          }
+        ]
+      },
+      {
+        "order_id": 3146,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 flip-flops",
+        "tax": 5.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-28T16:14:10",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 60.0,
+        "order_items": [
+          {
+            "product_id": 1821,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-05-02T17:27:34",
+            "delivered_at": "2023-05-02T17:27:34"
+          }
+        ]
+      },
+      {
+        "order_id": 3148,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 t-shirts",
+        "tax": 1.2,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-21T09:04:27",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 18.2,
+        "order_items": [
+          {
+            "product_id": 226,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 6.0,
+            "expected_delivery_at": "2023-04-28T18:46:30",
+            "delivered_at": "2023-04-28T18:46:30"
+          }
+        ]
+      },
+      {
+        "order_id": 2980,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 baking sheet, 1 hair straightener, 1 paper shredder",
+        "tax": 44.5,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-21T04:48:26",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 494.5,
+        "order_items": [
+          {
+            "product_id": 484,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-04-24T17:33:45",
+            "delivered_at": "2023-04-24T17:33:45"
+          },
+          {
+            "product_id": 1274,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-04-23T19:36:06",
+            "delivered_at": "2023-04-23T19:36:06"
+          },
+          {
+            "product_id": 2676,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-04-23T18:48:46",
+            "delivered_at": "2023-04-23T18:48:46"
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 t-shirt",
+        "tax": 0.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-14T12:39:24",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 13.8,
+        "order_items": [
+          {
+            "product_id": 245,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 8.0,
+            "expected_delivery_at": "2023-04-21T18:38:26",
+            "delivered_at": "2023-04-21T18:38:26"
+          }
+        ]
+      },
+      {
+        "order_id": 3003,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 laundry detergents",
+        "tax": 3.6,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-04-06T20:59:24",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 49.6,
+        "order_items": [
+          {
+            "product_id": 2657,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 18.0,
+            "expected_delivery_at": "2023-04-08T17:17:01",
+            "delivered_at": "2023-04-08T17:17:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3149,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 sweaters",
+        "tax": 19.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-05T20:10:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 222.8,
+        "order_items": [
+          {
+            "product_id": 1160,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2023-04-09T18:48:53",
+            "delivered_at": "2023-04-09T18:48:53"
+          }
+        ]
+      },
+      {
+        "order_id": 2970,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 dumbbell, 1 office desk, 1 microwave, 1 bookshelf",
+        "tax": 102.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-04-02T01:21:20",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 1136.9,
+        "order_items": [
+          {
+            "product_id": 1289,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 330.0,
+            "expected_delivery_at": "2023-04-06T18:22:47",
+            "delivered_at": "2023-04-06T18:22:47"
+          },
+          {
+            "product_id": 1491,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 330.0,
+            "expected_delivery_at": "2023-04-05T19:26:06",
+            "delivered_at": "2023-04-05T19:26:06"
+          },
+          {
+            "product_id": 2166,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-04-04T19:40:43",
+            "delivered_at": "2023-04-04T19:40:43"
+          },
+          {
+            "product_id": 2467,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 69.0,
+            "expected_delivery_at": "2023-04-08T17:34:18",
+            "delivered_at": "2023-04-08T17:34:18"
+          }
+        ]
+      },
+      {
+        "order_id": 2972,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 water purification filter, 1 gaming console controller, 1 pliers set, 1 paint can",
+        "tax": 27.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-29T05:00:51",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 310.8,
+        "order_items": [
+          {
+            "product_id": 388,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-04-03T19:26:57",
+            "delivered_at": "2023-04-03T19:26:57"
+          },
+          {
+            "product_id": 1345,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2023-04-03T18:30:04",
+            "delivered_at": "2023-04-03T18:30:04"
+          },
+          {
+            "product_id": 2123,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-31T18:11:26",
+            "delivered_at": "2023-03-31T18:11:26"
+          },
+          {
+            "product_id": 2430,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 108.0,
+            "expected_delivery_at": "2023-04-02T17:33:21",
+            "delivered_at": "2023-04-02T17:33:21"
+          }
+        ]
+      },
+      {
+        "order_id": 3151,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 binoculars",
+        "tax": 60.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-24T02:02:12",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 665.0,
+        "order_items": [
+          {
+            "product_id": 2134,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2023-03-26T19:52:50",
+            "delivered_at": "2023-03-26T19:52:50"
+          }
+        ]
+      },
+      {
+        "order_id": 3152,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 flip-flops",
+        "tax": 4.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-22T08:13:43",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 49.0,
+        "order_items": [
+          {
+            "product_id": 1825,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-03-29T18:05:41",
+            "delivered_at": "2023-03-29T18:05:41"
+          }
+        ]
+      },
+      {
+        "order_id": 2963,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 electric scooter",
+        "tax": 59.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-20T22:09:10",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 663.9,
+        "order_items": [
+          {
+            "product_id": 1234,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 599.0,
+            "expected_delivery_at": "2023-03-23T17:56:08",
+            "delivered_at": "2023-03-23T17:56:08"
+          }
+        ]
+      },
+      {
+        "order_id": 3150,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 sleeping pads",
+        "tax": 9.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-19T20:11:32",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 104.0,
+        "order_items": [
+          {
+            "product_id": 45,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 45.0,
+            "expected_delivery_at": "2023-03-20T18:36:34",
+            "delivered_at": "2023-03-20T18:36:34"
+          }
+        ]
+      },
+      {
+        "order_id": 2969,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 air purifier",
+        "tax": 25.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-16T15:05:57",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 280.0,
+        "order_items": [
+          {
+            "product_id": 1193,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 250.0,
+            "expected_delivery_at": "2023-03-23T19:28:05",
+            "delivered_at": "2023-03-23T19:28:05"
+          }
+        ]
+      },
+      {
+        "order_id": 2976,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 tambourine, 1 picture frame, 1 cookware organizer",
+        "tax": 3.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-15T11:44:26",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 41.3,
+        "order_items": [
+          {
+            "product_id": 722,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-03-18T17:44:14",
+            "delivered_at": "2023-03-18T17:44:14"
+          },
+          {
+            "product_id": 1528,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 6.0,
+            "expected_delivery_at": "2023-03-20T17:52:10",
+            "delivered_at": "2023-03-20T17:52:10"
+          },
+          {
+            "product_id": 1607,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 17.0,
+            "expected_delivery_at": "2023-03-21T17:34:40",
+            "delivered_at": "2023-03-21T17:34:40"
+          }
+        ]
+      },
+      {
+        "order_id": 2986,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 hiking sock, 2 weightlifting gloves, 2 bookshelves",
+        "tax": 35.08,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-14T10:04:44",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 390.88,
+        "order_items": [
+          {
+            "product_id": 8,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 13.0,
+            "expected_delivery_at": "2023-03-15T18:34:25",
+            "delivered_at": "2023-03-15T18:34:25"
+          },
+          {
+            "product_id": 2118,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 19.9,
+            "expected_delivery_at": "2023-03-20T19:19:02",
+            "delivered_at": "2023-03-20T19:19:02"
+          },
+          {
+            "product_id": 2465,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 149.0,
+            "expected_delivery_at": "2023-03-21T18:28:32",
+            "delivered_at": "2023-03-21T18:28:32"
+          }
+        ]
+      }
+    ],
+    "result_chars": 14459,
+    "message_result_chars": 14459
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "Let me check if there are more pages.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_vImmEy4ack1KDvVbIw4A4012",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 1, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_vImmEy4ack1KDvVbIw4A4012",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 1, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 11180,
+      "output_tokens": 200,
+      "total_tokens": 11380
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 11180,
+      "output_tokens": 200,
+      "total_tokens": 11380,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 33763,
+      "estimated_history_tokens_before_call": 8441
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_vImmEy4ack1KDvVbIw4A4012",
+    "name": "amazon__show_orders",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ",
+      "page_index": 1,
+      "page_limit": 20
+    },
+    "executed": true,
+    "result": [
+      {
+        "order_id": 3153,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 screwdriver sets",
+        "tax": 1.4,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-10T23:16:21",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 20.4,
+        "order_items": [
+          {
+            "product_id": 2485,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 7.0,
+            "expected_delivery_at": "2023-03-14T18:40:02",
+            "delivered_at": "2023-03-14T18:40:02"
+          }
+        ]
+      },
+      {
+        "order_id": 3154,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 table lamp",
+        "tax": 3.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-06T13:18:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 38.0,
+        "order_items": [
+          {
+            "product_id": 2370,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-11T19:12:45",
+            "delivered_at": "2023-03-11T19:12:45"
+          }
+        ]
+      },
+      {
+        "order_id": 3156,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 barstools",
+        "tax": 23.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-24T19:33:47",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 266.8,
+        "order_items": [
+          {
+            "product_id": 1220,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 119.0,
+            "expected_delivery_at": "2023-02-27T17:06:25",
+            "delivered_at": "2023-02-27T17:06:25"
+          }
+        ]
+      },
+      {
+        "order_id": 2996,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 swimming fins",
+        "tax": 6.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-23T22:32:00",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 71.0,
+        "order_items": [
+          {
+            "product_id": 1573,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-01T17:45:07",
+            "delivered_at": "2023-03-01T17:45:07"
+          }
+        ]
+      },
+      {
+        "order_id": 3157,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 gaming chairs",
+        "tax": 73.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-18T20:02:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 816.8,
+        "order_items": [
+          {
+            "product_id": 447,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 369.0,
+            "expected_delivery_at": "2023-02-19T17:55:02",
+            "delivered_at": "2023-02-19T17:55:02"
+          }
+        ]
+      },
+      {
+        "order_id": 2968,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 vacuum cleaner bags",
+        "tax": 2.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-13T20:56:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 27.0,
+        "order_items": [
+          {
+            "product_id": 486,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-02-15T18:28:53",
+            "delivered_at": "2023-02-15T18:28:53"
+          }
+        ]
+      },
+      {
+        "order_id": 2997,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 trash bag, 2 weightlifting gloves, 2 bicycle pumps",
+        "tax": 11.01,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-09T20:35:54",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.11,
+        "order_items": [
+          {
+            "product_id": 657,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 14.5,
+            "expected_delivery_at": "2023-02-11T19:24:37",
+            "delivered_at": "2023-02-11T19:24:37"
+          },
+          {
+            "product_id": 2118,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 19.9,
+            "expected_delivery_at": "2023-02-15T17:11:16",
+            "delivered_at": "2023-02-15T17:11:16"
+          },
+          {
+            "product_id": 2688,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 27.9,
+            "expected_delivery_at": "2023-02-14T17:45:26",
+            "delivered_at": "2023-02-14T17:45:26"
+          }
+        ]
+      },
+      {
+        "order_id": 2971,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 file folder, 1 stapler, 2 safety goggles, 1 mouse pad",
+        "tax": 4.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T08:15:30",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 57.3,
+        "order_items": [
+          {
+            "product_id": 451,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-02-12T18:25:27",
+            "delivered_at": "2023-02-12T18:25:27"
+          },
+          {
+            "product_id": 832,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-02-11T18:34:15",
+            "delivered_at": "2023-02-11T18:34:15"
+          },
+          {
+            "product_id": 1251,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 7.0,
+            "expected_delivery_at": "2023-02-12T18:58:41",
+            "delivered_at": "2023-02-12T18:58:41"
+          },
+          {
+            "product_id": 1264,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 4.0,
+            "expected_delivery_at": "2023-02-12T18:37:24",
+            "delivered_at": "2023-02-12T18:37:24"
+          }
+        ]
+      },
+      {
+        "order_id": 3155,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 extension cords",
+        "tax": 2.4,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T06:30:04",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 31.4,
+        "order_items": [
+          {
+            "product_id": 1599,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.0,
+            "expected_delivery_at": "2023-02-10T19:48:47",
+            "delivered_at": "2023-02-10T19:48:47"
+          }
+        ]
+      },
+      {
+        "order_id": 2994,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 face shields, 1 gaming console, 2 e-readers",
+        "tax": 70.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-04T17:42:38",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 775.0,
+        "order_items": [
+          {
+            "product_id": 726,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-02-08T18:33:48",
+            "delivered_at": "2023-02-08T18:33:48"
+          },
+          {
+            "product_id": 2345,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 400.0,
+            "expected_delivery_at": "2023-02-09T17:57:34",
+            "delivered_at": "2023-02-09T17:57:34"
+          },
+          {
+            "product_id": 2641,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-02-08T18:55:54",
+            "delivered_at": "2023-02-08T18:55:54"
+          }
+        ]
+      },
+      {
+        "order_id": 2965,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 blenders, 1 hiking hat, 1 food storage container, 2 e-readers",
+        "tax": 126.18,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-01-31T16:54:23",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 1397.98,
+        "order_items": [
+          {
+            "product_id": 566,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 399.9,
+            "expected_delivery_at": "2023-02-05T19:09:01",
+            "delivered_at": "2023-02-05T19:09:01"
+          },
+          {
+            "product_id": 1450,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 37.0,
+            "expected_delivery_at": "2023-02-02T17:47:41",
+            "delivered_at": "2023-02-02T17:47:41"
+          },
+          {
+            "product_id": 2455,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-02-02T18:18:30",
+            "delivered_at": "2023-02-02T18:18:30"
+          },
+          {
+            "product_id": 2638,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 1,
+            "price": 200.0,
+            "expected_delivery_at": "2023-02-03T18:48:33",
+            "delivered_at": "2023-02-03T18:48:33"
+          }
+        ]
+      },
+      {
+        "order_id": 2998,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 beach chair, 2 workbenches, 2 clarinets",
+        "tax": 59.88,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-01-30T07:29:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 668.68,
+        "order_items": [
+          {
+            "product_id": 1338,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.8,
+            "expected_delivery_at": "2023-02-06T17:03:03",
+            "delivered_at": "2023-02-06T17:03:03"
+          },
+          {
+            "product_id": 1685,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 1,
+            "price": 79.0,
+            "expected_delivery_at": "2023-02-01T18:44:55",
+            "delivered_at": "2023-02-01T18:44:55"
+          },
+          {
+            "product_id": 2669,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 200.0,
+            "expected_delivery_at": "2023-02-02T18:32:44",
+            "delivered_at": "2023-02-02T18:32:44"
+          }
+        ]
+      },
+      {
+        "order_id": 2982,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 gaming mouse, 1 waffle maker",
+        "tax": 22.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-21T02:49:35",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 247.0,
+        "order_items": [
+          {
+            "product_id": 441,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 170.0,
+            "expected_delivery_at": "2023-01-26T18:37:32",
+            "delivered_at": "2023-01-26T18:37:32"
+          },
+          {
+            "product_id": 1555,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 50.0,
+            "expected_delivery_at": "2023-01-27T17:36:55",
+            "delivered_at": "2023-01-27T17:36:55"
+          }
+        ]
+      },
+      {
+        "order_id": 2993,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 harp, 2 toasters",
+        "tax": 2207.5,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-10T03:05:41",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 24287.5,
+        "order_items": [
+          {
+            "product_id": 459,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 21995.0,
+            "expected_delivery_at": "2023-01-16T18:36:51",
+            "delivered_at": "2023-01-16T18:36:51"
+          },
+          {
+            "product_id": 1360,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-01-13T18:44:37",
+            "delivered_at": "2023-01-13T18:44:37"
+          }
+        ]
+      },
+      {
+        "order_id": 2995,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "1 coffee maker",
+        "tax": 14.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-05T16:22:57",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 168.9,
+        "order_items": [
+          {
+            "product_id": 1391,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 149.0,
+            "expected_delivery_at": "2023-01-12T17:10:56",
+            "delivered_at": "2023-01-12T17:10:56"
+          }
+        ]
+      },
+      {
+        "order_id": 2974,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 picnic baskets, 2 bathroom scales",
+        "tax": 11.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-27T01:32:01",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.0,
+        "order_items": [
+          {
+            "product_id": 524,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-31T17:31:04",
+            "delivered_at": "2022-12-31T17:31:04"
+          },
+          {
+            "product_id": 741,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 35.0,
+            "expected_delivery_at": "2022-12-28T19:00:28",
+            "delivered_at": "2022-12-28T19:00:28"
+          }
+        ]
+      },
+      {
+        "order_id": 3002,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 sleeping pad, 1 vase, 2 ladders, 1 food storage container",
+        "tax": 62.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-19T05:04:33",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 690.3,
+        "order_items": [
+          {
+            "product_id": 48,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 120.0,
+            "expected_delivery_at": "2022-12-20T19:44:18",
+            "delivered_at": "2022-12-20T19:44:18"
+          },
+          {
+            "product_id": 1303,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-12-20T19:49:20",
+            "delivered_at": "2022-12-20T19:49:20"
+          },
+          {
+            "product_id": 2041,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 199.0,
+            "expected_delivery_at": "2022-12-23T18:09:51",
+            "delivered_at": "2022-12-23T18:09:51"
+          },
+          {
+            "product_id": 2455,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2022-12-21T19:37:32",
+            "delivered_at": "2022-12-21T19:37:32"
+          }
+        ]
+      },
+      {
+        "order_id": 2984,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 bluetooth speakers, 1 hiking hat, 2 dining tables",
+        "tax": 132.38,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-14T05:13:35",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 1461.18,
+        "order_items": [
+          {
+            "product_id": 666,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 349.9,
+            "expected_delivery_at": "2022-12-17T17:45:49",
+            "delivered_at": "2022-12-17T17:45:49"
+          },
+          {
+            "product_id": 1452,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 24.0,
+            "expected_delivery_at": "2022-12-21T17:28:34",
+            "delivered_at": "2022-12-21T17:28:34"
+          },
+          {
+            "product_id": 2487,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2022-12-21T19:47:42",
+            "delivered_at": "2022-12-21T19:47:42"
+          }
+        ]
+      },
+      {
+        "order_id": 2966,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 picture frames",
+        "tax": 2.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-09T01:44:55",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 27.0,
+        "order_items": [
+          {
+            "product_id": 1530,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2022-12-15T17:31:28",
+            "delivered_at": "2022-12-15T17:31:28"
+          }
+        ]
+      },
+      {
+        "order_id": 2978,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 tape measure, 2 board games, 1 microphone",
+        "tax": 21.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-02T16:00:15",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 245.9,
+        "order_items": [
+          {
+            "product_id": 284,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-07T19:51:43",
+            "delivered_at": "2022-12-07T19:51:43"
+          },
+          {
+            "product_id": 2320,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 50.0,
+            "expected_delivery_at": "2022-12-09T17:47:22",
+            "delivered_at": "2022-12-09T17:47:22"
+          },
+          {
+            "product_id": 2650,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2022-12-05T19:49:38",
+            "delivered_at": "2022-12-05T19:49:38"
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "order_id": 3153,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 screwdriver sets",
+        "tax": 1.4,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-10T23:16:21",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 20.4,
+        "order_items": [
+          {
+            "product_id": 2485,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 7.0,
+            "expected_delivery_at": "2023-03-14T18:40:02",
+            "delivered_at": "2023-03-14T18:40:02"
+          }
+        ]
+      },
+      {
+        "order_id": 3154,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "1 table lamp",
+        "tax": 3.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-03-06T13:18:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 38.0,
+        "order_items": [
+          {
+            "product_id": 2370,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-11T19:12:45",
+            "delivered_at": "2023-03-11T19:12:45"
+          }
+        ]
+      },
+      {
+        "order_id": 3156,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 barstools",
+        "tax": 23.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-24T19:33:47",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 266.8,
+        "order_items": [
+          {
+            "product_id": 1220,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 119.0,
+            "expected_delivery_at": "2023-02-27T17:06:25",
+            "delivered_at": "2023-02-27T17:06:25"
+          }
+        ]
+      },
+      {
+        "order_id": 2996,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 swimming fins",
+        "tax": 6.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-23T22:32:00",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 71.0,
+        "order_items": [
+          {
+            "product_id": 1573,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2023-03-01T17:45:07",
+            "delivered_at": "2023-03-01T17:45:07"
+          }
+        ]
+      },
+      {
+        "order_id": 3157,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 gaming chairs",
+        "tax": 73.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-18T20:02:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 816.8,
+        "order_items": [
+          {
+            "product_id": 447,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 369.0,
+            "expected_delivery_at": "2023-02-19T17:55:02",
+            "delivered_at": "2023-02-19T17:55:02"
+          }
+        ]
+      },
+      {
+        "order_id": 2968,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 vacuum cleaner bags",
+        "tax": 2.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-13T20:56:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 27.0,
+        "order_items": [
+          {
+            "product_id": 486,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-02-15T18:28:53",
+            "delivered_at": "2023-02-15T18:28:53"
+          }
+        ]
+      },
+      {
+        "order_id": 2997,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 trash bag, 2 weightlifting gloves, 2 bicycle pumps",
+        "tax": 11.01,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-09T20:35:54",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.11,
+        "order_items": [
+          {
+            "product_id": 657,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 14.5,
+            "expected_delivery_at": "2023-02-11T19:24:37",
+            "delivered_at": "2023-02-11T19:24:37"
+          },
+          {
+            "product_id": 2118,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 19.9,
+            "expected_delivery_at": "2023-02-15T17:11:16",
+            "delivered_at": "2023-02-15T17:11:16"
+          },
+          {
+            "product_id": 2688,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 27.9,
+            "expected_delivery_at": "2023-02-14T17:45:26",
+            "delivered_at": "2023-02-14T17:45:26"
+          }
+        ]
+      },
+      {
+        "order_id": 2971,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 file folder, 1 stapler, 2 safety goggles, 1 mouse pad",
+        "tax": 4.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T08:15:30",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 57.3,
+        "order_items": [
+          {
+            "product_id": 451,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2023-02-12T18:25:27",
+            "delivered_at": "2023-02-12T18:25:27"
+          },
+          {
+            "product_id": 832,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2023-02-11T18:34:15",
+            "delivered_at": "2023-02-11T18:34:15"
+          },
+          {
+            "product_id": 1251,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 7.0,
+            "expected_delivery_at": "2023-02-12T18:58:41",
+            "delivered_at": "2023-02-12T18:58:41"
+          },
+          {
+            "product_id": 1264,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 1,
+            "price": 4.0,
+            "expected_delivery_at": "2023-02-12T18:37:24",
+            "delivered_at": "2023-02-12T18:37:24"
+          }
+        ]
+      },
+      {
+        "order_id": 3155,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 extension cords",
+        "tax": 2.4,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-08T06:30:04",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 31.4,
+        "order_items": [
+          {
+            "product_id": 1599,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 12.0,
+            "expected_delivery_at": "2023-02-10T19:48:47",
+            "delivered_at": "2023-02-10T19:48:47"
+          }
+        ]
+      },
+      {
+        "order_id": 2994,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "2 face shields, 1 gaming console, 2 e-readers",
+        "tax": 70.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-02-04T17:42:38",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 775.0,
+        "order_items": [
+          {
+            "product_id": 726,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2023-02-08T18:33:48",
+            "delivered_at": "2023-02-08T18:33:48"
+          },
+          {
+            "product_id": 2345,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 400.0,
+            "expected_delivery_at": "2023-02-09T17:57:34",
+            "delivered_at": "2023-02-09T17:57:34"
+          },
+          {
+            "product_id": 2641,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2023-02-08T18:55:54",
+            "delivered_at": "2023-02-08T18:55:54"
+          }
+        ]
+      },
+      {
+        "order_id": 2965,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 blenders, 1 hiking hat, 1 food storage container, 2 e-readers",
+        "tax": 126.18,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-01-31T16:54:23",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 1397.98,
+        "order_items": [
+          {
+            "product_id": 566,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 399.9,
+            "expected_delivery_at": "2023-02-05T19:09:01",
+            "delivered_at": "2023-02-05T19:09:01"
+          },
+          {
+            "product_id": 1450,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 37.0,
+            "expected_delivery_at": "2023-02-02T17:47:41",
+            "delivered_at": "2023-02-02T17:47:41"
+          },
+          {
+            "product_id": 2455,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2023-02-02T18:18:30",
+            "delivered_at": "2023-02-02T18:18:30"
+          },
+          {
+            "product_id": 2638,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 1,
+            "price": 200.0,
+            "expected_delivery_at": "2023-02-03T18:48:33",
+            "delivered_at": "2023-02-03T18:48:33"
+          }
+        ]
+      },
+      {
+        "order_id": 2998,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 beach chair, 2 workbenches, 2 clarinets",
+        "tax": 59.88,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 5.0,
+        "discount": 0.0,
+        "created_at": "2023-01-30T07:29:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 668.68,
+        "order_items": [
+          {
+            "product_id": 1338,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.8,
+            "expected_delivery_at": "2023-02-06T17:03:03",
+            "delivered_at": "2023-02-06T17:03:03"
+          },
+          {
+            "product_id": 1685,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 1,
+            "price": 79.0,
+            "expected_delivery_at": "2023-02-01T18:44:55",
+            "delivered_at": "2023-02-01T18:44:55"
+          },
+          {
+            "product_id": 2669,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 200.0,
+            "expected_delivery_at": "2023-02-02T18:32:44",
+            "delivered_at": "2023-02-02T18:32:44"
+          }
+        ]
+      },
+      {
+        "order_id": 2982,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 gaming mouse, 1 waffle maker",
+        "tax": 22.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-21T02:49:35",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 247.0,
+        "order_items": [
+          {
+            "product_id": 441,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 170.0,
+            "expected_delivery_at": "2023-01-26T18:37:32",
+            "delivered_at": "2023-01-26T18:37:32"
+          },
+          {
+            "product_id": 1555,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 50.0,
+            "expected_delivery_at": "2023-01-27T17:36:55",
+            "delivered_at": "2023-01-27T17:36:55"
+          }
+        ]
+      },
+      {
+        "order_id": 2993,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 harp, 2 toasters",
+        "tax": 2207.5,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-10T03:05:41",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 24287.5,
+        "order_items": [
+          {
+            "product_id": 459,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 21995.0,
+            "expected_delivery_at": "2023-01-16T18:36:51",
+            "delivered_at": "2023-01-16T18:36:51"
+          },
+          {
+            "product_id": 1360,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2023-01-13T18:44:37",
+            "delivered_at": "2023-01-13T18:44:37"
+          }
+        ]
+      },
+      {
+        "order_id": 2995,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "1 coffee maker",
+        "tax": 14.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-01-05T16:22:57",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 168.9,
+        "order_items": [
+          {
+            "product_id": 1391,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 149.0,
+            "expected_delivery_at": "2023-01-12T17:10:56",
+            "delivered_at": "2023-01-12T17:10:56"
+          }
+        ]
+      },
+      {
+        "order_id": 2974,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 picnic baskets, 2 bathroom scales",
+        "tax": 11.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-27T01:32:01",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.0,
+        "order_items": [
+          {
+            "product_id": 524,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-31T17:31:04",
+            "delivered_at": "2022-12-31T17:31:04"
+          },
+          {
+            "product_id": 741,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 35.0,
+            "expected_delivery_at": "2022-12-28T19:00:28",
+            "delivered_at": "2022-12-28T19:00:28"
+          }
+        ]
+      },
+      {
+        "order_id": 3002,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 sleeping pad, 1 vase, 2 ladders, 1 food storage container",
+        "tax": 62.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-19T05:04:33",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 690.3,
+        "order_items": [
+          {
+            "product_id": 48,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 120.0,
+            "expected_delivery_at": "2022-12-20T19:44:18",
+            "delivered_at": "2022-12-20T19:44:18"
+          },
+          {
+            "product_id": 1303,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-12-20T19:49:20",
+            "delivered_at": "2022-12-20T19:49:20"
+          },
+          {
+            "product_id": 2041,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 199.0,
+            "expected_delivery_at": "2022-12-23T18:09:51",
+            "delivered_at": "2022-12-23T18:09:51"
+          },
+          {
+            "product_id": 2455,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2022-12-21T19:37:32",
+            "delivered_at": "2022-12-21T19:37:32"
+          }
+        ]
+      },
+      {
+        "order_id": 2984,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 bluetooth speakers, 1 hiking hat, 2 dining tables",
+        "tax": 132.38,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-14T05:13:35",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 1461.18,
+        "order_items": [
+          {
+            "product_id": 666,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 349.9,
+            "expected_delivery_at": "2022-12-17T17:45:49",
+            "delivered_at": "2022-12-17T17:45:49"
+          },
+          {
+            "product_id": 1452,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 24.0,
+            "expected_delivery_at": "2022-12-21T17:28:34",
+            "delivered_at": "2022-12-21T17:28:34"
+          },
+          {
+            "product_id": 2487,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 300.0,
+            "expected_delivery_at": "2022-12-21T19:47:42",
+            "delivered_at": "2022-12-21T19:47:42"
+          }
+        ]
+      },
+      {
+        "order_id": 2966,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 picture frames",
+        "tax": 2.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-09T01:44:55",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 27.0,
+        "order_items": [
+          {
+            "product_id": 1530,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 10.0,
+            "expected_delivery_at": "2022-12-15T17:31:28",
+            "delivered_at": "2022-12-15T17:31:28"
+          }
+        ]
+      },
+      {
+        "order_id": 2978,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 tape measure, 2 board games, 1 microphone",
+        "tax": 21.9,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-12-02T16:00:15",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 245.9,
+        "order_items": [
+          {
+            "product_id": 284,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-12-07T19:51:43",
+            "delivered_at": "2022-12-07T19:51:43"
+          },
+          {
+            "product_id": 2320,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 50.0,
+            "expected_delivery_at": "2022-12-09T17:47:22",
+            "delivered_at": "2022-12-09T17:47:22"
+          },
+          {
+            "product_id": 2650,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 99.0,
+            "expected_delivery_at": "2022-12-05T19:49:38",
+            "delivered_at": "2022-12-05T19:49:38"
+          }
+        ]
+      }
+    ],
+    "result_chars": 15771,
+    "message_result_chars": 15771
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "Let me check if there are more pages.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_50GYGyjvYWTQ7k4jWhaY7132",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 2, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_50GYGyjvYWTQ7k4jWhaY7132",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ\", \"page_index\": 2, \"page_limit\": 20}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 17850,
+      "output_tokens": 200,
+      "total_tokens": 18050
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 17850,
+      "output_tokens": 200,
+      "total_tokens": 18050,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 51583,
+      "estimated_history_tokens_before_call": 12896
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_50GYGyjvYWTQ7k4jWhaY7132",
+    "name": "amazon__show_orders",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rZ2xlbm4uYnVydG9uQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.s4qgQ7RDjeE3bYp8REsRCHIpK-OS-MaKwmYkm8WTkqQ",
+      "page_index": 2,
+      "page_limit": 20
+    },
+    "executed": true,
+    "result": [
+      {
+        "order_id": 2975,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 window curtains",
+        "tax": 5.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-22T09:18:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 60.0,
+        "order_items": [
+          {
+            "product_id": 2532,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2022-11-28T19:13:42",
+            "delivered_at": "2022-11-28T19:13:42"
+          }
+        ]
+      },
+      {
+        "order_id": 2967,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 dining chairs",
+        "tax": 9.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-19T23:42:34",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 112.8,
+        "order_items": [
+          {
+            "product_id": 2151,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 49.0,
+            "expected_delivery_at": "2022-11-26T19:11:28",
+            "delivered_at": "2022-11-26T19:11:28"
+          }
+        ]
+      },
+      {
+        "order_id": 2981,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 water purification filters, 2 weightlifting benches, 2 wine glasses",
+        "tax": 215.98,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-13T11:38:00",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 2380.78,
+        "order_items": [
+          {
+            "product_id": 385,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 369.9,
+            "expected_delivery_at": "2022-11-16T17:05:28",
+            "delivered_at": "2022-11-16T17:05:28"
+          },
+          {
+            "product_id": 826,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 695.0,
+            "expected_delivery_at": "2022-11-14T19:53:10",
+            "delivered_at": "2022-11-14T19:53:10"
+          },
+          {
+            "product_id": 1512,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2022-11-17T18:11:01",
+            "delivered_at": "2022-11-17T18:11:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3000,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 cable ties, 1 frying pan, 1 drone, 1 bicycle",
+        "tax": 692.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-31T05:17:33",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 7617.0,
+        "order_items": [
+          {
+            "product_id": 55,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 2.5,
+            "expected_delivery_at": "2022-11-07T19:32:51",
+            "delivered_at": "2022-11-07T19:32:51"
+          },
+          {
+            "product_id": 610,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-11-05T19:45:44",
+            "delivered_at": "2022-11-05T19:45:44"
+          },
+          {
+            "product_id": 704,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 1795.0,
+            "expected_delivery_at": "2022-11-04T19:53:19",
+            "delivered_at": "2022-11-04T19:53:19"
+          },
+          {
+            "product_id": 2434,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 5100.0,
+            "expected_delivery_at": "2022-11-04T18:38:26",
+            "delivered_at": "2022-11-04T18:38:26"
+          }
+        ]
+      },
+      {
+        "order_id": 2999,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 gaming chairs, 1 violin, 1 tent, 2 smartphones",
+        "tax": 324.6,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-30T23:40:04",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 3575.6,
+        "order_items": [
+          {
+            "product_id": 450,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 429.0,
+            "expected_delivery_at": "2022-11-01T17:59:24",
+            "delivered_at": "2022-11-01T17:59:24"
+          },
+          {
+            "product_id": 754,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2022-11-06T17:53:19",
+            "delivered_at": "2022-11-06T17:53:19"
+          },
+          {
+            "product_id": 2197,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-11-05T18:54:16",
+            "delivered_at": "2022-11-05T18:54:16"
+          },
+          {
+            "product_id": 2409,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 1099.0,
+            "expected_delivery_at": "2022-11-02T18:33:41",
+            "delivered_at": "2022-11-02T18:33:41"
+          }
+        ]
+      },
+      {
+        "order_id": 2983,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 whiteboard, 1 resistance band",
+        "tax": 14.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-16T19:24:32",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 159.0,
+        "order_items": [
+          {
+            "product_id": 2179,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 120.0,
+            "expected_delivery_at": "2022-10-22T18:09:35",
+            "delivered_at": "2022-10-22T18:09:35"
+          },
+          {
+            "product_id": 2598,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-22T17:30:15",
+            "delivered_at": "2022-10-22T17:30:15"
+          }
+        ]
+      },
+      {
+        "order_id": 3001,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 maraca, 1 wheelbarrow",
+        "tax": 11.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-05T17:08:06",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.0,
+        "order_items": [
+          {
+            "product_id": 1316,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-11T19:45:24",
+            "delivered_at": "2022-10-11T19:45:24"
+          },
+          {
+            "product_id": 1636,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 90.0,
+            "expected_delivery_at": "2022-10-08T19:09:13",
+            "delivered_at": "2022-10-08T19:09:13"
+          }
+        ]
+      },
+      {
+        "order_id": 2960,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 trumpets, 2 shower curtains, 1 hiking hat, 1 bean bag chair",
+        "tax": 643.7,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-04T18:26:34",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 7085.7,
+        "order_items": [
+          {
+            "product_id": 707,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 3000.0,
+            "expected_delivery_at": "2022-10-10T17:45:06",
+            "delivered_at": "2022-10-10T17:45:06"
+          },
+          {
+            "product_id": 1380,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2022-10-05T19:44:57",
+            "delivered_at": "2022-10-05T19:44:57"
+          },
+          {
+            "product_id": 1447,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 78.0,
+            "expected_delivery_at": "2022-10-06T18:28:34",
+            "delivered_at": "2022-10-06T18:28:34"
+          },
+          {
+            "product_id": 2173,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 299.0,
+            "expected_delivery_at": "2022-10-09T17:50:54",
+            "delivered_at": "2022-10-09T17:50:54"
+          }
+        ]
+      },
+      {
+        "order_id": 2992,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 gaming mouse, 1 shower curtain",
+        "tax": 10.98,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-02T21:22:23",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 125.78,
+        "order_items": [
+          {
+            "product_id": 442,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2022-10-08T17:31:14",
+            "delivered_at": "2022-10-08T17:31:14"
+          },
+          {
+            "product_id": 1381,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 9.8,
+            "expected_delivery_at": "2022-10-04T19:14:10",
+            "delivered_at": "2022-10-04T19:14:10"
+          }
+        ]
+      },
+      {
+        "order_id": 2962,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 yoga pants, 2 toasters",
+        "tax": 55.58,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-25T19:08:40",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 616.38,
+        "order_items": [
+          {
+            "product_id": 466,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 98.0,
+            "expected_delivery_at": "2022-09-27T17:45:54",
+            "delivered_at": "2022-09-27T17:45:54"
+          },
+          {
+            "product_id": 1361,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 179.9,
+            "expected_delivery_at": "2022-09-26T19:35:38",
+            "delivered_at": "2022-09-26T19:35:38"
+          }
+        ]
+      },
+      {
+        "order_id": 2990,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 staplers, 2 pencil sharpeners, 1 bicycle",
+        "tax": 97.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-24T12:20:07",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 1072.0,
+        "order_items": [
+          {
+            "product_id": 828,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-01T18:41:26",
+            "delivered_at": "2022-10-01T18:41:26"
+          },
+          {
+            "product_id": 2280,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2022-10-01T18:13:14",
+            "delivered_at": "2022-10-01T18:13:14"
+          },
+          {
+            "product_id": 2438,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 900.0,
+            "expected_delivery_at": "2022-09-25T17:57:12",
+            "delivered_at": "2022-09-25T17:57:12"
+          }
+        ]
+      },
+      {
+        "order_id": 2991,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 mixing bowls",
+        "tax": 8.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-18T16:26:59",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 93.0,
+        "order_items": [
+          {
+            "product_id": 479,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2022-09-25T18:50:09",
+            "delivered_at": "2022-09-25T18:50:09"
+          }
+        ]
+      },
+      {
+        "order_id": 2961,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 vase, 1 juicer, 1 amplifier",
+        "tax": 53.79,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-16T13:51:48",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 596.69,
+        "order_items": [
+          {
+            "product_id": 1310,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 49.0,
+            "expected_delivery_at": "2022-09-23T18:15:51",
+            "delivered_at": "2022-09-23T18:15:51"
+          },
+          {
+            "product_id": 1389,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 299.9,
+            "expected_delivery_at": "2022-09-17T18:54:04",
+            "delivered_at": "2022-09-17T18:54:04"
+          },
+          {
+            "product_id": 2076,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 189.0,
+            "expected_delivery_at": "2022-09-22T17:31:14",
+            "delivered_at": "2022-09-22T17:31:14"
+          }
+        ]
+      },
+      {
+        "order_id": 2964,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 blender, 1 hiking pant",
+        "tax": 66.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-26T07:44:31",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 731.0,
+        "order_items": [
+          {
+            "product_id": 565,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 600.0,
+            "expected_delivery_at": "2022-09-02T18:03:49",
+            "delivered_at": "2022-09-02T18:03:49"
+          },
+          {
+            "product_id": 1582,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-09-02T17:21:01",
+            "delivered_at": "2022-09-02T17:21:01"
+          }
+        ]
+      },
+      {
+        "order_id": 2989,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 toothbrush holders, 1 external hard drive, 2 hammocks",
+        "tax": 58.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-24T17:51:52",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 651.8,
+        "order_items": [
+          {
+            "product_id": 1551,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-08-25T17:58:29",
+            "delivered_at": "2022-08-25T17:58:29"
+          },
+          {
+            "product_id": 2226,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 110.0,
+            "expected_delivery_at": "2022-08-25T17:06:42",
+            "delivered_at": "2022-08-25T17:06:42"
+          },
+          {
+            "product_id": 2356,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 219.0,
+            "expected_delivery_at": "2022-08-28T17:56:14",
+            "delivered_at": "2022-08-28T17:56:14"
+          }
+        ]
+      },
+      {
+        "order_id": 2985,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 sweater, 2 food dehydrators, 1 gift wrap",
+        "tax": 20.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-21T11:59:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 228.3,
+        "order_items": [
+          {
+            "product_id": 925,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2022-08-27T18:13:08",
+            "delivered_at": "2022-08-27T18:13:08"
+          },
+          {
+            "product_id": 1423,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-08-26T19:32:22",
+            "delivered_at": "2022-08-26T19:32:22"
+          },
+          {
+            "product_id": 2324,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2022-08-25T17:04:44",
+            "delivered_at": "2022-08-25T17:04:44"
+          }
+        ]
+      },
+      {
+        "order_id": 3004,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "1 beach ball",
+        "tax": 0.15,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-20T12:35:19",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 6.65,
+        "order_items": [
+          {
+            "product_id": 2515,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 1.5,
+            "expected_delivery_at": "2022-08-25T17:42:44",
+            "delivered_at": "2022-08-25T17:42:44"
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "order_id": 2975,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 window curtains",
+        "tax": 5.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-22T09:18:11",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 60.0,
+        "order_items": [
+          {
+            "product_id": 2532,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 25.0,
+            "expected_delivery_at": "2022-11-28T19:13:42",
+            "delivered_at": "2022-11-28T19:13:42"
+          }
+        ]
+      },
+      {
+        "order_id": 2967,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 dining chairs",
+        "tax": 9.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-19T23:42:34",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 112.8,
+        "order_items": [
+          {
+            "product_id": 2151,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 49.0,
+            "expected_delivery_at": "2022-11-26T19:11:28",
+            "delivered_at": "2022-11-26T19:11:28"
+          }
+        ]
+      },
+      {
+        "order_id": 2981,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "2 water purification filters, 2 weightlifting benches, 2 wine glasses",
+        "tax": 215.98,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-11-13T11:38:00",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 2380.78,
+        "order_items": [
+          {
+            "product_id": 385,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 369.9,
+            "expected_delivery_at": "2022-11-16T17:05:28",
+            "delivered_at": "2022-11-16T17:05:28"
+          },
+          {
+            "product_id": 826,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 695.0,
+            "expected_delivery_at": "2022-11-14T19:53:10",
+            "delivered_at": "2022-11-14T19:53:10"
+          },
+          {
+            "product_id": 1512,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2022-11-17T18:11:01",
+            "delivered_at": "2022-11-17T18:11:01"
+          }
+        ]
+      },
+      {
+        "order_id": 3000,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 cable ties, 1 frying pan, 1 drone, 1 bicycle",
+        "tax": 692.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-31T05:17:33",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 7617.0,
+        "order_items": [
+          {
+            "product_id": 55,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 2.5,
+            "expected_delivery_at": "2022-11-07T19:32:51",
+            "delivered_at": "2022-11-07T19:32:51"
+          },
+          {
+            "product_id": 610,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-11-05T19:45:44",
+            "delivered_at": "2022-11-05T19:45:44"
+          },
+          {
+            "product_id": 704,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 1795.0,
+            "expected_delivery_at": "2022-11-04T19:53:19",
+            "delivered_at": "2022-11-04T19:53:19"
+          },
+          {
+            "product_id": 2434,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 5100.0,
+            "expected_delivery_at": "2022-11-04T18:38:26",
+            "delivered_at": "2022-11-04T18:38:26"
+          }
+        ]
+      },
+      {
+        "order_id": 2999,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 gaming chairs, 1 violin, 1 tent, 2 smartphones",
+        "tax": 324.6,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-30T23:40:04",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 3575.6,
+        "order_items": [
+          {
+            "product_id": 450,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 429.0,
+            "expected_delivery_at": "2022-11-01T17:59:24",
+            "delivered_at": "2022-11-01T17:59:24"
+          },
+          {
+            "product_id": 754,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 130.0,
+            "expected_delivery_at": "2022-11-06T17:53:19",
+            "delivered_at": "2022-11-06T17:53:19"
+          },
+          {
+            "product_id": 2197,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-11-05T18:54:16",
+            "delivered_at": "2022-11-05T18:54:16"
+          },
+          {
+            "product_id": 2409,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 1099.0,
+            "expected_delivery_at": "2022-11-02T18:33:41",
+            "delivered_at": "2022-11-02T18:33:41"
+          }
+        ]
+      },
+      {
+        "order_id": 2983,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 whiteboard, 1 resistance band",
+        "tax": 14.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-16T19:24:32",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 159.0,
+        "order_items": [
+          {
+            "product_id": 2179,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 120.0,
+            "expected_delivery_at": "2022-10-22T18:09:35",
+            "delivered_at": "2022-10-22T18:09:35"
+          },
+          {
+            "product_id": 2598,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-22T17:30:15",
+            "delivered_at": "2022-10-22T17:30:15"
+          }
+        ]
+      },
+      {
+        "order_id": 3001,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 maraca, 1 wheelbarrow",
+        "tax": 11.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-05T17:08:06",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 126.0,
+        "order_items": [
+          {
+            "product_id": 1316,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-11T19:45:24",
+            "delivered_at": "2022-10-11T19:45:24"
+          },
+          {
+            "product_id": 1636,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 90.0,
+            "expected_delivery_at": "2022-10-08T19:09:13",
+            "delivered_at": "2022-10-08T19:09:13"
+          }
+        ]
+      },
+      {
+        "order_id": 2960,
+        "address_id": 203,
+        "payment_card_id": 456,
+        "name": "2 trumpets, 2 shower curtains, 1 hiking hat, 1 bean bag chair",
+        "tax": 643.7,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-04T18:26:34",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "4028",
+        "paid_amount": 7085.7,
+        "order_items": [
+          {
+            "product_id": 707,
+            "ordered_quantity": 2,
+            "returned_quantity": 2,
+            "gift_wrap_quantity": 0,
+            "price": 3000.0,
+            "expected_delivery_at": "2022-10-10T17:45:06",
+            "delivered_at": "2022-10-10T17:45:06"
+          },
+          {
+            "product_id": 1380,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 30.0,
+            "expected_delivery_at": "2022-10-05T19:44:57",
+            "delivered_at": "2022-10-05T19:44:57"
+          },
+          {
+            "product_id": 1447,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 78.0,
+            "expected_delivery_at": "2022-10-06T18:28:34",
+            "delivered_at": "2022-10-06T18:28:34"
+          },
+          {
+            "product_id": 2173,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 299.0,
+            "expected_delivery_at": "2022-10-09T17:50:54",
+            "delivered_at": "2022-10-09T17:50:54"
+          }
+        ]
+      },
+      {
+        "order_id": 2992,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "1 gaming mouse, 1 shower curtain",
+        "tax": 10.98,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-10-02T21:22:23",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 125.78,
+        "order_items": [
+          {
+            "product_id": 442,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 100.0,
+            "expected_delivery_at": "2022-10-08T17:31:14",
+            "delivered_at": "2022-10-08T17:31:14"
+          },
+          {
+            "product_id": 1381,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 9.8,
+            "expected_delivery_at": "2022-10-04T19:14:10",
+            "delivered_at": "2022-10-04T19:14:10"
+          }
+        ]
+      },
+      {
+        "order_id": 2962,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "2 yoga pants, 2 toasters",
+        "tax": 55.58,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-25T19:08:40",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 616.38,
+        "order_items": [
+          {
+            "product_id": 466,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 98.0,
+            "expected_delivery_at": "2022-09-27T17:45:54",
+            "delivered_at": "2022-09-27T17:45:54"
+          },
+          {
+            "product_id": 1361,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 179.9,
+            "expected_delivery_at": "2022-09-26T19:35:38",
+            "delivered_at": "2022-09-26T19:35:38"
+          }
+        ]
+      },
+      {
+        "order_id": 2990,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 staplers, 2 pencil sharpeners, 1 bicycle",
+        "tax": 97.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-24T12:20:07",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 1072.0,
+        "order_items": [
+          {
+            "product_id": 828,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-10-01T18:41:26",
+            "delivered_at": "2022-10-01T18:41:26"
+          },
+          {
+            "product_id": 2280,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 15.0,
+            "expected_delivery_at": "2022-10-01T18:13:14",
+            "delivered_at": "2022-10-01T18:13:14"
+          },
+          {
+            "product_id": 2438,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 900.0,
+            "expected_delivery_at": "2022-09-25T17:57:12",
+            "delivered_at": "2022-09-25T17:57:12"
+          }
+        ]
+      },
+      {
+        "order_id": 2991,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "2 mixing bowls",
+        "tax": 8.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-18T16:26:59",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 93.0,
+        "order_items": [
+          {
+            "product_id": 479,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2022-09-25T18:50:09",
+            "delivered_at": "2022-09-25T18:50:09"
+          }
+        ]
+      },
+      {
+        "order_id": 2961,
+        "address_id": 203,
+        "payment_card_id": 459,
+        "name": "1 vase, 1 juicer, 1 amplifier",
+        "tax": 53.79,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-09-16T13:51:48",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "6043",
+        "paid_amount": 596.69,
+        "order_items": [
+          {
+            "product_id": 1310,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 49.0,
+            "expected_delivery_at": "2022-09-23T18:15:51",
+            "delivered_at": "2022-09-23T18:15:51"
+          },
+          {
+            "product_id": 1389,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 299.9,
+            "expected_delivery_at": "2022-09-17T18:54:04",
+            "delivered_at": "2022-09-17T18:54:04"
+          },
+          {
+            "product_id": 2076,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 189.0,
+            "expected_delivery_at": "2022-09-22T17:31:14",
+            "delivered_at": "2022-09-22T17:31:14"
+          }
+        ]
+      },
+      {
+        "order_id": 2964,
+        "address_id": 203,
+        "payment_card_id": 457,
+        "name": "1 blender, 1 hiking pant",
+        "tax": 66.0,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-26T07:44:31",
+        "address_text": "816 Brittney Overpass Suite 48\nSeattle\nWashington\nUnited States\n44756",
+        "payment_card_digits": "7872",
+        "paid_amount": 731.0,
+        "order_items": [
+          {
+            "product_id": 565,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 600.0,
+            "expected_delivery_at": "2022-09-02T18:03:49",
+            "delivered_at": "2022-09-02T18:03:49"
+          },
+          {
+            "product_id": 1582,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 60.0,
+            "expected_delivery_at": "2022-09-02T17:21:01",
+            "delivered_at": "2022-09-02T17:21:01"
+          }
+        ]
+      },
+      {
+        "order_id": 2989,
+        "address_id": 204,
+        "payment_card_id": 456,
+        "name": "2 toothbrush holders, 1 external hard drive, 2 hammocks",
+        "tax": 58.8,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-24T17:51:52",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "4028",
+        "paid_amount": 651.8,
+        "order_items": [
+          {
+            "product_id": 1551,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 20.0,
+            "expected_delivery_at": "2022-08-25T17:58:29",
+            "delivered_at": "2022-08-25T17:58:29"
+          },
+          {
+            "product_id": 2226,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 110.0,
+            "expected_delivery_at": "2022-08-25T17:06:42",
+            "delivered_at": "2022-08-25T17:06:42"
+          },
+          {
+            "product_id": 2356,
+            "ordered_quantity": 2,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 219.0,
+            "expected_delivery_at": "2022-08-28T17:56:14",
+            "delivered_at": "2022-08-28T17:56:14"
+          }
+        ]
+      },
+      {
+        "order_id": 2985,
+        "address_id": 204,
+        "payment_card_id": 457,
+        "name": "1 sweater, 2 food dehydrators, 1 gift wrap",
+        "tax": 20.3,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-21T11:59:12",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "7872",
+        "paid_amount": 228.3,
+        "order_items": [
+          {
+            "product_id": 925,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 40.0,
+            "expected_delivery_at": "2022-08-27T18:13:08",
+            "delivered_at": "2022-08-27T18:13:08"
+          },
+          {
+            "product_id": 1423,
+            "ordered_quantity": 2,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 80.0,
+            "expected_delivery_at": "2022-08-26T19:32:22",
+            "delivered_at": "2022-08-26T19:32:22"
+          },
+          {
+            "product_id": 2324,
+            "ordered_quantity": 1,
+            "returned_quantity": 1,
+            "gift_wrap_quantity": 0,
+            "price": 3.0,
+            "expected_delivery_at": "2022-08-25T17:04:44",
+            "delivered_at": "2022-08-25T17:04:44"
+          }
+        ]
+      },
+      {
+        "order_id": 3004,
+        "address_id": 204,
+        "payment_card_id": 459,
+        "name": "1 beach ball",
+        "tax": 0.15,
+        "delivery_fee": 5.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2022-08-20T12:35:19",
+        "address_text": "8875 Amy Extensions Suite 797\nSeattle\nWashington\nUnited States\n49596",
+        "payment_card_digits": "6043",
+        "paid_amount": 6.65,
+        "order_items": [
+          {
+            "product_id": 2515,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 1.5,
+            "expected_delivery_at": "2022-08-25T17:42:44",
+            "delivered_at": "2022-08-25T17:42:44"
+          }
+        ]
+      }
+    ],
+    "result_chars": 14500,
+    "message_result_chars": 14500
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "Now I have all the orders. The most recent orders are from May 2023. The \"last calendar month\" would be the month before the current month. Since the most recent orders are from May 2023, and there are no orders in June 2023, the current date is likely in June 2023. So the last calendar month would be May 2023.\n\nLet me look at orders from May 2023:\n\nOrders in May 2023:\n1. Order 2987 - created_at: 2023-05-17 - paid_amount: 474.8\n2. Order 2977 - created_at: 2023-05-15 - paid_amount: 147.89\n3. Order 2973 - created_at: 2023-05-07 - paid_amount: 33.38\n4. Order 2979 - created_at: 2023-05-04 - paid_amount: 296.0\n5. Order 2988 - created_at: 2023-05-01 - paid_amount: 901.39\n\nTotal = 474.8 + 147.89 + 33.38 + 296.0 + 901.39 = 1853.46",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_DP9RywN5OboAFmH8a5oU8094",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"answer\": 1853.46}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_DP9RywN5OboAFmH8a5oU8094",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{\"answer\": 1853.46}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 24018,
+      "output_tokens": 308,
+      "total_tokens": 24326
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 24018,
+      "output_tokens": 308,
+      "total_tokens": 24326,
+      "tool_schema_count": 5,
+      "tool_schema_chars": 2548,
+      "estimated_tool_schema_tokens": 637,
+      "history_chars_before_call": 68000,
+      "estimated_history_tokens_before_call": 17000
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_DP9RywN5OboAFmH8a5oU8094",
+    "name": "supervisor__complete_task",
+    "args": {
+      "answer": 1853.46
+    },
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

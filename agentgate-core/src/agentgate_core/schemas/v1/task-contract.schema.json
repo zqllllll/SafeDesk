@@ -1,0 +1,254 @@
+{
+  "$defs": {
+    "CompletionCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "required_effect_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Required Effect Ids",
+          "type": "array"
+        },
+        "required_evidence_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Required Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "condition_id",
+        "description"
+      ],
+      "title": "CompletionCondition",
+      "type": "object"
+    },
+    "Constraint": {
+      "additionalProperties": false,
+      "properties": {
+        "active": {
+          "default": true,
+          "title": "Active",
+          "type": "boolean"
+        },
+        "constraint_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Constraint Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/ConstraintKind",
+          "default": "hard"
+        },
+        "source_event_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Event Id"
+        }
+      },
+      "required": [
+        "constraint_id",
+        "description"
+      ],
+      "title": "Constraint",
+      "type": "object"
+    },
+    "ConstraintKind": {
+      "enum": [
+        "hard",
+        "soft",
+        "policy",
+        "user_confirmation"
+      ],
+      "title": "ConstraintKind",
+      "type": "string"
+    },
+    "SubgoalDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "completion_condition_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Completion Condition Ids",
+          "type": "array"
+        },
+        "dependency_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Dependency Ids",
+          "type": "array"
+        },
+        "description": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "required": {
+          "default": true,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "subgoal_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Subgoal Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "subgoal_id",
+        "description"
+      ],
+      "title": "SubgoalDefinition",
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/task-contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed_effects": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Allowed Effects",
+      "type": "array"
+    },
+    "completion_conditions": {
+      "items": {
+        "$ref": "#/$defs/CompletionCondition"
+      },
+      "minItems": 1,
+      "title": "Completion Conditions",
+      "type": "array"
+    },
+    "constraints": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Constraint"
+      },
+      "title": "Constraints",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "forbidden_effects": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Forbidden Effects",
+      "type": "array"
+    },
+    "normalized_goal": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Normalized Goal",
+      "type": "string"
+    },
+    "original_instruction": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Original Instruction",
+      "type": "string"
+    },
+    "required_confirmations": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Required Confirmations",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "subgoals": {
+      "items": {
+        "$ref": "#/$defs/SubgoalDefinition"
+      },
+      "minItems": 1,
+      "title": "Subgoals",
+      "type": "array"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "version": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "task_id",
+    "original_instruction",
+    "normalized_goal",
+    "subgoals",
+    "completion_conditions"
+  ],
+  "title": "TaskContract",
+  "type": "object"
+}

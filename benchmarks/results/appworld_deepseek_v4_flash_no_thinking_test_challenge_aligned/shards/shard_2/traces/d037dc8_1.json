@@ -1,0 +1,1198 @@
+[
+  {
+    "stage": "api_predictor",
+    "role": "assistant",
+    "content": "amazon.login\namazon.show_orders\namazon.show_order\nphone.login\nphone.search_contacts\nsupervisor.complete_task\nsupervisor.show_account_passwords\nsupervisor.show_profile\nvenmo.login\nvenmo.search_users\nvenmo.create_payment_request",
+    "reasoning_content": "",
+    "predicted_apis": [
+      "amazon.login",
+      "amazon.show_orders",
+      "amazon.show_order",
+      "phone.login",
+      "phone.search_contacts",
+      "supervisor.complete_task",
+      "supervisor.show_account_passwords",
+      "supervisor.show_profile",
+      "venmo.login",
+      "venmo.search_users",
+      "venmo.create_payment_request"
+    ],
+    "usage": {
+      "input_tokens": 7619,
+      "output_tokens": 56,
+      "total_tokens": 7675
+    }
+  },
+  {
+    "turn": 1,
+    "role": "assistant",
+    "content": "Let me start by getting my profile info and logging into Amazon and Venmo.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_B2xCT3rB0EsKPwaKb5LW9259",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_Hr8jWkmWwaNrSNGl617s7596",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_B2xCT3rB0EsKPwaKb5LW9259",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_profile",
+          "arguments": "{}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_Hr8jWkmWwaNrSNGl617s7596",
+        "type": "function",
+        "function": {
+          "name": "supervisor__show_account_passwords",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5122,
+      "output_tokens": 65,
+      "total_tokens": 5187
+    },
+    "request_stats": {
+      "turn": 1,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5122,
+      "output_tokens": 65,
+      "total_tokens": 5187,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 14606,
+      "estimated_history_tokens_before_call": 3652
+    }
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_00_B2xCT3rB0EsKPwaKb5LW9259",
+    "name": "supervisor__show_profile",
+    "args": {},
+    "executed": true,
+    "result": {
+      "first_name": "Paul",
+      "last_name": "Miller",
+      "email": "paul_mill@gmail.com",
+      "phone_number": "3379617841",
+      "birthday": "1997-08-01",
+      "sex": "male"
+    },
+    "message_result": {
+      "first_name": "Paul",
+      "last_name": "Miller",
+      "email": "paul_mill@gmail.com",
+      "phone_number": "3379617841",
+      "birthday": "1997-08-01",
+      "sex": "male"
+    },
+    "result_chars": 148,
+    "message_result_chars": 148
+  },
+  {
+    "turn": 1,
+    "role": "tool",
+    "tool_call_id": "call_01_Hr8jWkmWwaNrSNGl617s7596",
+    "name": "supervisor__show_account_passwords",
+    "args": {},
+    "executed": true,
+    "result": [
+      {
+        "account_name": "amazon",
+        "password": "mpxI2je"
+      },
+      {
+        "account_name": "file_system",
+        "password": "t@-)]&Q"
+      },
+      {
+        "account_name": "gmail",
+        "password": "f_SSv5Y"
+      },
+      {
+        "account_name": "phone",
+        "password": "*SU9@k2"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "S]AqplV"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "HZCloqy"
+      },
+      {
+        "account_name": "spotify",
+        "password": "!T}r*b7"
+      },
+      {
+        "account_name": "todoist",
+        "password": "bvzNTM3"
+      },
+      {
+        "account_name": "venmo",
+        "password": "S1OmnLn"
+      }
+    ],
+    "message_result": [
+      {
+        "account_name": "amazon",
+        "password": "mpxI2je"
+      },
+      {
+        "account_name": "file_system",
+        "password": "t@-)]&Q"
+      },
+      {
+        "account_name": "gmail",
+        "password": "f_SSv5Y"
+      },
+      {
+        "account_name": "phone",
+        "password": "*SU9@k2"
+      },
+      {
+        "account_name": "simple_note",
+        "password": "S]AqplV"
+      },
+      {
+        "account_name": "splitwise",
+        "password": "HZCloqy"
+      },
+      {
+        "account_name": "spotify",
+        "password": "!T}r*b7"
+      },
+      {
+        "account_name": "todoist",
+        "password": "bvzNTM3"
+      },
+      {
+        "account_name": "venmo",
+        "password": "S1OmnLn"
+      }
+    ],
+    "result_chars": 471,
+    "message_result_chars": 471
+  },
+  {
+    "turn": 2,
+    "role": "assistant",
+    "content": "",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_P4iMoop5wNtWbL2JDgy91404",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"paul_mill@gmail.com\", \"password\": \"mpxI2je\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_614D3s7Ng9UL1TFXjV1F9054",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"paul_mill@gmail.com\", \"password\": \"S1OmnLn\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_6cIBykT0mAJQ1kOOY1Fn5899",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"3379617841\", \"password\": \"*SU9@k2\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_P4iMoop5wNtWbL2JDgy91404",
+        "type": "function",
+        "function": {
+          "name": "amazon__login",
+          "arguments": "{\"username\": \"paul_mill@gmail.com\", \"password\": \"mpxI2je\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_614D3s7Ng9UL1TFXjV1F9054",
+        "type": "function",
+        "function": {
+          "name": "venmo__login",
+          "arguments": "{\"username\": \"paul_mill@gmail.com\", \"password\": \"S1OmnLn\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_6cIBykT0mAJQ1kOOY1Fn5899",
+        "type": "function",
+        "function": {
+          "name": "phone__login",
+          "arguments": "{\"username\": \"3379617841\", \"password\": \"*SU9@k2\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5425,
+      "output_tokens": 180,
+      "total_tokens": 5605
+    },
+    "request_stats": {
+      "turn": 2,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 3,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5425,
+      "output_tokens": 180,
+      "total_tokens": 5605,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 15919,
+      "estimated_history_tokens_before_call": 3980
+    }
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_00_P4iMoop5wNtWbL2JDgy91404",
+    "name": "amazon__login",
+    "args": {
+      "username": "paul_mill@gmail.com",
+      "password": "mpxI2je"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcGF1bF9taWxsQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.Pqaglh4fmwuE4n9a_16A3CfKGocNSmrr6DPyZL0sTbI",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcGF1bF9taWxsQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.Pqaglh4fmwuE4n9a_16A3CfKGocNSmrr6DPyZL0sTbI",
+      "token_type": "Bearer"
+    },
+    "result_chars": 196,
+    "message_result_chars": 196
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_01_614D3s7Ng9UL1TFXjV1F9054",
+    "name": "venmo__login",
+    "args": {
+      "username": "paul_mill@gmail.com",
+      "password": "S1OmnLn"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM",
+      "token_type": "Bearer"
+    },
+    "result_chars": 195,
+    "message_result_chars": 195
+  },
+  {
+    "turn": 2,
+    "role": "tool",
+    "tool_call_id": "call_02_6cIBykT0mAJQ1kOOY1Fn5899",
+    "name": "phone__login",
+    "args": {
+      "username": "3379617841",
+      "password": "*SU9@k2"
+    },
+    "executed": true,
+    "result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSszMzc5NjE3ODQxIiwiZXhwIjoxNjg0NDEyNzMxfQ.f9fA_Kv_JzKzoYiuxOJ3pxE_yCN8mmEqzoeYwxfbvUI",
+      "token_type": "Bearer"
+    },
+    "message_result": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSszMzc5NjE3ODQxIiwiZXhwIjoxNjg0NDEyNzMxfQ.f9fA_Kv_JzKzoYiuxOJ3pxE_yCN8mmEqzoeYwxfbvUI",
+      "token_type": "Bearer"
+    },
+    "result_chars": 183,
+    "message_result_chars": 183
+  },
+  {
+    "turn": 3,
+    "role": "assistant",
+    "content": "Now let me get my last 2 Amazon orders and find my roommates from my contacts.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_5rYPy4p61ex2JqWw4ldE6427",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcGF1bF9taWxsQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.Pqaglh4fmwuE4n9a_16A3CfKGocNSmrr6DPyZL0sTbI\", \"page_limit\": 2, \"sort_by\": \"-created_at\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_z2PoQHF2L7DFUC8R1pIL4538",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"relationship\": \"roommate\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSszMzc5NjE3ODQxIiwiZXhwIjoxNjg0NDEyNzMxfQ.f9fA_Kv_JzKzoYiuxOJ3pxE_yCN8mmEqzoeYwxfbvUI\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_5rYPy4p61ex2JqWw4ldE6427",
+        "type": "function",
+        "function": {
+          "name": "amazon__show_orders",
+          "arguments": "{\"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcGF1bF9taWxsQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.Pqaglh4fmwuE4n9a_16A3CfKGocNSmrr6DPyZL0sTbI\", \"page_limit\": 2, \"sort_by\": \"-created_at\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_z2PoQHF2L7DFUC8R1pIL4538",
+        "type": "function",
+        "function": {
+          "name": "phone__search_contacts",
+          "arguments": "{\"relationship\": \"roommate\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSszMzc5NjE3ODQxIiwiZXhwIjoxNjg0NDEyNzMxfQ.f9fA_Kv_JzKzoYiuxOJ3pxE_yCN8mmEqzoeYwxfbvUI\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 5969,
+      "output_tokens": 347,
+      "total_tokens": 6316
+    },
+    "request_stats": {
+      "turn": 3,
+      "num_model_tool_calls": 2,
+      "num_tool_calls": 2,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 5969,
+      "output_tokens": 347,
+      "total_tokens": 6316,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 17409,
+      "estimated_history_tokens_before_call": 4353
+    }
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_00_5rYPy4p61ex2JqWw4ldE6427",
+    "name": "amazon__show_orders",
+    "args": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbWF6b24rcGF1bF9taWxsQGdtYWlsLmNvbSIsImV4cCI6MTY4NDQxMjA5OH0.Pqaglh4fmwuE4n9a_16A3CfKGocNSmrr6DPyZL0sTbI",
+      "page_limit": 2,
+      "sort_by": "-created_at"
+    },
+    "executed": true,
+    "result": [
+      {
+        "order_id": 3146,
+        "address_id": 49,
+        "payment_card_id": 112,
+        "name": "1 extension cord",
+        "tax": 0.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-18T02:03:05",
+        "address_text": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "payment_card_digits": "8968",
+        "paid_amount": 9.9,
+        "order_items": [
+          {
+            "product_id": 1600,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 9.0,
+            "expected_delivery_at": "2023-05-22T19:15:38",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 49,
+        "payment_card_id": 112,
+        "name": "1 dining chair",
+        "tax": 12.6,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-17T18:04:10",
+        "address_text": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "payment_card_digits": "8968",
+        "paid_amount": 138.6,
+        "order_items": [
+          {
+            "product_id": 2160,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 126.0,
+            "expected_delivery_at": "2023-05-23T18:30:05",
+            "delivered_at": null
+          }
+        ]
+      }
+    ],
+    "message_result": [
+      {
+        "order_id": 3146,
+        "address_id": 49,
+        "payment_card_id": 112,
+        "name": "1 extension cord",
+        "tax": 0.9,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-18T02:03:05",
+        "address_text": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "payment_card_digits": "8968",
+        "paid_amount": 9.9,
+        "order_items": [
+          {
+            "product_id": 1600,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 9.0,
+            "expected_delivery_at": "2023-05-22T19:15:38",
+            "delivered_at": null
+          }
+        ]
+      },
+      {
+        "order_id": 3147,
+        "address_id": 49,
+        "payment_card_id": 112,
+        "name": "1 dining chair",
+        "tax": 12.6,
+        "delivery_fee": 0.0,
+        "gift_wrap_fee": 0.0,
+        "discount": 0.0,
+        "created_at": "2023-05-17T18:04:10",
+        "address_text": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "payment_card_digits": "8968",
+        "paid_amount": 138.6,
+        "order_items": [
+          {
+            "product_id": 2160,
+            "ordered_quantity": 1,
+            "returned_quantity": 0,
+            "gift_wrap_quantity": 0,
+            "price": 126.0,
+            "expected_delivery_at": "2023-05-23T18:30:05",
+            "delivered_at": null
+          }
+        ]
+      }
+    ],
+    "result_chars": 1073,
+    "message_result_chars": 1073
+  },
+  {
+    "turn": 3,
+    "role": "tool",
+    "tool_call_id": "call_01_z2PoQHF2L7DFUC8R1pIL4538",
+    "name": "phone__search_contacts",
+    "args": {
+      "relationship": "roommate",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaG9uZSszMzc5NjE3ODQxIiwiZXhwIjoxNjg0NDEyNzMxfQ.f9fA_Kv_JzKzoYiuxOJ3pxE_yCN8mmEqzoeYwxfbvUI"
+    },
+    "executed": true,
+    "result": [
+      {
+        "contact_id": 490,
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "phone_number": "5584932120",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1983-01-02",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2023-05-16T23:45:07"
+      },
+      {
+        "contact_id": 492,
+        "first_name": "Jose",
+        "last_name": "Harrison",
+        "email": "joseharr@gmail.com",
+        "phone_number": "2474975253",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1985-12-15",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "created_at": "2023-05-16T23:45:07"
+      },
+      {
+        "contact_id": 491,
+        "first_name": "Lindsey",
+        "last_name": "Simpson",
+        "email": "lindseysimpson@gmail.com",
+        "phone_number": "3567801924",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1993-11-23",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "406 Lindsay Courts Suite 522\nSeattle\nWashington\nUnited States\n26281",
+        "created_at": "2023-05-16T23:45:07"
+      }
+    ],
+    "message_result": [
+      {
+        "contact_id": 490,
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "phone_number": "5584932120",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1983-01-02",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "716 White Drive Suite 52\nSeattle\nWashington\nUnited States\n47529",
+        "created_at": "2023-05-16T23:45:07"
+      },
+      {
+        "contact_id": 492,
+        "first_name": "Jose",
+        "last_name": "Harrison",
+        "email": "joseharr@gmail.com",
+        "phone_number": "2474975253",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1985-12-15",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "774 Samuel Cape Suite 202\nSeattle\nWashington\nUnited States\n16844",
+        "created_at": "2023-05-16T23:45:07"
+      },
+      {
+        "contact_id": 491,
+        "first_name": "Lindsey",
+        "last_name": "Simpson",
+        "email": "lindseysimpson@gmail.com",
+        "phone_number": "3567801924",
+        "relationships": [
+          "roommate"
+        ],
+        "birthday": "1993-11-23",
+        "home_address": "172 Matthew Knolls Suite 730\nSeattle\nWashington\nUnited States\n65644",
+        "work_address": "406 Lindsay Courts Suite 522\nSeattle\nWashington\nUnited States\n26281",
+        "created_at": "2023-05-16T23:45:07"
+      }
+    ],
+    "result_chars": 1216,
+    "message_result_chars": 1216
+  },
+  {
+    "turn": 4,
+    "role": "assistant",
+    "content": "I have 3 roommates: Chris Mccoy, Jose Harrison, and Lindsey Simpson. Plus me (Paul), that's 4 people total.\n\nLet me calculate the total cost:\n- Order 3146 (extension cord): $9.90\n- Order 3147 (dining chair): $138.60\n- Total: $9.90 + $138.60 = $148.50\n\nSplit equally among 4 people: $148.50 / 4 = $37.125 per person.\n\nSo each roommate owes me $37.125. Let me find their Venmo accounts.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_a2WnT7SU6qzShHxZgF6a3794",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"chris.mcco@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_sdNjOhP7blhzOBxYXtQt6177",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"joseharr@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_WsUzm1pGEdlPwc2aB20u3146",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"lindseysimpson@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_a2WnT7SU6qzShHxZgF6a3794",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"chris.mcco@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_sdNjOhP7blhzOBxYXtQt6177",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"joseharr@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_WsUzm1pGEdlPwc2aB20u3146",
+        "type": "function",
+        "function": {
+          "name": "venmo__search_users",
+          "arguments": "{\"query\": \"lindseysimpson@gmail.com\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 7145,
+      "output_tokens": 604,
+      "total_tokens": 7749
+    },
+    "request_stats": {
+      "turn": 4,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 3,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 7145,
+      "output_tokens": 604,
+      "total_tokens": 7749,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 20945,
+      "estimated_history_tokens_before_call": 5237
+    }
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_00_a2WnT7SU6qzShHxZgF6a3794",
+    "name": "venmo__search_users",
+    "args": {
+      "query": "chris.mcco@gmail.com",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": [
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      },
+      {
+        "first_name": "Leslie",
+        "last_name": "Ball",
+        "email": "les_ball@gmail.com",
+        "registered_at": "2023-02-08T08:46:59",
+        "friends_since": null
+      }
+    ],
+    "message_result": [
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      },
+      {
+        "first_name": "Leslie",
+        "last_name": "Ball",
+        "email": "les_ball@gmail.com",
+        "registered_at": "2023-02-08T08:46:59",
+        "friends_since": null
+      }
+    ],
+    "result_chars": 724,
+    "message_result_chars": 724
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_01_sdNjOhP7blhzOBxYXtQt6177",
+    "name": "venmo__search_users",
+    "args": {
+      "query": "joseharr@gmail.com",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": [
+      {
+        "first_name": "Jose",
+        "last_name": "Harrison",
+        "email": "joseharr@gmail.com",
+        "registered_at": "2022-12-14T14:46:35",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      }
+    ],
+    "message_result": [
+      {
+        "first_name": "Jose",
+        "last_name": "Harrison",
+        "email": "joseharr@gmail.com",
+        "registered_at": "2022-12-14T14:46:35",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      }
+    ],
+    "result_chars": 726,
+    "message_result_chars": 726
+  },
+  {
+    "turn": 4,
+    "role": "tool",
+    "tool_call_id": "call_02_WsUzm1pGEdlPwc2aB20u3146",
+    "name": "venmo__search_users",
+    "args": {
+      "query": "lindseysimpson@gmail.com",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": [
+      {
+        "first_name": "Lindsey",
+        "last_name": "Simpson",
+        "email": "lindseysimpson@gmail.com",
+        "registered_at": "2022-10-05T14:57:08",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      }
+    ],
+    "message_result": [
+      {
+        "first_name": "Lindsey",
+        "last_name": "Simpson",
+        "email": "lindseysimpson@gmail.com",
+        "registered_at": "2022-10-05T14:57:08",
+        "friends_since": null
+      },
+      {
+        "first_name": "Stephen",
+        "last_name": "Mccoy",
+        "email": "stmcco@gmail.com",
+        "registered_at": "2023-01-24T12:51:50",
+        "friends_since": null
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Mccoy",
+        "email": "la-mcco@gmail.com",
+        "registered_at": "2023-02-12T14:30:46",
+        "friends_since": null
+      },
+      {
+        "first_name": "Chris",
+        "last_name": "Mccoy",
+        "email": "chris.mcco@gmail.com",
+        "registered_at": "2022-08-25T08:57:40",
+        "friends_since": "2022-08-25T08:57:40"
+      },
+      {
+        "first_name": "Jonathan",
+        "last_name": "Ball",
+        "email": "jo.ball@gmail.com",
+        "registered_at": "2022-08-26T16:01:41",
+        "friends_since": null
+      }
+    ],
+    "result_chars": 734,
+    "message_result_chars": 734
+  },
+  {
+    "turn": 5,
+    "role": "assistant",
+    "content": "I found all three roommates on Venmo. Now let me send the payment requests. The total is $148.50 split among 4 people (me + 3 roommates), so each roommate owes $148.50 / 4 = $37.125. I'll round to $37.13 for each.\n\nActually, let me be precise: $148.50 / 4 = $37.125. I'll use $37.13 for each.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_h5ZExXvKaUWU5D3S37l18267",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"chris.mcco@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_18qiqMT5bAr4qlgxhNdR8645",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"joseharr@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_77Ok2xprfdcfuFpErM5W4425",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"lindseysimpson@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_h5ZExXvKaUWU5D3S37l18267",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"chris.mcco@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 1,
+        "id": "call_01_18qiqMT5bAr4qlgxhNdR8645",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"joseharr@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      },
+      {
+        "index": 2,
+        "id": "call_02_77Ok2xprfdcfuFpErM5W4425",
+        "type": "function",
+        "function": {
+          "name": "venmo__create_payment_request",
+          "arguments": "{\"user_email\": \"lindseysimpson@gmail.com\", \"amount\": 37.13, \"description\": \"For Shared Purchases on Amazon\", \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM\"}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 8578,
+      "output_tokens": 701,
+      "total_tokens": 9279
+    },
+    "request_stats": {
+      "turn": 5,
+      "num_model_tool_calls": 3,
+      "num_tool_calls": 3,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 8578,
+      "output_tokens": 701,
+      "total_tokens": 9279,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 25159,
+      "estimated_history_tokens_before_call": 6290
+    }
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_00_h5ZExXvKaUWU5D3S37l18267",
+    "name": "venmo__create_payment_request",
+    "args": {
+      "user_email": "chris.mcco@gmail.com",
+      "amount": 37.13,
+      "description": "For Shared Purchases on Amazon",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6097
+    },
+    "message_result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6097
+    },
+    "result_chars": 67,
+    "message_result_chars": 67
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_01_18qiqMT5bAr4qlgxhNdR8645",
+    "name": "venmo__create_payment_request",
+    "args": {
+      "user_email": "joseharr@gmail.com",
+      "amount": 37.13,
+      "description": "For Shared Purchases on Amazon",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6098
+    },
+    "message_result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6098
+    },
+    "result_chars": 67,
+    "message_result_chars": 67
+  },
+  {
+    "turn": 5,
+    "role": "tool",
+    "tool_call_id": "call_02_77Ok2xprfdcfuFpErM5W4425",
+    "name": "venmo__create_payment_request",
+    "args": {
+      "user_email": "lindseysimpson@gmail.com",
+      "amount": 37.13,
+      "description": "For Shared Purchases on Amazon",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2ZW5tbytwYXVsX21pbGxAZ21haWwuY29tIiwiZXhwIjoxNjg0NDEyNzQxfQ.ExraYzQuuH2zSeFu6zkpeMTJ7i8wmwxqy2I1O07xqRM"
+    },
+    "executed": true,
+    "result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6099
+    },
+    "message_result": {
+      "message": "Payment request created.",
+      "payment_request_id": 6099
+    },
+    "result_chars": 67,
+    "message_result_chars": 67
+  },
+  {
+    "turn": 6,
+    "role": "assistant",
+    "content": "All three Venmo payment requests have been created successfully. Let me complete the task.",
+    "reasoning_content": "",
+    "tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_jc8rZeMk39ZTsNEFGLtU0417",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "executed_tool_calls": [
+      {
+        "index": 0,
+        "id": "call_00_jc8rZeMk39ZTsNEFGLtU0417",
+        "type": "function",
+        "function": {
+          "name": "supervisor__complete_task",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "suppressed_tool_calls": [],
+    "usage": {
+      "input_tokens": 9355,
+      "output_tokens": 46,
+      "total_tokens": 9401
+    },
+    "request_stats": {
+      "turn": 6,
+      "num_model_tool_calls": 1,
+      "num_tool_calls": 1,
+      "num_suppressed_parallel_tool_calls": 0,
+      "input_tokens": 9355,
+      "output_tokens": 46,
+      "total_tokens": 9401,
+      "tool_schema_count": 11,
+      "tool_schema_chars": 5614,
+      "estimated_tool_schema_tokens": 1404,
+      "history_chars_before_call": 27294,
+      "estimated_history_tokens_before_call": 6824
+    }
+  },
+  {
+    "turn": 6,
+    "role": "tool",
+    "tool_call_id": "call_00_jc8rZeMk39ZTsNEFGLtU0417",
+    "name": "supervisor__complete_task",
+    "args": {},
+    "executed": true,
+    "result": {
+      "message": "Marked the active task complete."
+    },
+    "message_result": {
+      "message": "Marked the active task complete."
+    },
+    "result_chars": 47,
+    "message_result_chars": 47
+  }
+]

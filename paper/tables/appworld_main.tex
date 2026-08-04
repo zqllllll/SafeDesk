@@ -1,0 +1,61 @@
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Matched AppWorld results. Rates and denominators follow
+\cref{sec:metrics}; absolute rate changes are percentage points (pp).}
+\label{tab:appworld-main}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Ylrrr@{}}
+\toprule
+Metric & Scope & Baseline & \safedesk{} & Change \\
+\midrule
+TGC & task & \AWBaseSuccessCount/\AWTaskCount{} (\AWBaseTGC) & \AWSafeTGC & \AWTGCIncrease \\
+SGC & scenario & \AWBaseScenarioSuccessCount/\AWScenarioCount{} (\AWBaseSGC) & \AWSafeSGC & \AWSGCIncrease \\
+Evaluator test pass & evaluator test & \AWBaseEvaluatorPassed/\AWBaseEvaluatorTotal{} (\AWBaseEvaluatorPass) & \AWSafeEvaluatorPass & \AWEvaluatorPassChange \\
+No completion proposal & task & \AWBaseNoCompletionCount/\AWTaskCount{} (\AWBaseNoCompletion) & \AWSafeNoCompletion & \AWNoCompletionChange \\
+System-accepted completion failure & accepted task & \AWBaseSystemAcceptedFailureCount/\AWBaseSystemAcceptedCompletionCount{} (\AWBaseSystemAcceptedFailure) & \AWSafeSystemAcceptedFailureRate & \AWGateAcceptedFalseCompletionChange \\
+Model-proposed completion failure & proposal task & \AWBaseProposedFalseCompletionCount/\AWBaseCompletionTaskCount{} (\AWBaseProposedFalseCompletion) & \AWSafeModelProposedFailureRate & \ResultPending{} \\
+Max-turn & task & \AWBaseMaxTurnCount/\AWTaskCount{} (\AWBaseMaxTurn) & \AWSafeMaxTurn & \AWMaxTurnChange \\
+Invalid call & proposed call & \AWBaseInvalidCount/\AWBaseProposedCallCount{} (\AWBaseInvalid) & \AWSafeInvalid & \AWInvalidChange \\
+Out-of-schema call & proposed call & \AWBaseOutOfSchemaCount/\AWBaseProposedCallCount{} (\AWBaseOutOfSchema) & \AWSafeOutOfSchema & \AWOutOfSchemaChange \\
+Duplicate call & executed call & \AWBaseDuplicateCallCount/\AWBaseExecutedCallCount{} (\AWBaseDuplicateCall) & \AWSafeDuplicateCall & \AWDuplicateCallChange \\
+Duplicate write & executed write & \AWBaseDuplicateWriteCount/\AWBaseWriteCallCount{} (\AWBaseDuplicateWrite) & \AWSafeDuplicateWrite & \AWDuplicateWriteChange \\
+Mean tokens & task & \AWBaseMeanTokens & \AWSafeMeanTokens & \AWMeanTokenChange \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\small The plain baseline implicitly accepts every \code{complete\_task}
+proposal, so its model-proposed and system-accepted rates coincide. Under
+\safedesk{}, proposals blocked by the gate remain only in the model-level metric.
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+\centering
+\captionof{table}{Completion analysis with task and attempt scopes kept separate.}
+\label{tab:completion-analysis}
+\small
+\begin{tabularx}{\linewidth}{@{}Ylr@{}}
+\toprule
+Quantity & Scope & Count \\
+\midrule
+Model completion attempts & attempt & \AWSafeCompletionAttemptCount \\
+Tasks with a completion proposal & task & \AWSafeCompletionTaskCount \\
+Blocked completion attempts & attempt & \AWSafeBlockedAttemptCount \\
+Tasks blocked at least once & task & \AWSafeBlockedTaskCount \\
+Blocked at least once, later successful & task & \AWSafeBlockedThenSuccessCount \\
+Blocked at least once, finally failed & task & \AWSafeBlockedThenFailureCount \\
+Gate-accepted completions & task & \AWSafeGateAcceptedTaskCount \\
+Gate-accepted but evaluator-failed & task & \AWSafeGateAcceptedFailureCount \\
+False-block attempts & attempt & \AWSafeFalseBlockAttemptCount \\
+Tasks affected by at least one false block & task & \AWSafeFalseBlockAffectedTaskCount \\
+Average blocks per rescued task & rescued task & \AWSafeAverageBlocksPerRescuedTask \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\small A task can be blocked on one attempt and accepted on a later attempt;
+the blocked and accepted sets are therefore not mutually exclusive.
+\end{minipage}
+\end{center}

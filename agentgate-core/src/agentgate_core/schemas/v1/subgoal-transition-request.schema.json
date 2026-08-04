@@ -1,0 +1,130 @@
+{
+  "$defs": {
+    "SubgoalStatus": {
+      "enum": [
+        "pending",
+        "ready",
+        "in_progress",
+        "waiting_for_evidence",
+        "waiting_for_approval",
+        "blocked",
+        "completed_unverified",
+        "completed_verified",
+        "failed",
+        "cancelled"
+      ],
+      "title": "SubgoalStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.safedesk.dev/agentgate/v1/subgoal-transition-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocker_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Blocker Ids",
+      "type": "array"
+    },
+    "effect_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Effect Ids",
+      "type": "array"
+    },
+    "evidence_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "failure_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Failure Ids",
+      "type": "array"
+    },
+    "reason": {
+      "maxLength": 20000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_event_id": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Event Id"
+    },
+    "subgoal_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Subgoal Id",
+      "type": "string"
+    },
+    "target_status": {
+      "$ref": "#/$defs/SubgoalStatus"
+    },
+    "task_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "turn": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Turn",
+      "type": "integer"
+    },
+    "verification_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Verification Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task_id",
+    "subgoal_id",
+    "target_status",
+    "reason"
+  ],
+  "title": "SubgoalTransitionRequest",
+  "type": "object"
+}
