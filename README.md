@@ -189,16 +189,13 @@ SafeDesk/
 │   └── appworld/             # AppWorld 适配器
 │       ├── src/agentgate_appworld/
 │       └── tests/
-├── benchmarks/               # Benchmark 运行结果和脚本
-│   ├── results/              # 实验结果
+├── benchmarks/               # Benchmark 运行和脚本
 │   ├── tau2-bench/           # τ²-bench 子模块
 │   └── metrics/              # 指标提取工具
-├── paper/                    # 论文和数据
+├── paper/                    # 数据
 │   ├── SafeDesk_实验数据报告.md
 │   ├── data/                 # 实验数据文件（CSV/JSON）
 │   └── scripts/              # 数据生成和分析脚本
-├── SafeDesk_需求清单.md       # 需求文档
-├── SafeDesk_核心模块开发计划.md # 开发计划
 └── README.md
 ```
 
