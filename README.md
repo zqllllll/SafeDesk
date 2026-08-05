@@ -13,8 +13,6 @@ SafeDesk 是一个**策略驱动的 Agent 执行框架**，在 DeerFlow 现有�
 - [Benchmark 结果](#benchmark-结果)
 - [架构总览](#架构总览)
 - [四大核心模块](#四大核心模块)
-- [文件结构](#文件结构)
-- [快速开始](#快速开始)
 
 ---
 
@@ -167,56 +165,8 @@ Model → [Context Builder] → Model → Tool Call
 
 ---
 
-## 文件结构
 
-```
-SafeDesk/
-├── pyproject.toml             # UV 工作空间配置
-├── agentgate-core/            # 核心框架（框架无关）
-│   ├── src/agentgate_core/
-│   │   ├── contracts/         # 数据契约（Pydantic 模型）
-│   │   ├── runtime/           # 运行时编排
-│   │   ├── state_verification/# 模块一：状态与验证
-│   │   ├── tool_execution_guard/ # 模块二：工具执行防护
-│   │   ├── recovery_controller/  # 模块三：恢复控制器
-│   │   ├── context_manager/      # 模块四：上下文管理器
-│   │   └── tracing/          # 追踪系统
-│   └── tests/                # 核心单元测试
-├── agentgate-deerflow/       # DeerFlow 集成适配层
-│   ├── src/agentgate_deerflow/ # Adapter 实现
-│   └── tests/
-├── benchmark-adapters/       # Benchmark 适配器
-│   └── appworld/             # AppWorld 适配器
-│       ├── src/agentgate_appworld/
-│       └── tests/
-├── benchmarks/               # Benchmark 运行和脚本
-│   ├── tau2-bench/           # τ²-bench 子模块
-│   └── metrics/              # 指标提取工具
-├── paper/                    # 数据
-│   ├── SafeDesk_实验数据报告.md
-│   ├── data/                 # 实验数据文件（CSV/JSON）
-│   └── scripts/              # 数据生成和分析脚本
-└── README.md
-```
 
----
-
-## 快速开始
-
-### 环境要求
-
-- Python ≥ 3.12
-- [UV](https://docs.astral.sh/uv/) 包管理器
-
-### 安装
-
-```bash
-# 安装依赖
-uv sync
-
-# 运行测试
-uv run pytest
-```
 
 ### 数据说明
 
